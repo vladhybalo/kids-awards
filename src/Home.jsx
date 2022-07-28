@@ -1,10 +1,8 @@
 import React from "react";
-import { matchPath, matchRoutes } from 'react-router-dom'
 
 const Home = () => {
 
-
-	return <div>Home</div>
+	return <div>Home1</div>
 }
 
 export default Home;
