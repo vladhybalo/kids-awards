@@ -7,6 +7,9 @@ function App() {
     <div>
       Root 1
       <Home></Home>
+      <div>
+        Login
+      </div>
     </div>
   )
 }
