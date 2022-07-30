@@ -1,5 +1,5 @@
 import { legacy_createStore, applyMiddleware } from "redux";
-import localStorageMiddleware from "../middleware/localStorageMiddleWare";
+import localStorageMiddleware from "../middleware/localStorageMiddleware";
 import { composeWithDevTools } from "redux-devtools-extension";
 import reducers from ".";
 
