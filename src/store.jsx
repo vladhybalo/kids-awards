@@ -1,7 +1,8 @@
 import { legacy_createStore, applyMiddleware } from "redux";
-import localStorageMiddleware from "../middleware/localStorageMiddleware";
 import { composeWithDevTools } from "redux-devtools-extension";
-import reducers from ".";
+import thunk from "redux-thunk";
+import reducers from "./ducks";
+import localStorageMiddleware from "./middlewares/localStorageMiddleware";
 
 const getInitialStore = () => {
     return {
@@ -12,7 +13,7 @@ const getInitialStore = () => {
 export const store = legacy_createStore(
     reducers,
     getInitialStore(),
-    composeWithDevTools(applyMiddleware(localStorageMiddleware))
+    composeWithDevTools(applyMiddleware(thunk, localStorageMiddleware))
 );
 
 export default store;
