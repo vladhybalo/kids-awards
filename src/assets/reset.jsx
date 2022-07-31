@@ -1,15 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
-    /***
-        The new CSS reset - version 1.7.2 (last updated 23.6.2022)
-        GitHub page: https://github.com/elad2412/the-new-css-reset
-    ***/
-
-    /*
-        Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
-        - The "symbol *" part is to solve Firefox SVG sprite bug
-    */
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
     a, abbr, acronym, address, big, cite, code,
@@ -42,7 +33,7 @@ export default createGlobalStyle`
     }
 
     blockquote, q {
-	quotes: none;
+	    quotes: none;
     }
 
     blockquote:before, blockquote:after,
