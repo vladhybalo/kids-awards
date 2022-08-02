@@ -192,14 +192,14 @@ export const AuthFooter = styled.ul`
     line-height: 12px;
     letter-spacing: 0.08em;
     display: flex;
-    justify-content: center;
     position: absolute;
     right: 16px;
     bottom: 40px;
     height: 12px;
-    width: 100%;
 
     @media (max-width: 800px) {
+        justify-content: center;
+        width: 100%;
         top: 662px;
         left: 50%;
         transform: translateX(-50%);
