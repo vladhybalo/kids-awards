@@ -1,6 +1,6 @@
 import React from "react"
 
-const HeaderMG = () => {
+const HeaderMobileGuest = () => {
 }
 
-export default HeaderMG
+export default HeaderMobileGuest

@@ -1,6 +1,6 @@
 import React from "react"
 
-const HeaderTA = () => {
+const HeaderTabletAutoriz = () => {
 }
 
-export default HeaderTA
+export default HeaderTabletAutoriz

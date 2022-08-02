@@ -1,6 +1,6 @@
 import React from "react"
 
-const HeaderMA = () => {
+const HeaderMobileAutoriz = () => {
 }
 
-export default HeaderMA
+export default HeaderMobileAutoriz
