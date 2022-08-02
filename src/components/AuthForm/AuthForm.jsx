@@ -3,8 +3,8 @@ import React from "react";
 import GoogleSrc from '../../assets/google-symbol.svg';
 
 import {
-    AuthFormContainer, AuthMainContainer, AuthEnterWithGoogle, GoogleIcon, AuthText,
-    InputLabel, ErrorStar, Input, Error, AuthActionButtons, Button
+    AuthFormContainer, AuthMainContainer, AuthEnterWithGoogle, GoogleIcon,
+    AuthText, InputLabel, ErrorStar, Input, Error, AuthActionButtons, Button
 } from "./AuthForm.style";
 
 const AuthForm = () => {
@@ -25,9 +25,7 @@ const AuthForm = () => {
                     <ErrorStar>*</ErrorStar>
                     E-mail
                 </InputLabel>
-                <Input type="email" placeholder="your@email.com">
-
-                </Input>
+                <Input type="email" placeholder="your@email.com" />
                 <Error>
                     это обязательное поле
                 </Error>
@@ -35,9 +33,7 @@ const AuthForm = () => {
                     <ErrorStar>*</ErrorStar>
                     Пароль
                 </InputLabel>
-                <Input type="password">
-
-                </Input>
+                <Input type="password" />
                 <Error>
                     это обязательное поле
                 </Error>

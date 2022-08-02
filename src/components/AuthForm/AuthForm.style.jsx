@@ -7,11 +7,20 @@ export const AuthFormContainer = styled.article`
     background: #fff;
     box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.1);
     border-radius: 6px;
-    color: #858598;
+
+    @media (max-width: 412px) {
+        box-shadow: none;
+        padding: 0 20px;
+        width: 100%;
+        height: auto;
+    }
+
+    @media (max-width: 310px) {
+        padding: 0 10px;
+    }
 `;
 
 export const AuthMainContainer = styled.section`
-    font-family: 'Montserrat-400';
     font-size: 12px;
     line-height: 15px;
     letter-spacing: 0.04em;
@@ -24,7 +33,6 @@ export const GoogleIcon = styled.img`
 `;
 
 export const AuthText = styled.p`
-    margin: 0; //remove after pull reset.jsx
     margin-bottom: 20px;
 `;
 
@@ -38,8 +46,6 @@ export const Input = styled.input`
     padding: 12px 8px;
     height: 42px;
     width: 100%;
-    box-sizing: border-box; //remove after pull reset.jsx
-    border: none; //remove after pull reset.jsx
     color: #000;
     background: #F6F7FB;
     box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.15);
@@ -57,31 +63,42 @@ export const ErrorStar = styled.span`
 `;
 
 export const Error = styled.p`
-    margin: 0; //remove after pull reset.jsx
     margin-bottom: 10px;
     color: #EB5757;
+    height: 12px;
 `;
 
 export const AuthActionButtons = styled.div`
+    display: flex;
 
+    @media (max-width: 412px) {
+        justify-content: center;
+    }
 `;
 
 export const Button = styled.button`
-    margin-right: 8px;
     width: 153px;
     height: 48px;
     font-family: 'Montserrat-500';
     font-size: 12px;
     line-height: 15px;
     letter-spacing: 0.02em;
-    border: none; //remove after merge reset.jsx
+    text-align: center;
     border-radius: 6px;
     color: #FAFAFA;
     background: #FFBC33;
     filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.15));
     cursor: pointer;
-`;
 
+    &:not(:last-child) {
+        margin-right: 8px;
+    }
+
+    @media (max-width: 412px) {
+        width: 135px;
+        height: 48px;
+    }
+`;
 
 export const AuthEnterWithGoogle = styled(Button)`
     margin-bottom: 20px;
