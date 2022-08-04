@@ -10,7 +10,7 @@ import Img1 from '../../assets/auth-three-people-image.svg';
 import Img2 from '../../assets/auth-games-image.svg';
 import Img3 from '../../assets/auth-robot-image.svg';
 import Img4 from '../../assets/auth-mother-daughter-image.svg';
-import LogoSrc from '../../assets/Logo.svg';
+import LogoSrc from '../../assets/logo.svg';
 
 import {
     Auth, AuthBody, Collage, CollageImageWrapper, CollageImage,
