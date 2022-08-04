@@ -14,6 +14,11 @@ import {
 } from "./AuthPage.style";
 
 const AuthPage = () => {
+    const fetchData = (formData, authType) => {
+        console.log(formData);
+        console.log(authType);
+    }
+
     return (
         <Auth>
             <AuthBody>
@@ -35,7 +40,7 @@ const AuthPage = () => {
                     <AuthTitle>
                         Выполняй задания, получи классные призы!
                     </AuthTitle>
-                    <AuthForm/>
+                    <AuthForm fetchData={fetchData} />
                 </AuthContent>
             </AuthBody>
             <AuthFooter>

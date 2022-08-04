@@ -59,13 +59,15 @@ export const Input = styled.input`
 `;
 
 export const ErrorStar = styled.span`
-    color: #EB5757;
+    display: ${props => props.valid && 'none'};
+    color: ${props => !props.valid && '#EB5757'};
 `;
 
-export const Error = styled.p`
-    margin-bottom: 10px;
-    color: #EB5757;
+export const ErrorMsg = styled.p`
+    visibility: ${props => props.valid && 'hidden'};
+    color: ${props => !props.valid && '#EB5757'};
     height: 12px;
+    margin-bottom: 10px;
 `;
 
 export const AuthActionButtons = styled.div`
