@@ -1,4 +1,8 @@
 import React from "react";
+import { useStore, useDispatch } from "react-redux";
+import axios from 'axios';
+
+import { userSignUp, userLogin } from "../../ducks/authIntoSystem";
 
 import AuthForm from "../../components/AuthForm";
 
@@ -14,9 +18,24 @@ import {
 } from "./AuthPage.style";
 
 const AuthPage = () => {
+    const store = useStore();
+    const dispatch = useDispatch();
+
     const fetchData = (formData, authType) => {
-        console.log(formData);
-        console.log(authType);
+        switch (authType) {
+            case "login":
+                return axios.post(`https://kidslike-v1-backend.goit.global/auth/login`, formData)
+                .then(res => {
+                    dispatch(userLogin(res));
+                })
+            case "register":
+                return axios.post(`https://kidslike-v1-backend.goit.global/auth/register`, formData)
+                .then(res => {
+                    dispatch(userSignUp(res));
+                })
+            default:
+                return;
+        }
     }
 
     return (
@@ -33,7 +52,7 @@ const AuthPage = () => {
                         <CollageImage src={Img3} alt="Happy Robot"/>
                     </CollageImageWrapper>
                     <CollageImageWrapper>
-                        <CollageImage src={Img4} alt="MOther and daughter"/>
+                        <CollageImage src={Img4} alt="Mother and daughter"/>
                     </CollageImageWrapper>
                 </Collage>
                 <AuthContent>

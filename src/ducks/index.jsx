@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 
-import { testStateReducer } from "./testState/testStateReducer";
+import { authIntoSystemReducer } from "./authIntoSystem";
 
 const reducers = combineReducers ({
-    testState: testStateReducer
+    userInfo: authIntoSystemReducer
 });
 
 export default reducers;
