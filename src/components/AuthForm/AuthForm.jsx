@@ -7,23 +7,32 @@ import {
     AuthText, InputLabel, ErrorStar, Input, ErrorMsg, AuthActionButtons, Button
 } from "./AuthForm.style";
 
-const AuthForm = ({fetchData}) => {
-    let formData = {email: null, password: null};
+let formData = {email: null, password: null};
 
+const AuthForm = ({fetchData}) => {
     const [validMail, setValidMail] = useState(true);
     const [validPassword, setValidPassword] = useState(true);
+    const [emailErrorMsg, setEmailErrorMsg] = useState("");
+    const [passwordErrorMsg, setPasswordErrorMsg] = useState("");
 
     const checkEmail = (e) => {
         const email = e.target.value;
 
-        if (email.length > 3) {
+        if (email.length === 0) {
+            setEmailErrorMsg("это обязательное поле");
+            setValidMail(false);
+        }
+        else if (email.length > 3) {
             if (!email.match(/[-.\w]+@([\w-]+\.)+[\w-]+/g)) {
+                setEmailErrorMsg("неверный формат почты");
                 setValidMail(false);
             } else {
                 setValidMail(true);
                 formData.email = email;
             }
-        } else {
+        }
+        else {
+            setEmailErrorMsg("введите не менее 3 символов");
             setValidMail(false);
         }
     }
@@ -31,16 +40,22 @@ const AuthForm = ({fetchData}) => {
     const checkPassword = (e) => {
         const password = e.target.value;
 
-        if (password.length > 8) {
+        if (password.length === 0) {
+            setPasswordErrorMsg("это обязательное поле");
+            setValidPassword(false);
+        }
+        else if (password.length > 8) {
             setValidPassword(true);
             formData.password = password;
-        } else {
+        }
+        else {
+            setPasswordErrorMsg("введите не менее 8 символов");
             setValidPassword(false);
         }
     }
 
     const checkInputData = (authType) => {
-        if (formData.email !== null && formData.password !== null) {
+        if (formData.email && formData.password) {
             fetchData(formData, authType);
         }
         else {
@@ -68,15 +83,15 @@ const AuthForm = ({fetchData}) => {
                 </InputLabel>
                 <Input type="email" placeholder="your@email.com" onBlur={checkEmail} />
                 <ErrorMsg valid={validMail}>
-                    это обязательное поле
+                    {emailErrorMsg}
                 </ErrorMsg>
                 <InputLabel>
                     <ErrorStar valid={validPassword}> * </ErrorStar>
                     Пароль
                 </InputLabel>
-                <Input type="password" onBlur={checkPassword} />
+                <Input type="password" onBlur={checkPassword}/>
                 <ErrorMsg valid={validPassword}>
-                    это обязательное поле
+                    {passwordErrorMsg}
                 </ErrorMsg>
             </AuthMainContainer>
             <AuthActionButtons>
