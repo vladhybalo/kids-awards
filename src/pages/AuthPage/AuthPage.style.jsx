@@ -1,7 +1,14 @@
 import styled from "styled-components";
 
+import {
+    MAIN_BLACK,
+    DROP_SHADOW,
+    BORDER,
+    AUTH_TEXT_COLOR
+} from "../../assets/themes/colors";
+
 export const Auth = styled.article`
-    color: #858598;
+    color: ${AUTH_TEXT_COLOR};
     font-family: 'Montserrat-Regular';
     position: relative;
 `;
@@ -43,96 +50,90 @@ export const Collage = styled.div`
 
 export const CollageImageWrapper = styled.div`
     position: absolute;
-    filter: drop-shadow(4px 6px 15px rgba(0, 0, 0, 0.1));
+    filter: drop-shadow(4px 6px 15px ${DROP_SHADOW});
+`;
 
-    :nth-child(1){
-        width: 372px;
-        height: 306px;
-    }
-
-    :nth-child(2){
-        width: 279px;
-        height: 264px;
-        top: 170px;
-        right: 80px;
-    }
-
-    :nth-child(3){
-        width: 276px;
-        height: 219px;
-        top: 326px;
-    }
-
-    :nth-child(4){
-        width: 359px;
-        height: 290px;
-        bottom: 0;
-        right: 0;
-    }
+export const CollageImageWrapperFamily = styled(CollageImageWrapper)`
+    width: 372px;
+    height: 306px;
 
     @media (max-width: 800px) {
-        :nth-child(1){
-            width: 301px;
-            height: 247px;
-            left: 0;
-            top: 79px;
-        }
-
-        :nth-child(2){
-            width: 213px;
-            height: 202px;
-            top: 43px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1;
-        }
-
-        :nth-child(3){
-            display: none;
-        }
-
-        :nth-child(4){
-            width: 297px;
-            height: 239px;
-            top: 0;
-            right: 0;
-        }
+        width: 301px;
+        height: 247px;
+        left: 0;
+        top: 79px;
     }
 
     @media (max-width: 412px) {
-        :nth-child(1){
-            width: 301px;
-            height: 247px;
-            left: 0;
-            top: 0;
-        }
-
-        :nth-child(2){
-            width: 213px;
-            height: 202px;
-            left: auto;
-            top: auto;
-            bottom: 0;
-            right: 0;
-            transform: translateX(0);
-        }
-
-        :nth-child(4){
-            display: none;
-        }
+        width: 301px;
+        height: 247px;
+        left: 0;
+        top: 0;
     }
 
     @media (max-width: 320px) {
-        :nth-child(1){
-            display: none;
-        }
+        display: none;
+    }
+`;
 
-        :nth-child(2){
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
+export const CollageImageWrapperGames = styled(CollageImageWrapper)`
+    width: 279px;
+    height: 264px;
+    top: 170px;
+    right: 80px;
+
+    @media (max-width: 800px) {
+        width: 213px;
+        height: 202px;
+        top: 43px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+    }
+
+    @media (max-width: 412px) {
+        width: 213px;
+        height: 202px;
+        left: auto;
+        top: auto;
+        bottom: 0;
+        right: 0;
+        transform: translateX(0);
+    }
+
+    @media (max-width: 320px) {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        top: 0;
+    }
+`;
+
+export const CollageImageWrapperRobot = styled(CollageImageWrapper)`
+    width: 276px;
+    height: 219px;
+    top: 326px;
+
+    @media (max-width: 800px) {
+        display: none;
+    }
+`;
+
+export const CollageImageWrapperGirls = styled(CollageImageWrapper)`
+    width: 359px;
+    height: 290px;
+    bottom: 0;
+    right: 0;
+
+    @media (max-width: 800px) {
+        width: 297px;
+            height: 239px;
             top: 0;
-        }
+            right: 0;
+    }
+
+    @media (max-width: 412px) {
+        display: none;
     }
 `;
 
@@ -168,7 +169,7 @@ export const AuthTitle = styled.h1`
     font-family: 'Montserrat-600';
     font-size: 30px;
     line-height: 37px;
-    color: #000;
+    color: ${MAIN_BLACK};
     margin-top: 40px;
     margin-bottom: 32px;
 
@@ -216,7 +217,7 @@ export const AuthFooterItem = styled.li`
 
     :not(:first-child) {
         padding-left: 8px;
-        border-left: 1px solid #E3E2E7;
+        border-left: 1px solid ${BORDER};
         margin-left: 8px;
     }
 `;

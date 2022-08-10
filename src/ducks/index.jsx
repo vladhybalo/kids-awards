@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 
-import { authIntoSystemReducer } from "./authIntoSystem";
+import { userInfoReducer } from "./userInfo";
 
 const reducers = combineReducers ({
-    userInfo: authIntoSystemReducer
+    userInfo: userInfoReducer
 });
 
 export default reducers;

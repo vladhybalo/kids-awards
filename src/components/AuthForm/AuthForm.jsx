@@ -1,22 +1,35 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 import GoogleSrc from '../../assets/google-symbol.svg';
 
 import {
-    AuthFormContainer, AuthMainContainer, AuthEnterWithGoogle, GoogleIcon,
-    AuthText, InputLabel, ErrorStar, Input, ErrorMsg, AuthActionButtons, Button
+    AuthFormContainer,
+    AuthMainContainer,
+    AuthEnterWithGoogle,
+    GoogleIcon,
+    AuthText,
+    InputLabel,
+    ErrorStar,
+    Input,
+    ErrorMsg,
+    AuthActionButtons,
+    Button
 } from "./AuthForm.style";
 
 let formData = {email: null, password: null};
 
 const AuthForm = ({fetchData}) => {
+    const emailRef = useRef();
+    const passwordRef = useRef();
+
     const [validMail, setValidMail] = useState(true);
     const [validPassword, setValidPassword] = useState(true);
     const [emailErrorMsg, setEmailErrorMsg] = useState("");
     const [passwordErrorMsg, setPasswordErrorMsg] = useState("");
 
-    const checkEmail = (e) => {
-        const email = e.target.value;
+
+    const checkEmail = () => {
+        const email = emailRef.current.value;
 
         if (email.length === 0) {
             setEmailErrorMsg("это обязательное поле");
@@ -37,8 +50,8 @@ const AuthForm = ({fetchData}) => {
         }
     }
 
-    const checkPassword = (e) => {
-        const password = e.target.value;
+    const checkPassword = () => {
+        const password = passwordRef.current.value;
 
         if (password.length === 0) {
             setPasswordErrorMsg("это обязательное поле");
@@ -77,19 +90,32 @@ const AuthForm = ({fetchData}) => {
                 <AuthText>
                     Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:
                 </AuthText>
-                <InputLabel>
+                <InputLabel htmlFor="email">
                     <ErrorStar valid={validMail}> * </ErrorStar>
                     E-mail
                 </InputLabel>
-                <Input type="email" placeholder="your@email.com" onBlur={checkEmail} />
+                <Input
+                    id="email"
+                    type="email"
+                    placeholder="your@email.com"
+                    ref={emailRef}
+                    // onChange={checkEmail}
+                    onBlur={checkEmail}
+                />
                 <ErrorMsg valid={validMail}>
                     {emailErrorMsg}
                 </ErrorMsg>
-                <InputLabel>
+                <InputLabel htmlFor="password">
                     <ErrorStar valid={validPassword}> * </ErrorStar>
                     Пароль
                 </InputLabel>
-                <Input type="password" onBlur={checkPassword}/>
+                <Input
+                    id="password"
+                    type="password"
+                    ref={passwordRef}
+                    // onChange={checkPassword}
+                    onBlur={checkPassword}
+                />
                 <ErrorMsg valid={validPassword}>
                     {passwordErrorMsg}
                 </ErrorMsg>

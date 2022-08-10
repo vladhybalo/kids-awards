@@ -1,11 +1,22 @@
 import styled from "styled-components";
 
+import {
+    YELLOW,
+    MAIN_BLACK,
+    MAIN_BACKGROUND,
+    ERROR,
+    DROP_SHADOW,
+    TITLES_TEXT_COLOR,
+    INPUT_BACKGROUND,
+    BUTTON_LIGHT_TEXT_COLOR
+} from "../../assets/themes/colors";
+
 export const AuthFormContainer = styled.article`
     width: 394px;
     height: 468px;
     padding: 40px;
-    background: #fff;
-    box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.1);
+    background: ${MAIN_BACKGROUND};
+    box-shadow: 4px 6px 15px ${DROP_SHADOW};
     border-radius: 6px;
 
     @media (max-width: 412px) {
@@ -46,26 +57,26 @@ export const Input = styled.input`
     padding: 12px 8px;
     height: 42px;
     width: 100%;
-    color: #000;
-    background: #F6F7FB;
+    color: ${MAIN_BLACK};
+    background: ${INPUT_BACKGROUND};
     box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.15);
     font-size: 14px;
     line-height: 17px;
     letter-spacing: 0.04em;
 
     ::placeholder{
-        color: #A6ABB9;
+        color: ${TITLES_TEXT_COLOR};
     }
 `;
 
 export const ErrorStar = styled.span`
     display: ${props => props.valid && 'none'};
-    color: ${props => !props.valid && '#EB5757'};
+    color: ${props => !props.valid && ERROR};
 `;
 
 export const ErrorMsg = styled.p`
     visibility: ${props => props.valid && 'hidden'};
-    color: ${props => !props.valid && '#EB5757'};
+    color: ${props => !props.valid && ERROR};
     height: 12px;
     margin-bottom: 10px;
 `;
@@ -87,13 +98,22 @@ export const Button = styled.button`
     letter-spacing: 0.02em;
     text-align: center;
     border-radius: 6px;
-    color: #FAFAFA;
-    background: #FFBC33;
+    color: ${BUTTON_LIGHT_TEXT_COLOR};
+    background: ${YELLOW};
     filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.15));
     cursor: pointer;
 
+    transition: 0.25s;
+
     &:not(:last-child) {
         margin-right: 8px;
+    }
+
+    &:hover {
+        box-shadow:
+            inset -6.5em 0 0 0 ${BUTTON_LIGHT_TEXT_COLOR},
+            inset 6.5em 0 0 0 ${BUTTON_LIGHT_TEXT_COLOR};
+        color: ${YELLOW};
     }
 
     @media (max-width: 412px) {
@@ -108,9 +128,16 @@ export const AuthEnterWithGoogle = styled(Button)`
     height: 42px;
     font-size: 14px;
     line-height: 17px;
-    color: #000;
-    background: #F6F7FB;
+    color: ${MAIN_BLACK};
+    background: ${INPUT_BACKGROUND};
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &:hover {
+        box-shadow:
+            inset -6.5em 0 0 0 ${YELLOW},
+            inset 6.5em 0 0 0 ${YELLOW};
+        color: ${BUTTON_LIGHT_TEXT_COLOR};
+    }
 `;

@@ -1,16 +1,16 @@
-import { AUTH_SIGN_UP, AUTH_LOGIN } from "./authIntoSystemActions";
+import { USER_SIGN_UP, USER_LOG_IN } from "./userInfoActions";
 
-const authIntoSystemReducer = (state = {}, action) => {
+const userInfoReducer = (state = {}, action) => {
     switch (action.type) {
-        case AUTH_SIGN_UP:
+        case USER_SIGN_UP:
             return {
                 userData: action.payload.user
             };
-        case AUTH_LOGIN:
+        case USER_LOG_IN:
             return {...state, userData: action.payload.user, userWeek: action.payload.week};
         default:
             return state;
     }
 }
 
-export default authIntoSystemReducer;
+export default userInfoReducer;
