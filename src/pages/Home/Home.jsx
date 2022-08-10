@@ -1,7 +1,10 @@
 import React from "react";
 
-const Home = () => {
+import Spinner from "../../components/Spinner/Spinner";
+import withLoader from "../../hocs/withLoader/withLoader";
 
+const Home = () => {
+    return <Spinner></Spinner>
 }
 
-export default Home;
+export default withLoader(Home);
