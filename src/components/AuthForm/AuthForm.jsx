@@ -1,4 +1,7 @@
 import React, { useRef, useState } from "react";
+import { useStore, useDispatch } from "react-redux";
+
+import { fetchLoginData, fetchSignUpData } from "../../ducks/userInfo";
 
 import GoogleSrc from '../../assets/google-symbol.svg';
 
@@ -18,7 +21,10 @@ import {
 
 let formData = {email: null, password: null};
 
-const AuthForm = ({fetchData}) => {
+const AuthForm = () => {
+    const store = useStore();
+    const dispatch = useDispatch();
+
     const emailRef = useRef();
     const passwordRef = useRef();
 
@@ -51,10 +57,6 @@ const AuthForm = ({fetchData}) => {
         }
     }
 
-    const bluredEmailHandler = () => setBluredMail(true);
-
-    const bluredPasswordHandler = () => setBluredPassword(true);
-
     const checkPassword = () => {
         const password = passwordRef.current.value;
 
@@ -72,9 +74,13 @@ const AuthForm = ({fetchData}) => {
         }
     }
 
+    const bluredEmailHandler = () => setBluredMail(true);
+
+    const bluredPasswordHandler = () => setBluredPassword(true);
+
     const checkInputData = (authType) => {
         if (formData.email && formData.password) {
-            fetchData(formData, authType);
+            authType === 'login'? dispatch(fetchLoginData(formData)) : dispatch(fetchSignUpData(formData));
         }
         else {
             setValidMail(false);

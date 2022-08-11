@@ -1,7 +1,4 @@
 import React from "react";
-import { useStore, useDispatch } from "react-redux";
-
-import { fetchLoginData, fetchSignUpData } from "../../ducks/userInfo";
 
 import AuthForm from "../../components/AuthForm";
 
@@ -28,20 +25,6 @@ import {
 } from "./AuthPage.style";
 
 const AuthPage = () => {
-    const store = useStore();
-    const dispatch = useDispatch();
-
-    const fetchData = (formData, authType) => {
-        switch (authType) {
-            case "login":
-                return dispatch(fetchLoginData(formData));
-            case "register":
-                return dispatch(fetchSignUpData(formData));
-            default:
-                return;
-        }
-    }
-
     return (
         <Auth>
             <AuthBody>
@@ -63,7 +46,7 @@ const AuthPage = () => {
                     <AuthTitle>
                         Выполняй задания, получи классные призы!
                     </AuthTitle>
-                    <AuthForm fetchData={fetchData} />
+                    <AuthForm />
                 </AuthContent>
             </AuthBody>
             <AuthFooter>
