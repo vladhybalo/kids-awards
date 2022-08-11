@@ -24,9 +24,10 @@ const AuthForm = ({fetchData}) => {
 
     const [validMail, setValidMail] = useState(true);
     const [validPassword, setValidPassword] = useState(true);
+    const [bluredMail, setBluredMail] = useState(false);
+    const [bluredPassword, setBluredPassword] = useState(false);
     const [emailErrorMsg, setEmailErrorMsg] = useState("");
     const [passwordErrorMsg, setPasswordErrorMsg] = useState("");
-
 
     const checkEmail = () => {
         const email = emailRef.current.value;
@@ -49,6 +50,10 @@ const AuthForm = ({fetchData}) => {
             setValidMail(false);
         }
     }
+
+    const bluredEmailHandler = () => setBluredMail(true);
+
+    const bluredPasswordHandler = () => setBluredPassword(true);
 
     const checkPassword = () => {
         const password = passwordRef.current.value;
@@ -91,7 +96,9 @@ const AuthForm = ({fetchData}) => {
                     Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:
                 </AuthText>
                 <InputLabel htmlFor="email">
-                    <ErrorStar valid={validMail}> * </ErrorStar>
+                    <ErrorStar valid={validMail}>
+                        {bluredMail && '*'}
+                    </ErrorStar>
                     E-mail
                 </InputLabel>
                 <Input
@@ -99,25 +106,27 @@ const AuthForm = ({fetchData}) => {
                     type="email"
                     placeholder="your@email.com"
                     ref={emailRef}
-                    // onChange={checkEmail}
-                    onBlur={checkEmail}
+                    onChange={checkEmail}
+                    onBlur={bluredEmailHandler}
                 />
                 <ErrorMsg valid={validMail}>
-                    {emailErrorMsg}
+                    {bluredMail && emailErrorMsg}
                 </ErrorMsg>
                 <InputLabel htmlFor="password">
-                    <ErrorStar valid={validPassword}> * </ErrorStar>
+                    <ErrorStar valid={validPassword}>
+                        {bluredPassword && '*'}
+                    </ErrorStar>
                     Пароль
                 </InputLabel>
                 <Input
                     id="password"
                     type="password"
                     ref={passwordRef}
-                    // onChange={checkPassword}
-                    onBlur={checkPassword}
+                    onChange={checkPassword}
+                    onBlur={bluredPasswordHandler}
                 />
                 <ErrorMsg valid={validPassword}>
-                    {passwordErrorMsg}
+                    {bluredPassword && passwordErrorMsg}
                 </ErrorMsg>
             </AuthMainContainer>
             <AuthActionButtons>
