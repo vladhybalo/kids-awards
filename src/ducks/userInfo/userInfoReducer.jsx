@@ -1,4 +1,4 @@
-import { USER_SIGN_UP, USER_LOG_IN } from "./userInfoActions";
+import { USER_SIGN_UP, USER_SIGN_IN } from "./userInfoActions";
 
 const userInfoReducer = (state = {}, action) => {
     switch (action.type) {
@@ -6,7 +6,7 @@ const userInfoReducer = (state = {}, action) => {
             return {
                 userData: action.payload.user
             };
-        case USER_LOG_IN:
+        case USER_SIGN_IN:
             return {...state, userData: action.payload.user, userWeek: action.payload.week};
         default:
             return state;

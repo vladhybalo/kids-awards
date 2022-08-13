@@ -1,8 +1,9 @@
 import React, { useRef, useState } from "react";
 import { useStore, useDispatch } from "react-redux";
 
-import { fetchLoginData, fetchSignUpData } from "../../ducks/userInfo";
+import { fetchSignInData, fetchSignUpData } from "../../ducks/userInfo";
 
+import translations from "../../config/translations/translations";
 import GoogleSrc from '../../assets/google-symbol.svg';
 
 import {
@@ -19,7 +20,7 @@ import {
     Button
 } from "./AuthForm.style";
 
-let formData = {email: null, password: null};
+const formData = {email: null, password: null};
 
 const AuthForm = () => {
     const store = useStore();
@@ -39,12 +40,12 @@ const AuthForm = () => {
         const email = emailRef.current.value;
 
         if (email.length === 0) {
-            setEmailErrorMsg("это обязательное поле");
+            setEmailErrorMsg(translations['errors.requiredField']);
             setValidMail(false);
         }
-        else if (email.length > 3) {
+        else if (email.length >= 3) {
             if (!email.match(/[-.\w]+@([\w-]+\.)+[\w-]+/g)) {
-                setEmailErrorMsg("неверный формат почты");
+                setEmailErrorMsg(translations['errors.invalidEmailFormat']);
                 setValidMail(false);
             } else {
                 setValidMail(true);
@@ -52,7 +53,7 @@ const AuthForm = () => {
             }
         }
         else {
-            setEmailErrorMsg("введите не менее 3 символов");
+            setEmailErrorMsg(translations['errors.invalidEmailLength']);
             setValidMail(false);
         }
     }
@@ -61,15 +62,15 @@ const AuthForm = () => {
         const password = passwordRef.current.value;
 
         if (password.length === 0) {
-            setPasswordErrorMsg("это обязательное поле");
+            setPasswordErrorMsg(translations['errors.requiredField']);
             setValidPassword(false);
         }
-        else if (password.length > 8) {
+        else if (password.length >= 8) {
             setValidPassword(true);
             formData.password = password;
         }
         else {
-            setPasswordErrorMsg("введите не менее 8 символов");
+            setPasswordErrorMsg(translations['errors.invalidPaaswordLength']);
             setValidPassword(false);
         }
     }
@@ -80,7 +81,7 @@ const AuthForm = () => {
 
     const checkInputData = (authType) => {
         if (formData.email && formData.password) {
-            authType === 'login'? dispatch(fetchLoginData(formData)) : dispatch(fetchSignUpData(formData));
+            authType === 'login'? dispatch(fetchSignInData(formData)) : dispatch(fetchSignUpData(formData));
         }
         else {
             setValidMail(false);

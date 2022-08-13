@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import {
-    MAIN_BLACK,
+    MAIN_DARK,
     DROP_SHADOW,
     BORDER,
     AUTH_TEXT_COLOR
@@ -169,7 +169,7 @@ export const AuthTitle = styled.h1`
     font-family: 'Montserrat-600';
     font-size: 30px;
     line-height: 37px;
-    color: ${MAIN_BLACK};
+    color: ${MAIN_DARK};
     margin-top: 40px;
     margin-bottom: 32px;
 

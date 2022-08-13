@@ -1,16 +1,16 @@
 import {
     userSignUp,
-    userLogIn,
-    fetchLoginData,
-    fetchSignUpData
+    userSignIn,
+    fetchSignInData,
+    fetchSignUpData,
 } from "./userInfoActions";
 
 import userInfoReducer from "./userInfoReducer";
 
 export {
     userSignUp,
-    userLogIn,
-    fetchLoginData,
+    userSignIn,
+    fetchSignInData,
     fetchSignUpData,
     userInfoReducer
 };
