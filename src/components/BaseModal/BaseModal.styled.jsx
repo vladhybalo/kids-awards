@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ModalBackground = styled.div`
     position: absolute;
-    top: 0;
+    top: ${props => props.top}px;
     right: 0;
     display: flex;
     justify-content: center;
@@ -17,9 +17,9 @@ export const ModalContainer = styled.div`
     background-color: white;
     border-radius: 6px;
     position: relative;
-    color: white;
+    color: black;
 `
-export const ModalContainerCloseButWrapper = styled.div`
+export const ModalContainerCloseBtnWrapper = styled.div`
     position: absolute;
     right: 8px;
     top: 8px;
@@ -27,7 +27,7 @@ export const ModalContainerCloseButWrapper = styled.div`
     width: 14px;
     cursor: pointer;
 `
-export const CloseButImg = styled.img`
+export const CloseBtnImg = styled.img`
     display: block;
     height: 100%;
     width: 100%;

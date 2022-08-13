@@ -1,37 +1,46 @@
-import { ModalBackground, ModalContainer, ModalContainerCloseButWrapper, CloseButImg } from "./BaseModal.styled";
+import { ModalBackground, ModalContainer, ModalContainerCloseBtnWrapper, CloseBtnImg } from "./BaseModal.styled";
+import { disableBodyScroll, enableBodyScroll} from "body-scroll-lock";
+import React, {useEffect, useState } from "react";
 import closeCross from "./assets/closeCross.svg"
-import { useEffect, useState } from "react";
 
-export const BaseModal = ({ifShown = true}) => {
+export const BaseModal = ({parentToggleIsShownModal, children}) => {
 
-    const [ stateIfShown, setStateIfShown ] = useState(ifShown);
+    const [topOffset, setTopOffset] = useState(Math.abs(document.querySelector("body").getBoundingClientRect().top));
 
     const keyboardListener = (e) => {
+        console.log("listener");
         if (e.key === "Escape") {
             closeModalHandler();
         }
     }
 
+    const resizeListener = (e) => {
+        setTopOffset(Math.abs(document.querySelector("body").getBoundingClientRect().top));
+    }
+
     function closeModalHandler() {
-        setStateIfShown(false);
-        window.onscroll = () => window.scrollTo();
+        enableBodyScroll(document.querySelector("body"));
         document.removeEventListener("keydown", keyboardListener);
+        console.log("removing listener");
+        window.removeEventListener("resize", resizeListener);
+        parentToggleIsShownModal(false);
     }
 
     useEffect(() => {
-        window.onscroll = () => window.scrollTo(0, 0);
+        disableBodyScroll(document.querySelector("body"));
         document.addEventListener("keydown", keyboardListener);
+        window.addEventListener("resize", resizeListener);
     }, []);
 
     return (
-        <> { stateIfShown &&
-            <ModalBackground>
+        <> { 
+            <ModalBackground top = {topOffset}>
                 <ModalContainer>
-                    <ModalContainerCloseButWrapper onClick={() => closeModalHandler()}>
-                        <CloseButImg src= {closeCross}>
-                        </CloseButImg>
-                    </ModalContainerCloseButWrapper>
-                 
+                    <ModalContainerCloseBtnWrapper onClick={() => closeModalHandler()}>
+                        <CloseBtnImg src= {closeCross}>
+                        </CloseBtnImg>
+                    </ModalContainerCloseBtnWrapper>
+                    {children}
                 </ModalContainer>    
             </ModalBackground>} 
         </>
