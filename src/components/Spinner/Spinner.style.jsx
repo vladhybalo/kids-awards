@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
+import { MAIN_LIGHT } from "../../assets/themes/colors";
+
 export const Loader = styled.span`
     width: 48px;
     height: 48px;
     border-radius: 50%;
     display: inline-block;
-    border-top: 5px solid #FFBC33;
+    border-top: 5px solid ${MAIN_LIGHT};
     border-right: 5px solid transparent;
     box-sizing: border-box;
     position: absolute;
