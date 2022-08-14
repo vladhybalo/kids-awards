@@ -68,7 +68,7 @@ const AuthPage = () => {
                 </Collage>
                 <AuthContent>
                     <AuthTitle>
-                        Выполняй задания, получи классные призы!
+                        Complete tasks and get cool prizes!
                     </AuthTitle>
                     <AuthForm />
                 </AuthContent>
@@ -79,7 +79,7 @@ const AuthPage = () => {
                     <Logo src={LogoSrc} alt="Father and children"/>
                 </AuthFooterItem>
                 <AuthFooterItem>
-                    Делаем жизнь родителей и детей изи :)
+                    Making the life of parents and children easy :)
                 </AuthFooterItem>
                 <AuthFooterItem>
                     2020

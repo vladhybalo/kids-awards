@@ -93,14 +93,14 @@ const AuthForm = () => {
         <AuthFormContainer>
             <AuthMainContainer>
                 <AuthText>
-                    Вы можете авторизоваться с помощью Google Account:
+                    You can sign in with your Google Account:
                 </AuthText>
                 <AuthEnterWithGoogle>
                     <GoogleIcon src={GoogleSrc} alt="Google Icon" />
                     Google
                 </AuthEnterWithGoogle>
                 <AuthText>
-                    Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:
+                    Or sign in using e-mail and password after registering:
                 </AuthText>
                 <InputLabel htmlFor="email">
                     <ErrorStar valid={validMail}>
@@ -123,7 +123,7 @@ const AuthForm = () => {
                     <ErrorStar valid={validPassword}>
                         {bluredPassword && '*'}
                     </ErrorStar>
-                    Пароль
+                    Password
                 </InputLabel>
                 <Input
                     id="password"
@@ -138,10 +138,10 @@ const AuthForm = () => {
             </AuthMainContainer>
             <AuthActionButtons>
                 <Button onClick={() => checkInputData('login')}>
-                    Войти
+                    Sign in
                 </Button>
                 <Button onClick={() => checkInputData('register')}>
-                    Зарегистрироваться
+                    Sign up
                 </Button>
             </AuthActionButtons>
         </AuthFormContainer>
