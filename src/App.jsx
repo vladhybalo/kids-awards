@@ -4,7 +4,7 @@ import GlobalFonts from './assets/fonts/fonts';
 import GlobalStylesReset from './assets/reset';
 import Router from './Router';
 
-import HeaderDesktopGuest from "./components/Header/HeaderDesktopGuest"
+import Header from "./components/Header"
 
 function App() {
   return (
@@ -12,8 +12,7 @@ function App() {
       <GlobalFonts />
       <GlobalStylesReset />
 
-      <HeaderDesktopGuest />
-
+      <Header />
       <Router></Router>
     </div>
   )
