@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useStore, useDispatch } from "react-redux";
 
 import { fetchSignInData, fetchSignUpData } from "../../ducks/userInfo";
@@ -25,6 +26,8 @@ const formData = {email: null, password: null};
 const AuthForm = () => {
     const store = useStore();
     const dispatch = useDispatch();
+
+    const navigate = useNavigate();
 
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -82,6 +85,12 @@ const AuthForm = () => {
     const checkInputData = (authType) => {
         if (formData.email && formData.password) {
             authType === 'login'? dispatch(fetchSignInData(formData)) : dispatch(fetchSignUpData(formData));
+
+            store.subscribe(() => {
+                if (JSON.stringify(store.getState().userInfo) !== '{}') {
+                    navigate('/home');
+                }
+            });
         }
         else {
             setValidMail(false);
