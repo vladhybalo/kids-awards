@@ -21,4 +21,3 @@ export const INPUT_BACKGROUND = grey1;
 export const AUTH_TEXT_COLOR = grey_text;
 export const TITLES_TEXT_COLOR = grey_text1;
 export const BUTTON_LIGHT_TEXT_COLOR = grey_text2;
-
