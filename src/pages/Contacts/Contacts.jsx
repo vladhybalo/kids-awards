@@ -1,7 +1,10 @@
 import React from "react";
 
-const Contacts = () => {
+import Spinner from "../../components/Spinner/Spinner";
+import withLoader from "../../hocs/withLoader/withLoader";
 
+const Contacts = () => {
+    return <Spinner></Spinner>
 }
 
-export default Contacts;
+export default withLoader(Contacts);
