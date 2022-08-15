@@ -1,7 +1,10 @@
 import React from "react";
 
-const Awards = () => {
+import Spinner from "../../components/Spinner/Spinner";
+import withLoader from "../../hocs/withLoader/withLoader";
 
+const Awards = () => {
+    return <Spinner></Spinner>
 }
 
-export default Awards;
+export default withLoader(Awards);
