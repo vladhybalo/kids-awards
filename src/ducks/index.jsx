@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 
-import { testStateReducer } from "./testState/testStateReducer";
+import { userInfoReducer } from "./userInfo";
 
 const reducers = combineReducers ({
-    testState: testStateReducer
+    userInfo: userInfoReducer
 });
 
 export default reducers;
