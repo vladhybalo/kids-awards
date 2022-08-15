@@ -5,7 +5,7 @@ import { useStore, useDispatch } from "react-redux";
 import { fetchSignInData, fetchSignUpData } from "../../ducks/userInfo";
 
 import translations from "../../config/translations/translations";
-import Goooooogly from '../../assets/google-symbol.svg';
+import GoogleSrc from '../../assets/google-symbol.svg';
 
 import {
     AuthFormContainer,
@@ -79,6 +79,7 @@ const AuthForm = () => {
     }
 
     const bluredEmailHandler = () => setBluredMail(true);
+
     const bluredPasswordHandler = () => setBluredPassword(true);
 
     const checkInputData = (authType) => {
@@ -87,7 +88,7 @@ const AuthForm = () => {
 
             store.subscribe(() => {
                 if (JSON.stringify(store.getState().userInfo) !== '{}') {
-                    navigate('/');
+                    navigate('/home');
                 }
             });
         }
@@ -104,7 +105,7 @@ const AuthForm = () => {
                     You can sign in with your Google Account:
                 </AuthText>
                 <AuthEnterWithGoogle>
-                    <GoogleIcon src={Goooooogly} alt="Google Icon" />
+                    <GoogleIcon src={GoogleSrc} alt="Google Icon" />
                     Google
                 </AuthEnterWithGoogle>
                 <AuthText>
