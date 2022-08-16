@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useStore, useDispatch, useSelector } from "react-redux";
 
-import { fetchSignInData, fetchSignUpData } from "../../ducks/userInfo";
+import { fetchSignInData, fetchSignUpData, fetchGoogleData } from "../../ducks/userInfo";
 
 import translations from "../../config/translations/translations";
 import GoogleSrc from '../../assets/google-symbol.svg';
@@ -93,6 +93,11 @@ const AuthForm = () => {
         }
     }
 
+    const authByGoogle = () => {
+        console.log('enter with google');
+        dispatch(fetchGoogleData());
+    }
+
     useEffect(() => {
         if (JSON.stringify(userInfo) !== '{}') {
             navigate('/home');
@@ -105,7 +110,7 @@ const AuthForm = () => {
                 <AuthText>
                     You can sign in with your Google Account:
                 </AuthText>
-                <AuthEnterWithGoogle>
+                <AuthEnterWithGoogle onClick={() => authByGoogle()}>
                     <GoogleIcon src={GoogleSrc} alt="Google Icon" />
                     Google
                 </AuthEnterWithGoogle>
