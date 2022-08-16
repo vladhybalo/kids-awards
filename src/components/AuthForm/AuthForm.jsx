@@ -1,6 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useStore, useDispatch } from "react-redux";
+import { useStore, useDispatch, useSelector } from "react-redux";
 
 import { fetchSignInData, fetchSignUpData } from "../../ducks/userInfo";
 
@@ -26,6 +26,7 @@ const formData = {email: null, password: null};
 const AuthForm = () => {
     const store = useStore();
     const dispatch = useDispatch();
+    const userInfo = useSelector(state => state.userInfo);
 
     const navigate = useNavigate();
 
@@ -73,7 +74,7 @@ const AuthForm = () => {
             formData.password = password;
         }
         else {
-            setPasswordErrorMsg(translations['errors.invalidPaaswordLength']);
+            setPasswordErrorMsg(translations['errors.invalidPasswordLength']);
             setValidPassword(false);
         }
     }
@@ -85,18 +86,18 @@ const AuthForm = () => {
     const checkInputData = (authType) => {
         if (formData.email && formData.password) {
             authType === 'login'? dispatch(fetchSignInData(formData)) : dispatch(fetchSignUpData(formData));
-
-            store.subscribe(() => {
-                if (JSON.stringify(store.getState().userInfo) !== '{}') {
-                    navigate('/home');
-                }
-            });
         }
         else {
             setValidMail(false);
             setValidPassword(false);
         }
     }
+
+    useEffect(() => {
+        if (JSON.stringify(userInfo) !== '{}') {
+            navigate('/home');
+        }
+    }, [userInfo])
 
     return (
         <AuthFormContainer>
