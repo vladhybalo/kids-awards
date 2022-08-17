@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import Button from "../Button/Button";
+
 import {
     MAIN_LIGHT,
     MAIN_DARK,
@@ -89,31 +91,12 @@ export const AuthActionButtons = styled.div`
     }
 `;
 
-export const Button = styled.button`
+export const AuthButton = styled(Button)`
     width: 153px;
     height: 48px;
-    font-family: 'Montserrat-500';
-    font-size: 12px;
-    line-height: 15px;
-    letter-spacing: 0.02em;
-    text-align: center;
-    border-radius: 6px;
-    color: ${BUTTON_LIGHT_TEXT_COLOR};
-    background: ${MAIN_LIGHT};
-    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.15));
-    cursor: pointer;
-
-    transition: 0.25s;
 
     &:not(:last-child) {
         margin-right: 8px;
-    }
-
-    &:hover {
-        box-shadow:
-            inset -6.5em 0 0 0 ${BUTTON_LIGHT_TEXT_COLOR},
-            inset 6.5em 0 0 0 ${BUTTON_LIGHT_TEXT_COLOR};
-        color: ${MAIN_LIGHT};
     }
 
     @media (max-width: 412px) {
