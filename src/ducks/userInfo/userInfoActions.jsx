@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const USER_SIGN_UP = "USER_SIGN_UP";
 export const USER_SIGN_IN = "USER_SIGN_IN";
+export const ERROR_CREDENTIALS = "ERROR_CREDENTIALS";
 export const USER_GOOGLE_SIGN_IN = "USER_GOOGLE_SIGN_IN";
 
 export const userSignUp = (data) => {
@@ -15,6 +16,13 @@ export const userSignIn = (data) => {
     return {
         type: USER_SIGN_IN,
         payload: data.data
+    }
+}
+
+export const errorCredentials = (error) => {
+    return {
+        type: ERROR_CREDENTIALS,
+        payload: error.data
     }
 }
 
@@ -35,6 +43,7 @@ export const fetchSignInData = (formData) => {
             })
             .catch(error => {
                 alert(error.response.data.message);
+                dispatch(errorCredentials(error.response));
             });
     }
 }
@@ -49,6 +58,7 @@ export const fetchSignUpData = (formData) => {
             })
             .catch(error => {
                 alert(error.response.data.message);
+                dispatch(errorCredentials(error.response));
             });
     }
 }
