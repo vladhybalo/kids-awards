@@ -1,14 +1,28 @@
 import React, { useState } from "react"
-import { useLocation } from 'react-router-dom'
-import { NavLink } from "react-router-dom"
+import { NavLink, useLocation } from 'react-router-dom'
 import CyrillicToTranslit from 'cyrillic-to-translit-js'
-import ListenerWidth from "./ListenerWidth"
+import useScreenWidth from "./ListenerWidth"
 import {
-    ContainerHeder, LogoHeader, LeftBlock, PointsBalance, NumberBalance,
-    MenuHeaderBlock, MenuContact, MenuSection, MenuInitiaLetterCircle, MenuInitiaLetter, MenuName,
-    MobileHamburgerContainer, MobileHamburgerLine, MobileHamburgerbackground, MobileHamburgerLoginBox,
-    MobileHamburgerCrossBox, MobileHamburgerCross, MobileHamburgerCross1,
-    MobileHamburgerSectionMenuUp, MobileHamburgerSectionMenu
+    ContainerHeder,
+    LogoHeader,
+    LeftBlock,
+    PointsBalance,
+    NumberBalance,
+    MenuHeaderBlock,
+    MenuContact,
+    MenuSection,
+    MenuInitiaLetterCircle,
+    MenuInitiaLetter,
+    MenuName,
+    MobileHamburgerContainer,
+    MobileHamburgerLine,
+    MobileHamburgerbackground,
+    MobileHamburgerLoginBox,
+    MobileHamburgerCrossBox,
+    MobileHamburgerCross,
+    MobileHamburgerCross1,
+    MobileHamburgerSectionMenuUp,
+    MobileHamburgerSectionMenu
 } from "./Header.styled"
 
 import { ReactComponent as Logo } from "../../assets/image/HeaderKidsLogo.svg"
@@ -26,7 +40,7 @@ const nameLetter = cyrillicToTranslit.transform(firstLetter).toUpperCase()
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false)
     const toggle = () => setIsOpen(!isOpen)
-    const width = (ListenerWidth() - 1)
+    const width = (useScreenWidth() - 1)
     const location = useLocation()
 
     return (

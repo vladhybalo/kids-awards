@@ -63,7 +63,6 @@ export const LogoHeader = styled.div`
     justify-content: space-between;
 `;
 
-// ----------- styled for - HeaderDesktopAuth ----------
 export const MenuHeaderBlock = styled.nav` 
     display: flex;
     align-items: center;
@@ -81,7 +80,6 @@ export const MenuContact = styled.div`
     ${elementMenu}
 `;
 
-// ----------- styled for - HeaderDesktopAuth ----------
 export const PointsBalance = styled.div`
     max-width: 85px;                         
     color: #A6ABB9;
@@ -159,7 +157,6 @@ export const MenuName = styled.div`
     }
 `;
 
-// ----------- styled for - HeaderMobile ----------
 export const MobileHamburgerLine = styled.div`
     border-bottom: 1px solid #858598;
 `;
@@ -192,7 +189,6 @@ export const MobileHamburgerContainer = styled.nav`
     }
 `;
 
-// -------------------------------------------------
 export const MobileHamburgerbackground = styled.nav`
     position: fixed;
     width: 274px;
@@ -221,7 +217,6 @@ export const MobileHamburgerSectionStyle = css`
     inset 6px 6px 8px rgb(70 70 70 / 12%);
   }
 `;
-
 
 export const MobileHamburgerSectionMenuUp = styled.div`
 ${MobileHamburgerSectionStyle}
@@ -280,10 +275,3 @@ export const MobileHamburgerCrossBox = styled.div`
         }
     }
 `;
-
-
-
-
-
-
-
