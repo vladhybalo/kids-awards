@@ -1,4 +1,4 @@
-import { USER_SIGN_UP, USER_SIGN_IN, USER_GOOGLE_SIGN_IN, ERROR_CREDENTIALS } from "./userInfoActions";
+import { USER_SIGN_UP, USER_SIGN_IN, USER_GOOGLE_SIGN_IN, AUTH_ERROR } from "./userInfoActions";
 
 const userInfoReducer = (state = {}, action) => {
     switch (action.type) {
@@ -8,7 +8,7 @@ const userInfoReducer = (state = {}, action) => {
             };
         case USER_SIGN_IN:
             return {userData: action.payload.user, userWeek: action.payload.week};
-        case ERROR_CREDENTIALS:
+        case AUTH_ERROR:
             return {errorMessage: action.payload.message};
         case USER_GOOGLE_SIGN_IN:
             return {...state, userData: action.payload.user, userWeek: action.payload.week};

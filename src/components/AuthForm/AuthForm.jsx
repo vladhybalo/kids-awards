@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useStore, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { fetchSignInData, fetchSignUpData, fetchGoogleData } from "../../ducks/userInfo";
 
@@ -26,7 +26,6 @@ import {
 const formData = {email: null, password: null};
 
 const AuthForm = () => {
-    const store = useStore();
     const dispatch = useDispatch();
     const userInfo = useSelector(state => state.userInfo);
 
@@ -98,13 +97,12 @@ const AuthForm = () => {
     }
 
     const authByGoogle = () => {
-        console.log('enter with google');
         dispatch(fetchGoogleData());
     }
 
     useEffect(() => {
         setFetchLoading(false);
-        if (userInfo.hasOwnProperty('userData')) {
+        if (userInfo.userData) {
             navigate('/home');
         }
     }, [userInfo])
