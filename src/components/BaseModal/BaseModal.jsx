@@ -6,7 +6,7 @@ import { ModalBackground, ModalContainer, ModalContainerCloseBtnWrapper, CloseBt
 
 import closeCross from "./assets/closeCross.svg"
 
-export const BaseModal = ({setModalVisibility, children}) => {
+export const BaseModal = ({setModalVisibility, modalVisibility, children}) => {
 
     const [topOffset, setTopOffset] = useState(Math.abs(document.querySelector("body").getBoundingClientRect().top));
 
@@ -34,15 +34,16 @@ export const BaseModal = ({setModalVisibility, children}) => {
     }, []);
 
     return (
-        <ModalBackground top={topOffset}>
-            <ModalContainer>
-                <ModalContainerCloseBtnWrapper onClick={() => closeModalHandler()}>
-                    <CloseBtnImg src={closeCross}>
-                    </CloseBtnImg>
-                </ModalContainerCloseBtnWrapper>
-                {children}
-            </ModalContainer>
-        </ModalBackground>
+        modalVisibility &&
+            <ModalBackground top={topOffset}>
+                <ModalContainer>
+                    <ModalContainerCloseBtnWrapper onClick={() => closeModalHandler()}>
+                        <CloseBtnImg src={closeCross}>
+                        </CloseBtnImg>
+                    </ModalContainerCloseBtnWrapper>
+                    {children}
+                </ModalContainer>
+            </ModalBackground>
     )
 }
 
