@@ -73,7 +73,6 @@ export const fetchGoogleData = () => {
             })
             .then(res => {
                 alert('Successful signing in');
-                console.log(res);
                 dispatch(userGoogleSignIn(res.data));
             })
             .catch(error => {
