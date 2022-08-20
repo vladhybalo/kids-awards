@@ -4,7 +4,7 @@ import {
     userGoogleSignIn,
     fetchSignInData,
     fetchSignUpData,
-    authError,
+    userRequestError,
     fetchGoogleData
 } from "./userInfoActions";
 
@@ -16,7 +16,7 @@ export {
     userGoogleSignIn,
     fetchSignInData,
     fetchSignUpData,
-    authError,
+    userRequestError,
     fetchGoogleData,
     userInfoReducer
 };

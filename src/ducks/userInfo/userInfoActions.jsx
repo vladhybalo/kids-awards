@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const USER_SIGN_UP = "USER_SIGN_UP";
 export const USER_SIGN_IN = "USER_SIGN_IN";
-export const AUTH_ERROR = "AUTH_ERROR";
+export const USER_REQUEST_ERROR = "USER_REQUEST_ERROR";
 export const USER_GOOGLE_SIGN_IN = "USER_GOOGLE_SIGN_IN";
 
 export const userSignUp = (data) => {
@@ -19,9 +19,9 @@ export const userSignIn = (data) => {
     }
 }
 
-export const authError = (error) => {
+export const userRequestError = (error) => {
     return {
-        type: AUTH_ERROR,
+        type: USER_REQUEST_ERROR,
         payload: error.data
     }
 }
@@ -43,7 +43,7 @@ export const fetchSignInData = (formData) => {
             })
             .catch(error => {
                 alert(error.response.data.message);
-                dispatch(authError(error.response));
+                dispatch(userRequestError(error.response));
             });
     }
 }
@@ -58,7 +58,7 @@ export const fetchSignUpData = (formData) => {
             })
             .catch(error => {
                 alert(error.response.data.message);
-                dispatch(authError(error.response));
+                dispatch(userRequestError(error.response));
             });
     }
 }
@@ -74,7 +74,7 @@ export const fetchGoogleData = () => {
             .then(res => {
                 alert('Successful signing in');
                 console.log(res);
-                // dispatch(userGoogleSignIn(res.data));
+                dispatch(userGoogleSignIn(res.data));
             })
             .catch(error => {
                 alert(error.message);
