@@ -19,8 +19,12 @@ import {
 
 const Awards = () => {
     const dispatch = useDispatch();
-    const userAccess = useSelector(state => state.userInfo.token);
+    let userAccess = useSelector(state => state.userInfo.token);
     const gifts = useSelector(state => state.gifts.gifts);
+
+    if (!userAccess) {
+        userAccess = localStorage.getItem('token');
+    }
 
     const [giftsList, setGiftsList] = useState([]);
     const [giftsToBuyList, setGiftsToBuyList] = useState([]);
