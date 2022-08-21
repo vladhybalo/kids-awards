@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getGiftsData, patchSelectedGifts } from "../../ducks/gifts";
@@ -9,8 +9,13 @@ import AwardsCustomModal from "../../components/AwardsCustomModal/AwardsCustomMo
 
 import withLoader from "../../hocs/withLoader/withLoader";
 
-import { AwardsContainer, AwardsCardsContainer, ImproviseCard, Checkbox, SubmitButton } from "./Awards.style";
-import { useEffect } from "react";
+import {
+    AwardsContainer,
+    AwardsCardsContainer,
+    ImproviseCard,
+    Checkbox,
+    SubmitButton
+} from "./Awards.style";
 
 const Awards = () => {
     const dispatch = useDispatch();
