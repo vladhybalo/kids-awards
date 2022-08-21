@@ -12,7 +12,7 @@ import {
     ModalAwardName
 } from "./AwardsCustomModal.style";
 
-const AwardsCustomModal = () => {
+const AwardsCustomModal = ({gifts, giftsToBuyList}) => {
     return (
         <ModalContentWrapper>
                     <DesignImage src={ModalCatDesignSrc} alt="Hooray cat" />
@@ -20,38 +20,21 @@ const AwardsCustomModal = () => {
                         Congratulations! You get:
                     </ModalTitle>
                     <ModalAwardsList>
-                        <ModalAwardsItem>
-                            <ModalAwardImageWrapper>
-                                <ModalAwardImage src="https://storage.googleapis.com/kidslikev2_bucket/Rectangle%2025%20(8).png" alt="Award" />
-                            </ModalAwardImageWrapper>
-                            <ModalAwardName>
-                                Award Name
-                            </ModalAwardName>
-                        </ModalAwardsItem>
-                        <ModalAwardsItem>
-                            <ModalAwardImageWrapper>
-                                <ModalAwardImage src="https://storage.googleapis.com/kidslikev2_bucket/Rectangle%2025%20(8).png" alt="Award" />
-                            </ModalAwardImageWrapper>
-                            <ModalAwardName>
-                                Award Name
-                            </ModalAwardName>
-                        </ModalAwardsItem>
-                        <ModalAwardsItem>
-                            <ModalAwardImageWrapper>
-                                <ModalAwardImage src="https://storage.googleapis.com/kidslikev2_bucket/Rectangle%2025%20(8).png" alt="Award" />
-                            </ModalAwardImageWrapper>
-                            <ModalAwardName>
-                                Award Name
-                            </ModalAwardName>
-                        </ModalAwardsItem>
-                        <ModalAwardsItem>
-                            <ModalAwardImageWrapper>
-                                <ModalAwardImage src="https://storage.googleapis.com/kidslikev2_bucket/Rectangle%2025%20(8).png" alt="Award" />
-                            </ModalAwardImageWrapper>
-                            <ModalAwardName>
-                                Award Name
-                            </ModalAwardName>
-                        </ModalAwardsItem>
+                        {
+                            gifts.map(gift => {
+                                return (
+                                    giftsToBuyList.includes(gift.id) &&
+                                    <ModalAwardsItem key={gift.id}>
+                                        <ModalAwardImageWrapper>
+                                            <ModalAwardImage src={gift.imageUrl} alt={gift.title} />
+                                        </ModalAwardImageWrapper>
+                                        <ModalAwardName>
+                                            {gift.title}
+                                        </ModalAwardName>
+                                    </ModalAwardsItem>
+                                )
+                            })
+                        }
                     </ModalAwardsList>
                 </ModalContentWrapper>
     )

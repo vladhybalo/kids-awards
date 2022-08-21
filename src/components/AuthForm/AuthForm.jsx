@@ -88,7 +88,8 @@ const AuthForm = () => {
 
             store.subscribe(() => {
                 if (JSON.stringify(store.getState().userInfo) !== '{}') {
-                    navigate('/home');
+                    navigate('/awards');
+                    // navigate('/home');
                 }
             });
         }

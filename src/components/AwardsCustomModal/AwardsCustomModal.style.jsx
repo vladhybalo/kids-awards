@@ -30,6 +30,7 @@ export const ModalAwardsList = styled.ul`
 
 export const ModalAwardsItem = styled.li`
     width: 100px;
+    margin: 0 auto;
 
     :not(:last-child){
         margin-right: 24px;

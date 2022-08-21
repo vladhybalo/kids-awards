@@ -8,7 +8,8 @@ import localStorageMiddleware from "./middlewares/localStorageMiddleware";
 
 const getInitialStore = () => {
     return {
-        userInfo: {}
+        userInfo: {},
+        gifts: {}
     }
 }
 
