@@ -2,6 +2,8 @@ import axios from 'axios';
 
 export const USER_SIGN_UP = "USER_SIGN_UP";
 export const USER_SIGN_IN = "USER_SIGN_IN";
+export const USER_REQUEST_ERROR = "USER_REQUEST_ERROR";
+export const USER_GOOGLE_SIGN_IN = "USER_GOOGLE_SIGN_IN";
 
 export const userSignUp = (data) => {
     return {
@@ -17,6 +19,20 @@ export const userSignIn = (data) => {
     }
 }
 
+export const userRequestError = (error) => {
+    return {
+        type: USER_REQUEST_ERROR,
+        payload: error.data
+    }
+}
+
+export const userGoogleSignIn = (data) => {
+    return {
+        type: USER_GOOGLE_SIGN_IN,
+        payload: data.data
+    }
+}
+
 export const fetchSignInData = (formData) => {
     return dispatch => {
         axios
@@ -27,6 +43,7 @@ export const fetchSignInData = (formData) => {
             })
             .catch(error => {
                 alert(error.response.data.message);
+                dispatch(userRequestError(error.response));
             });
     }
 }
@@ -37,10 +54,29 @@ export const fetchSignUpData = (formData) => {
             .post(`https://kidslike-v1-backend.goit.global/auth/register`, formData)
             .then(res => {
                 alert('Successful signing up');
-                dispatch(userSignIn(res));
+                dispatch(userSignUp(res));
             })
             .catch(error => {
                 alert(error.response.data.message);
+                dispatch(userRequestError(error.response));
+            });
+    }
+}
+
+export const fetchGoogleData = () => {
+    return dispatch => {
+        axios
+            .get(`https://kidslike-v1-backend.goit.global/auth/google`, {
+                headers: {
+                    'Access-Control-Allow-Origin' : '*'
+                }
+            })
+            .then(res => {
+                alert('Successful signing in');
+                dispatch(userGoogleSignIn(res.data));
+            })
+            .catch(error => {
+                alert(error.message);
             });
     }
 }
