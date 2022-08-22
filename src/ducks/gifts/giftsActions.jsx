@@ -2,25 +2,25 @@ import axios from 'axios';
 
 export const GET_GIFTS = "GET_GIFTS";
 export const BUY_GIFTS = "BUY_GIFTS";
-export const GIFTS_ERROR_REQUEST = "GIFTS_ERROR_REQUEST";
+export const GIFTS_REQUEST_ERROR = "GIFTS_REQUEST_ERROR";
 
-export const getGifts = (data) => {
+export const getGifts = (payload) => {
     return {
         type: GET_GIFTS,
-        payload: data.ruGifts
+        payload
     }
 }
 
-export const buyGifts = (data) => {
+export const buyGifts = (payload) => {
     return {
         type: BUY_GIFTS,
-        payload: data
+        payload
     }
 }
 
 export const giftsErrorRequest = (data) => {
     return {
-        type: GIFTS_ERROR_REQUEST,
+        type: GIFTS_REQUEST_ERROR,
         payload: data
     }
 }
@@ -35,10 +35,11 @@ export const getGiftsData = (token) => {
                 }
             })
             .then(res => {
-                dispatch(getGifts(res.data));
+                dispatch(getGifts(res.data.ruGifts));
             })
             .catch(error => {
                 alert(error.message);
+                dispatch(giftsErrorRequest(error));
             });
     }
 }

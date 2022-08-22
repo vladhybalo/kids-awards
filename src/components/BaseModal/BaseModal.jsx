@@ -2,11 +2,11 @@ import React, {useEffect, useState } from "react";
 
 import { disableBodyScroll, enableBodyScroll} from "body-scroll-lock";
 
-import { ModalBackground, ModalContainer, ModalContainerCloseBtnWrapper, CloseBtnImg } from "./BaseModal.styled";
+import { ModalBackground, ModalContainer, ModalContainerCloseBtnWrapper, CloseBtn } from "./BaseModal.styled";
 
 import closeCross from "./assets/closeCross.svg"
 
-export const BaseModal = ({setModalVisibility, modalVisibility, children}) => {
+export const BaseModal = ({setModalVisibility, children}) => {
 
     const [topOffset, setTopOffset] = useState(Math.abs(document.querySelector("body").getBoundingClientRect().top));
 
@@ -34,16 +34,15 @@ export const BaseModal = ({setModalVisibility, modalVisibility, children}) => {
     }, []);
 
     return (
-        modalVisibility &&
-            <ModalBackground top={topOffset}>
-                <ModalContainer>
-                    <ModalContainerCloseBtnWrapper onClick={() => closeModalHandler()}>
-                        <CloseBtnImg src={closeCross}>
-                        </CloseBtnImg>
-                    </ModalContainerCloseBtnWrapper>
-                    {children}
-                </ModalContainer>
-            </ModalBackground>
+        <ModalBackground top={topOffset}>
+            <ModalContainer>
+                <ModalContainerCloseBtnWrapper onClick={() => closeModalHandler()}>
+                    <CloseBtn src={closeCross}>
+                    </CloseBtn>
+                </ModalContainerCloseBtnWrapper>
+                {children}
+            </ModalContainer>
+        </ModalBackground>
     )
 }
 

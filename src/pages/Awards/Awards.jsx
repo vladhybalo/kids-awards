@@ -20,17 +20,12 @@ import {
 const Awards = () => {
     const dispatch = useDispatch();
     let userAccess = useSelector(state => state.userInfo.token);
-    const gifts = useSelector(state => state.gifts.gifts);
+    const gifts = useSelector(state => state.awards.gifts);
 
-    if (!userAccess) {
-        userAccess = localStorage.getItem('token');
-    }
-
-    const [giftsList, setGiftsList] = useState([]);
     const [giftsToBuyList, setGiftsToBuyList] = useState([]);
     const [modalVisibility, setModalVisibility] = useState(false);
 
-    const addToBuyList = (id) => {
+    const modifyBuyList = (id) => {
         if (giftsToBuyList.includes(id)) {
             let filteredArr = giftsToBuyList.filter(item => item !== id);
             setGiftsToBuyList(filteredArr);
@@ -48,21 +43,15 @@ const Awards = () => {
         dispatch(getGiftsData(userAccess));
     }, []);
 
-    useEffect(() => {
-        if (gifts) {
-            setGiftsList(gifts);
-        }
-    }, [gifts]);
-
     return (
         <AwardsContainer>
             <AwardsTitle />
             <AwardsCardsContainer>
                 {
-                    giftsList.map(award =>
+                    gifts && gifts.map(award =>
                         {
                             return (
-                                <ImproviseCard key={award.id} onClick={() => addToBuyList(award.id)}>
+                                <ImproviseCard key={award.id} onClick={() => modifyBuyList(award.id)}>
                                     <Checkbox>
                                         {award.title}
                                     </Checkbox>
@@ -74,10 +63,11 @@ const Awards = () => {
             <SubmitButton onClick={submitSelectedGifts}>
                 Submit
             </SubmitButton>
-            <BaseModal setModalVisibility={setModalVisibility} modalVisibility={modalVisibility}>
-                <AwardsCustomModal gifts={gifts} giftsToBuyList={giftsToBuyList}>
-                </AwardsCustomModal>
-            </BaseModal>
+            { modalVisibility &&
+                <BaseModal setModalVisibility={setModalVisibility}>
+                    <AwardsCustomModal gifts={gifts} giftsToBuyList={giftsToBuyList} />
+                </BaseModal>
+            }
         </AwardsContainer>
     )
 }

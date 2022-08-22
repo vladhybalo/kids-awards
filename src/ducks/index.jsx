@@ -5,7 +5,7 @@ import { giftsReducer } from "./gifts";
 
 const reducers = combineReducers ({
     userInfo: userInfoReducer,
-    gifts: giftsReducer
+    awards: giftsReducer
 });
 
 export default reducers;

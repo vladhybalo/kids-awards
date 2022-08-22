@@ -1,4 +1,4 @@
-import { GET_GIFTS, BUY_GIFTS, GIFTS_ERROR_REQUEST } from "./giftsActions";
+import { GET_GIFTS, BUY_GIFTS, GIFTS_REQUEST_ERROR } from "./giftsActions";
 
 const giftsReducer = (state = {}, action) => {
     switch (action.type) {
@@ -8,7 +8,7 @@ const giftsReducer = (state = {}, action) => {
             };
         case BUY_GIFTS:
             return {...state, purchasedGifts: action.payload};
-        case GIFTS_ERROR_REQUEST:
+        case GIFTS_REQUEST_ERROR:
             return {...state, errorMessage: action.payload.message};
         default:
             return state;
