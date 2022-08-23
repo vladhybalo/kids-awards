@@ -15,8 +15,6 @@ export const AwardsCardsContainer = styled.ul`
 `;
 
 export const ImproviseCard = styled.li`
-    /* margin-top: 40px;
-    margin-bottom: 60px; */
 `;
 
 export const SubmitButton = styled(Button)`

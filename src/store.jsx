@@ -6,11 +6,11 @@ import reducers from "./ducks";
 
 import localStorageMiddleware from "./middlewares/localStorageMiddleware";
 
-const getInitialStateToken = () => {
-    const userAccess = sessionStorage.getItem('token');
+const getInitialStateUserInfo = () => {
+    const userInfo = sessionStorage.getItem('userInfo');
 
-    if (userAccess) {
-        return {token: userAccess};
+    if (userInfo) {
+        return JSON.parse(userInfo);
     }
     else {
         return {};
@@ -19,7 +19,7 @@ const getInitialStateToken = () => {
 
 const getInitialStore = () => {
     return {
-        userInfo: getInitialStateToken(),
+        userInfo: getInitialStateUserInfo(),
         awards: {}
     }
 }

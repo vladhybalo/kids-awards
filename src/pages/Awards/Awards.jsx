@@ -19,7 +19,7 @@ import {
 
 const Awards = () => {
     const dispatch = useDispatch();
-    let userAccess = useSelector(state => state.userInfo.token);
+    const userAccess = useSelector(state => state.userInfo.token);
     const gifts = useSelector(state => state.awards.gifts);
 
     const [giftsToBuyList, setGiftsToBuyList] = useState([]);
@@ -27,7 +27,7 @@ const Awards = () => {
 
     const modifyBuyList = (id) => {
         if (giftsToBuyList.includes(id)) {
-            let filteredArr = giftsToBuyList.filter(item => item !== id);
+            const filteredArr = giftsToBuyList.filter(item => item !== id);
             setGiftsToBuyList(filteredArr);
         } else {
             setGiftsToBuyList(oldArr => [...oldArr, id]);
@@ -49,14 +49,11 @@ const Awards = () => {
             <AwardsCardsContainer>
                 {
                     gifts && gifts.map(award =>
-                        {
-                            return (
-                                <ImproviseCard key={award.id} onClick={() => modifyBuyList(award.id)}>
-                                    <Checkbox>
-                                        {award.title}
-                                    </Checkbox>
-                                </ImproviseCard>
-                        )}
+                        <ImproviseCard key={award.id} onClick={() => modifyBuyList(award.id)}>
+                            <Checkbox>
+                                {award.title}
+                            </Checkbox>
+                        </ImproviseCard>
                     )
                 }
             </AwardsCardsContainer>
