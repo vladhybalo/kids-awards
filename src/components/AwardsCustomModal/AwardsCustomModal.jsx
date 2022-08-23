@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 import ModalCatDesignSrc from "../../assets/modal-cat-image.svg";
 
@@ -39,6 +40,11 @@ const AwardsCustomModal = ({gifts, giftsToBuyList}) => {
             </ModalAwardsList>
         </ModalContentWrapper>
     )
+}
+
+AwardsCustomModal.propTypes = {
+    gifts: PropTypes.array,
+    giftsToBuyList: PropTypes.array
 }
 
 export default AwardsCustomModal;
