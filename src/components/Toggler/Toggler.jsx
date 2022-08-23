@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 import checkedMark from "../../assets/check-mark.svg";
 import uncheckedMark from "../../assets/uncheck-mark.svg";
@@ -10,15 +11,19 @@ import {
     TogglerUnheckedIcon
 } from "./Toggler.style";
 
-const Toggler = ({selected}) => {
-    return <TogglerBody selected={selected}>
-            <TogglerSwitch selected={selected} />
+const Toggler = ({checkedToggler}) => {
+    return <TogglerBody selected={checkedToggler}>
+            <TogglerSwitch selected={checkedToggler} />
             {
-                selected
-                ? <TogglerCheckedIcon src={checkedMark} selected={!selected} />
-                : <TogglerUnheckedIcon src={uncheckedMark} selected={selected} />
+                checkedToggler
+                ? <TogglerCheckedIcon src={checkedMark} selected={!checkedToggler} />
+                : <TogglerUnheckedIcon src={uncheckedMark} selected={checkedToggler} />
             }
         </TogglerBody>
+}
+
+Toggler.propTypes = {
+    checkedToggler: PropTypes.bool.isRequired
 }
 
 export default Toggler;

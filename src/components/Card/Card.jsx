@@ -1,29 +1,30 @@
 import React, {useState} from "react";
+import PropTypes from 'prop-types';
 
-import Toggler from "../Toggler/Toggler";
-import CardStatus from "../CardStatus/CardStatus";
-import AddCardBtn from "../AddCardBtn/AddCardBtn";
+import CardDefiner from "../CardBtnDefiner/CardBtnDefiner";
 
 import {
     CardContainer,
     CardImageWrapper,
-    CardImage,
     CardBody,
     CardContent,
     CardName,
-    CardPoints,
-    Wrapper
+    CardPoints
 } from "./Card.style";
 
-const Card = ({imageUrl, title, points, status, pageName}) => {
-    const [selected, setSelected] = useState(false);
+const Card = ({imageUrl, title, points, status}) => {
+    /* rows 17 - 22 for change or remove */
+    const [checkedToggler, setCheckedToggler] = useState(false);
+    const isDone = false;
 
-    const toggle = () => setSelected(!selected);
+    const handleToggler = () => setCheckedToggler(!checkedToggler);
+
+    const addDayToTask = () => {};
 
     return (
         <CardContainer>
             <CardImageWrapper>
-                <CardImage src={imageUrl} />
+                <img src={imageUrl} />
             </CardImageWrapper>
             <CardBody>
                 <CardContent>
@@ -34,29 +35,23 @@ const Card = ({imageUrl, title, points, status, pageName}) => {
                         {points} баллов
                     </CardPoints>
                 </CardContent>
-                {
-                    pageName === 'awards' &&
-                    <Wrapper onClick={toggle}>
-                        <Toggler selected={selected} />
-                    </Wrapper>
-                    ||
-                    pageName === '/' &&
-                    <Wrapper onClick={toggle}>
-                        <Toggler selected={selected} />
-                    </Wrapper>
-                    ||
-                    /* change to proper page name*/
-                    pageName === '/prevday' &&
-                    <CardStatus status={status} />
-                    ||
-                    pageName === 'planning' &&
-                    <Wrapper>
-                        <AddCardBtn />
-                    </Wrapper>
-                }
+                <CardDefiner
+                    status={status}
+                    handleToggler={handleToggler}
+                    addDayToTask={addDayToTask}
+                    checkedToggler={checkedToggler}
+                    isDone={isDone}
+                />
             </CardBody>
         </CardContainer>
     );
+}
+
+Card.propTypes = {
+    imageUrl: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    points: PropTypes.number.isRequired,
+    status: PropTypes.oneOf(['toggle', 'chooseDayBtn', 'taskStatus']).isRequired
 }
 
 export default Card;

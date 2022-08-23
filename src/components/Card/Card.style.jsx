@@ -20,10 +20,6 @@ export const CardImageWrapper = styled.div`
     text-align: center;
 `;
 
-export const CardImage = styled.img`
-
-`;
-
 export const CardBody = styled.section`
     display: flex;
     justify-content: space-between;
@@ -61,8 +57,3 @@ export const CardPoints = styled.p`
     text-align: center;
     color: ${MAIN_BACKGROUND};
 `;
-
-export const Wrapper = styled.span`
-
-`;
-
