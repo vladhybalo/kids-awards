@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Toggler from "../Toggler/Toggler"
 import CardStatus from "../CardStatus/CardStatus";
-import AddCardBtn from "../AddCardBtn/AddCardBtn";
+import ChooseDayBtn from "../ChooseDayBtn/ChooseDayBtn";
 
 import { CardStatuses } from "../../config/enums";
 
@@ -11,7 +11,7 @@ const CardDefiner = ({status, handleToggler, addDayToTask, checkedToggler, isDon
 
     if (status === CardStatuses.ChooseDayBtn) {
         return <span onClick={addDayToTask}>
-                <AddCardBtn />
+                <ChooseDayBtn />
             </span>
     }
     else if (status === CardStatuses.Toggle) {
