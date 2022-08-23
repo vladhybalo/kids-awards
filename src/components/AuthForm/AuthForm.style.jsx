@@ -14,6 +14,7 @@ import {
 } from "../../assets/themes/colors";
 
 export const AuthFormContainer = styled.article`
+    position: relative;
     width: 394px;
     height: 468px;
     padding: 40px;
