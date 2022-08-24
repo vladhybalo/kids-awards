@@ -11,8 +11,8 @@ import {
     TogglerUnheckedIcon
 } from "./Toggler.style";
 
-const Toggler = ({checkedToggler}) => {
-    return <TogglerBody selected={checkedToggler}>
+const Toggler = ({handleToggler, checkedToggler}) => {
+    return <TogglerBody onClick={handleToggler} selected={checkedToggler}>
             <TogglerSwitch selected={checkedToggler} />
             {
                 checkedToggler
@@ -23,6 +23,7 @@ const Toggler = ({checkedToggler}) => {
 }
 
 Toggler.propTypes = {
+    handleToggler: PropTypes.func.isRequired,
     checkedToggler: PropTypes.bool.isRequired
 }
 

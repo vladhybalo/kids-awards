@@ -1,7 +1,9 @@
 import React, {useState} from "react";
 import PropTypes from 'prop-types';
 
-import CardDefiner from "../CardBtnDefiner/CardBtnDefiner";
+import CardBtn from "../CardBtn/CardBtn";
+
+import { CardBtnTypes } from "../../config/enums";
 
 import {
     CardContainer,
@@ -10,9 +12,9 @@ import {
     CardContent,
     CardName,
     CardPoints
-} from "./Card.style";
+} from "./TaskCard.style";
 
-const Card = ({imageUrl, title, points, status}) => {
+const TaskCard = ({imageUrl, title, points, status}) => {
     /* rows 17 - 22 for change or remove */
     const [checkedToggler, setCheckedToggler] = useState(false);
     const isDone = false;
@@ -35,7 +37,7 @@ const Card = ({imageUrl, title, points, status}) => {
                         {points} баллов
                     </CardPoints>
                 </CardContent>
-                <CardDefiner
+                <CardBtn
                     status={status}
                     handleToggler={handleToggler}
                     addDayToTask={addDayToTask}
@@ -47,11 +49,11 @@ const Card = ({imageUrl, title, points, status}) => {
     );
 }
 
-Card.propTypes = {
+TaskCard.propTypes = {
     imageUrl: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     points: PropTypes.number.isRequired,
-    status: PropTypes.oneOf(['toggle', 'chooseDayBtn', 'taskStatus']).isRequired
+    status: PropTypes.oneOf([CardBtnTypes.ADD, CardBtnTypes.TOGGLE, CardBtnTypes.TASK_EXPIRED]).isRequired
 }
 
-export default Card;
+export default TaskCard;

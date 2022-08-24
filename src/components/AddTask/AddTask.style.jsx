@@ -1,6 +1,6 @@
 import styled, {css} from "styled-components";
 
-import { MAIN_BACKGROUND, DROP_SHADOW_ADD_CARD, CHECKED_TOGGLER } from "../../assets/themes/colors";
+import { MAIN_BACKGROUND, DROP_SHADOW_ADD_TASK, CHECKED_TOGGLER } from "../../assets/themes/colors";
 
 export const AddBtn = styled.div`
     position: relative;
@@ -8,7 +8,7 @@ export const AddBtn = styled.div`
     height: 30px;
     border-radius: 50%;
     background-color: ${MAIN_BACKGROUND};
-    filter: drop-shadow(0px 1px 2px ${DROP_SHADOW_ADD_CARD});
+    filter: drop-shadow(0px 1px 2px ${DROP_SHADOW_ADD_TASK});
     cursor: pointer;
 `;
 

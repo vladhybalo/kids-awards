@@ -33,7 +33,6 @@ export const CardBody = styled.section`
 export const CardContent = styled.div`
     display: flex;
     flex-direction: column;
-
     letter-spacing: 0.04em;
     text-transform: uppercase;
 `;

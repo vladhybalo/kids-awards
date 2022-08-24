@@ -3,9 +3,9 @@ import React from "react";
 import Spinner from "../../components/Spinner/Spinner";
 import withLoader from "../../hocs/withLoader/withLoader";
 
-import CardsList from "../../components/CardsList/CardsList";
+import TasksList from "../../components/TasksList/TasksList";
 
-import { CardStatuses } from "../../config/enums";
+import { CardBtnTypes } from "../../config/enums";
 
 const Awards = () => {
   return <Spinner></Spinner>
