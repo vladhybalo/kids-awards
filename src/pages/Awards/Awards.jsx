@@ -3,9 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { getGiftsData, patchSelectedGifts } from "../../ducks/gifts";
 
+import { CardBtnTypes } from "../../config/enums";
+
 import AwardsTitle from "../../components/AwardsTitle/AwardsTitle";
 import BaseModal from "../../components/BaseModal/BaseModal";
 import AwardsCustomModal from "../../components/AwardsCustomModal/AwardsCustomModal";
+import TasksList from "../../components/TasksList/TasksList";
 
 import withLoader from "../../hocs/withLoader/withLoader";
 
