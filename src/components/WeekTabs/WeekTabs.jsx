@@ -24,7 +24,7 @@ export const WeekTabs = ({weekDataString, selectedDay, setSelectedDay, today, se
     const getWeekdayDate = (day) => {
         let currentDayVal = WEEKDAY_VALUES.get(today);
         let dayToCountVal = WEEKDAY_VALUES.get(day);
-        let difference = currentDayVal + dayToCountVal;
+        let difference = dayToCountVal - currentDayVal;
         return new Date(Date.now() + difference * 86400000);
     }
 

@@ -103,7 +103,7 @@ const AuthForm = () => {
     useEffect(() => {
         setFetchLoading(false);
         if (userInfo.userData) {
-            navigate('/home');
+            navigate('/');
         }
     }, [userInfo])
 

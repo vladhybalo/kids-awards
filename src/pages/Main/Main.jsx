@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
+import { useSelector } from "react-redux";
+
 import { getWeekDataString, getTodaysName } from "../../utilities/MainUtils";
 
 import WeekTabs from "../../components/WeekTabs/WeekTabs";
@@ -15,6 +17,8 @@ export const Main = () => {
     const [selectedDay, setSelectedDay] = useState(today);
     const [selectedDate, setSelectedDate] = useState(new Date());
 
+    const currentWeekTasks = useSelector(state => state.userInfo.userWeek);
+
     useEffect(() => {
         setSelectedDay(today);
     }, []);
@@ -23,7 +27,8 @@ export const Main = () => {
         <MainWrapper>
             <WeekTabs weekDataString = {weekDataString} selectedDay = {selectedDay}
              setSelectedDay = {setSelectedDay} today = {today} setSelectedDate = {setSelectedDate} />
-            <WeekTabContent weekDataString = {weekDataString} selectedDay = {selectedDay} selectedDate = {selectedDate} />
+            <WeekTabContent weekDataString = {weekDataString} selectedDay = {selectedDay}
+             selectedDate = {selectedDate} currentWeekTasks = {currentWeekTasks} />
         </MainWrapper>
     )
 }

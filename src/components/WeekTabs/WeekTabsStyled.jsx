@@ -5,7 +5,7 @@ import { ORANGE_COLOR_MAIN } from "../../pages/Main/MainStyled";
 export const TabsBackground = styled.div`
     background-color: ${ORANGE_COLOR_MAIN};
     height: 100vh;
-    width: 229px;
+    min-width: 229px;
 
     @media (max-width: 768px){
         height: 70px;
