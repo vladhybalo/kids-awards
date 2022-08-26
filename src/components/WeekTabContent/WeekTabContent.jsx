@@ -81,7 +81,9 @@ export const WeekTabContent = ({weekDataString, selectedDay, selectedDate, curre
                 </WeekTasksData>
             </WeekInfoHeader>
             <CurrentTasksArea>
-                
+                {
+                    currentWeekTasks && <span>tasks here</span>
+                }
             </CurrentTasksArea>
             {
                 !currentWeekTasks && 

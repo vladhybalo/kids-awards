@@ -30,7 +30,7 @@ export const WeekTabContentWrapper = styled.div`
         min-height: 70vh;
     }
 
-    background-image: ${props => props.isTasksAvailable ? none : `url(${kidsImg})`};
+    background-image: ${props => props.isTasksAvailable ? `none` : `url(${kidsImg})`};
     background-repeat: no-repeat; 
     background-position: bottom;
     background-size: contain;
