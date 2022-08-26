@@ -5,10 +5,9 @@ import { WeekTabContentWrapper, WeekData, WeekInfoHeader, CurrentDateData,
      DayDataSet, MyTasksText, DayData, WeekTasksData, WeekTasksTextElemSet, ElemSetTitle, ElemSetValue,
      ProgressBarSet, ProgressBarInfo, InfoTasksDone, InfoTasksPlanned, ProgressBarBackground, ProgressBarFiller,
      CurrentTasksArea, MobileProgressBar, MobileProgressBarTitle, ProgressBarButton,
-     NoTasksScreen, NoTasksScreenText, NoTasksScreenPlanBtn, NoTasksScreenImgWrapper, NoTasksScreenImg } from "./WeekTabContentStyled";
+     NoTasksScreen, NoTasksScreenText, NoTasksScreenPlanBtn } from "./WeekTabContentStyled";
 
 import addTaskBtn from "./assets/addTaskBtn.png";
-import kidsImg from "./assets/kids.png";
 
 export const WeekTabContent = ({weekDataString, selectedDay, selectedDate, currentWeekTasks}) => {
 
@@ -19,7 +18,7 @@ export const WeekTabContent = ({weekDataString, selectedDay, selectedDate, curre
     }, [])
 
     const getProgressBarFillPercent = () => {
-        if (currentWeekTasks && currentWeekTasks.rewardsGained && currentWeekTasks && currentWeekTasks.rewardsPlanned) {
+        if (currentWeekTasks && currentWeekTasks.rewardsGained && currentWeekTasks.rewardsPlanned) {
             return ( currentWeekTasks.rewardsGained / currentWeekTasks.rewardsPlanned  ) * 100;
         } else {
             return 0;

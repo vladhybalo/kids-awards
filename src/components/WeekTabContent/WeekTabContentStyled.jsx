@@ -281,14 +281,4 @@ export const NoTasksScreenPlanBtn = styled.button`
     cursor: pointer;
     box-shadow: 0px 3px 12px -6px rgba(0,0,0,0.51);
 `
-export const NoTasksScreenImgWrapper = styled.div`
-    margin-top: 39px;
-    width: 100%;
-`
-
-export const NoTasksScreenImg = styled.img`
-    object-fit: cover;
-    
-`
-
 
