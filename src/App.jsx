@@ -11,7 +11,6 @@ function App() {
     <div>
       <GlobalFonts />
       <GlobalStylesReset />
-
       <Header />
       <Router></Router>
     </div>

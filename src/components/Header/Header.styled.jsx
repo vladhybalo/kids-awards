@@ -1,8 +1,18 @@
 import styled, { css } from "styled-components"
+import {
+    MAIN_LIGHT,
+    MAIN_DARK,
+    MAIN_BACKGROUND,
+    AUTH_TEXT_COLOR,
+    TITLES_TEXT_COLOR,
+    BACKGROUND_LETTER_NAME,
+    SHADOW_CONTAINER_HEADER,
+    SHADOW_HEADER_MOBILE,
+    DARKENED_HEADER_MOBILE
+} from "../../assets/themes/colors"
 
 export const fontRegular = css` 
     font-family: "Montserrat-Regular";
-    font-weight: 500;
     line-height: 15px;
     font-size: 12px;
     letter-spacing: 0.04em;
@@ -15,15 +25,24 @@ export const elementMenu = css`
     display: grid;
     align-items: center;
     ${fontRegular}
-    &:hover {
-        color: black;
-        font-weight: bold;
-        box-shadow: inset -10px -10px 15px rgba(255, 255, 255, 0.8), 
-        inset 10px 10px 15px rgba(70, 70, 70, 0.12);
-      }
 `;
 
-export const ContainerHeder = styled.div` 
+export const LogoHeaderSVG = styled.img` 
+    display: grid; 
+    align-items: center;
+    width: 18px;
+    height: 18px;
+`;
+
+export const ExitIconWrapper = styled.img` 
+    margin-left: 16px; 
+    display: grid; 
+    align-items: center;
+    width: 18px;
+    height: 18px;
+`;
+
+export const ContainerHeader = styled.div` 
     position: fixed;
     height: 64px;
     top: 0;
@@ -32,14 +51,18 @@ export const ContainerHeder = styled.div`
     padding: 0 20px;
     justify-content: space-between;
     align-items: center;
-    background-color: white;
-    box-shadow: 0px 2px 4px rgb(0 0 0 / 20%);
+    background-color: ${MAIN_BACKGROUND};
+    box-shadow: 0px 2px 4px ${SHADOW_CONTAINER_HEADER};
     width: 100%; 
+    z-index: 1;
     @media (max-width: 270px){
         min-width: 270px;
     }
     @media (max-width: 295px){
         padding: 0 10px;
+    }
+    @media (min-width: 530px){
+        padding: 0 30px;
     }
 `;
 
@@ -57,7 +80,7 @@ export const LogoHeader = styled.div`
     font-family: 'Montserrat-700';
     font-size: 16px;
     letter-spacing: 0.08em;
-    color: #000000;
+    color: ${MAIN_DARK};
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -72,17 +95,25 @@ export const MenuHeaderBlock = styled.nav`
 
 export const MenuAuthorization = styled.div`
     ${elementMenu}
-    border-right: 1px solid #858598;
-    color: rgb(133, 133, 152);
+    border-right: 1px solid ${AUTH_TEXT_COLOR};
+    color: ${AUTH_TEXT_COLOR};
 `;
 
 export const MenuContact = styled.div` 
     ${elementMenu}
 `;
 
+export const MenuContactAuth = styled.div` 
+    padding: 0px 0px 0px 16px;
+    height: 19px;
+    display: grid;
+    align-items: center;
+    ${fontRegular}
+`;
+
 export const PointsBalance = styled.div`
     max-width: 85px;                         
-    color: #A6ABB9;
+    color: ${TITLES_TEXT_COLOR};
     display: flex;
     ${fontRegular}; 
     @media (min-width: 1000px){
@@ -104,16 +135,16 @@ export const NumberBalance = styled.div`
     line-height: 17px;
     align-items: center;
     letter-spacing: 0.04em;
-    color: #000000;
+    color: ${MAIN_DARK};
 `;
 
 export const MenuSection = styled.div`
     ${elementMenu}
-    border-right: 1px solid #858598;
+    border-right: 1px solid ${AUTH_TEXT_COLOR};
 `;
 
 export const MenuInitiaLetterCircle = styled.div`
-    background: #2196F3;
+    background: ${BACKGROUND_LETTER_NAME};
     width: 26px;
     height: 26px;
     border-radius: 50%;
@@ -122,6 +153,9 @@ export const MenuInitiaLetterCircle = styled.div`
     align-items: end;
     @media (max-width: 531px){
         margin-left:20px;
+    }
+    @media (min-width: 532px){
+        margin-left:30px;
     }
 `;
 
@@ -133,7 +167,7 @@ export const MenuInitiaLetter = styled.div`
     line-height: 22px;
     display: -ms-flexbox;
     letter-spacing: 0.04em;
-    color: #FFFFFF;
+    color: ${MAIN_BACKGROUND};
     display: grid;
     align-items: end;
     justify-content: center;
@@ -149,44 +183,54 @@ export const MenuName = styled.div`
     font-size: 12px;
     line-height: 15px;
     letter-spacing: 0.04em;
-    border-right: 1px solid #858598;
-    color: #858598;
+    border-right: 1px solid ${AUTH_TEXT_COLOR};
+    color: ${AUTH_TEXT_COLOR};
     @media (max-width: 531px){
-        border-right: 1px solid white;
-        color: white;
+        border-right: 1px solid ${MAIN_BACKGROUND};
+        color: ${MAIN_BACKGROUND};
     }
 `;
 
 export const MobileHamburgerLine = styled.div`
-    border-bottom: 1px solid #858598;
+    border-bottom: 1px solid ${AUTH_TEXT_COLOR};
 `;
 
 export const MobileHamburgerContainer = styled.nav`
     position: relative;
     width: 22px;
     height: 14px;
-    border-top: 1px solid #858598;
+    border-top: 1px solid ${AUTH_TEXT_COLOR};
     display: flex;
     flex-direction: column;
-    border-bottom: 1px solid #858598;
+    border-bottom: 1px solid ${AUTH_TEXT_COLOR};
     justify-content: center;
     cursor: pointer;
     &:hover {
         width: 23px;
         height: 15px;
-        border-top: 1px solid black;
-        border-bottom: 1px solid black;
+        border-top: 1px solid ${MAIN_DARK};
+        border-bottom: 1px solid ${MAIN_DARK};
         box-shadow:         
         rgb(0 0 0 / 19%) 1px 3px 20px 0px, 
         inset -10px -10px 15px rgb(255 255 255 / 80%), 
         inset 10px 10px 15px rgb(70 70 70 / 12%);
         ${MobileHamburgerLine}{
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid ${MAIN_DARK};
         }
     }
     @media (max-width: 300px){
         margin-left:20px;
     }
+`;
+
+export const MobileHamburgerDarkened = styled.div`
+    background: ${DARKENED_HEADER_MOBILE};
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: -2px;
+    z-index: 9;
 `;
 
 export const MobileHamburgerbackground = styled.nav`
@@ -195,37 +239,35 @@ export const MobileHamburgerbackground = styled.nav`
     height: 100%;
     right: 0px;
     top: 0px;
-    background: #FFBC33;
-    box-shadow: -15px 0px 20px rgba(0, 0, 0, 0.25);
+    background: ${MAIN_LIGHT};
+    box-shadow: -15px 0px 20px ${SHADOW_HEADER_MOBILE};
     Z-index: 10;
     overflow: hidden;
     transition: 0.5s;
+    ${({ Active }) => Active ?
+        `transform: translateX(0%); opacity: 1;` :
+        `transform: translateX(120%); opacity: 0.3;`
+    }
 `;
 
 export const MobileHamburgerSectionStyle = css`
     height: 44px;
     width: 100%;
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 1px solid ${MAIN_BACKGROUND};
     display: grid;
     align-items: center;
     padding-left: 20px;
     ${fontRegular}
-    &:hover {
-    box-shadow: 
-    rgb(0 0 0 / 19%) 1px 3px 10px 0px, 
-    inset -6px -6px 8px rgb(255 255 255 / 80%), 
-    inset 6px 6px 8px rgb(70 70 70 / 12%);
-  }
 `;
 
 export const MobileHamburgerSectionMenuUp = styled.div`
-${MobileHamburgerSectionStyle}
+    ${MobileHamburgerSectionStyle}
     margin-top: 80px;
-    border-top: 1px solid #ffffff;
+    border-top: 1px solid ${MAIN_BACKGROUND}; 
 `;
 
 export const MobileHamburgerSectionMenu = styled.div`
-${MobileHamburgerSectionStyle}
+    ${MobileHamburgerSectionStyle}
 `;
 
 export const MobileHamburgerLoginBox = styled.div`
@@ -236,15 +278,15 @@ export const MobileHamburgerLoginBox = styled.div`
 export const MobileHamburgerCross = styled.div`
     height: 22px;
     width: 1px;
-    background-color: #ffffff;
+    background-color: ${MAIN_BACKGROUND};
     transform: rotate(45deg);
     Z-index: 11;
     position: absolute;
 `;
-export const MobileHamburgerCross1 = styled.div`
+export const MobileHamburgerCrossHolder = styled.div`
     height: 22px;
     width: 1px;
-    background-color: #ffffff;
+    background-color: ${MAIN_BACKGROUND};
     transform: rotate(90deg);
     Z-index: 12;
     position: absolute;
@@ -257,21 +299,5 @@ export const MobileHamburgerCrossBox = styled.div`
     right: 20px;
     padding-left: 11px;
     position: absolute;
-    &:hover {
-        box-shadow: 
-        inset rgb(0 0 0 / 19%) 0px 0px 10px 0px,
-        rgb(0 0 0 / 19%) 1px 3px 10px 0px;
-        border-radius: 50px;
-        padding-left: 10.5px;
-        padding-top: 1.2px;
-        cursor: pointer;
-        ${MobileHamburgerCross}, ${MobileHamburgerCross1}{
-            background-color: black;
-            height: 20px;
-        }
-        ${MobileHamburgerCross}{
-            transition: 200ms;
-            transform: rotate(135deg);
-        }
-    }
-`;
+    cursor: pointer;
+    `;
