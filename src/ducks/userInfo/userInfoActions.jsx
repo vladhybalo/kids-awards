@@ -4,6 +4,7 @@ export const USER_SIGN_UP = "USER_SIGN_UP";
 export const USER_SIGN_IN = "USER_SIGN_IN";
 export const USER_REQUEST_ERROR = "USER_REQUEST_ERROR";
 export const USER_GOOGLE_SIGN_IN = "USER_GOOGLE_SIGN_IN";
+export const USER_LOGOUT = "USER_LOGOUT";
 
 export const userSignUp = (data) => {
     return {
@@ -29,6 +30,13 @@ export const userRequestError = (error) => {
 export const userGoogleSignIn = (data) => {
     return {
         type: USER_GOOGLE_SIGN_IN,
+        payload: data.data
+    }
+}
+
+export const userLogOut = () => {
+    return {
+        type: USER_LOGOUT,
         payload: data.data
     }
 }
@@ -77,6 +85,19 @@ export const fetchGoogleData = () => {
             })
             .catch(error => {
                 alert(error.message);
+            });
+    }
+}
+
+export const fetchLogOut = () => {
+    return dispatch => {
+        axios
+            .post(`https://kidslike-v1-backend.goit.global/auth/logout`)
+            .then(res => {
+                dispatch(userLogOut(res));
+            })
+            .catch(error => {
+                alert(error.response.data.message);
             });
     }
 }
