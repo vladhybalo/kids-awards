@@ -28,7 +28,6 @@ export const DROP_SHADOW_ADD_TASK = shadowAddTask;
 
 export const BORDER = grey;
 export const INPUT_BACKGROUND = grey1;
-
 export const AUTH_TEXT_COLOR = greyText;
 export const TITLES_TEXT_COLOR = greyText1;
 export const BUTTON_LIGHT_TEXT_COLOR = greyText2;

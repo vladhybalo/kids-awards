@@ -4,6 +4,7 @@ import { LogoHeader, LogoHeaderSVG } from "./Header.styled"
 import LogoIcon from '../../assets/image/Header-kids-logo.svg'
 
 const LogoHead = () => {
+
     return (
         <NavLink to="/">
             <LogoHeader  >

@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components"
+import styled, { css } from "styled-components";
 import {
     MAIN_LIGHT,
     MAIN_DARK,
@@ -9,7 +9,7 @@ import {
     SHADOW_CONTAINER_HEADER,
     SHADOW_HEADER_MOBILE,
     DARKENED_HEADER_MOBILE
-} from "../../assets/themes/colors"
+} from "../../assets/themes/colors";
 
 export const fontRegular = css` 
     font-family: "Montserrat-Regular";

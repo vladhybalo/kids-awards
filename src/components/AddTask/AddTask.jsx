@@ -1,9 +1,9 @@
 import React from "react";
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import { AddBtn, VerticalLine, HorizontalLine } from "./AddTask.style";
 
-const AddTask= ({addDayToTask}) => {
+const AddTask = ({ addDayToTask }) => {
     return <AddBtn onClick={addDayToTask}>
         <VerticalLine></VerticalLine>
         <HorizontalLine></HorizontalLine>
@@ -11,7 +11,7 @@ const AddTask= ({addDayToTask}) => {
 }
 
 AddTask.propTypes = {
-    addDayToTask: PropTypes.func.isRequired
+    // addDayToTask: PropTypes.func.isRequired
 }
 
 export default AddTask;

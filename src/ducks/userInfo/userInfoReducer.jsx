@@ -1,6 +1,7 @@
 import { USER_SIGN_UP, USER_SIGN_IN, USER_GOOGLE_SIGN_IN, USER_LOGOUT, USER_REQUEST_ERROR } from "./userInfoActions";
 
 const userInfoReducer = (state = {}, action) => {
+
     switch (action.type) {
         case USER_SIGN_UP:
             return {

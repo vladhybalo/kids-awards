@@ -1,10 +1,10 @@
-import axios from 'axios';
+import axios from 'axios'
 
-export const USER_SIGN_UP = "USER_SIGN_UP";
-export const USER_SIGN_IN = "USER_SIGN_IN";
-export const USER_REQUEST_ERROR = "USER_REQUEST_ERROR";
-export const USER_GOOGLE_SIGN_IN = "USER_GOOGLE_SIGN_IN";
-export const USER_LOGOUT = "USER_LOGOUT";
+export const USER_SIGN_UP = "USER_SIGN_UP"
+export const USER_SIGN_IN = "USER_SIGN_IN"
+export const USER_REQUEST_ERROR = "USER_REQUEST_ERROR"
+export const USER_GOOGLE_SIGN_IN = "USER_GOOGLE_SIGN_IN"
+export const USER_LOGOUT = "USER_LOGOUT"
 
 export const userSignUp = (data) => {
     return {

@@ -8,9 +8,9 @@ import {
     fetchLogOut,
     userRequestError,
     fetchGoogleData
-} from "./userInfoActions";
+} from "./userInfoActions"
 
-import userInfoReducer from "./userInfoReducer";
+import userInfoReducer from "./userInfoReducer"
 
 export {
     userSignUp,

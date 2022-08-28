@@ -4,7 +4,7 @@ import GlobalFonts from './assets/fonts/fonts';
 import GlobalStylesReset from './assets/reset';
 import Router from './Router';
 
-import Header from "./components/Header"
+import Header from "./components/Header";
 
 function App() {
   return (

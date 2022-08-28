@@ -3,7 +3,6 @@ import { NavLink, useLocation } from 'react-router-dom'
 import useScreenWidth from "./ListenerWidth"
 import LogoHead from "./LogoHead"
 import MenuAuthDeskTab from "./MenuAuthDeskTab"
-
 import {
     ContainerHeader,
     LeftBlock,
@@ -89,4 +88,5 @@ const HeaderAuth = () => {
         </>
     )
 }
+
 export default HeaderAuth

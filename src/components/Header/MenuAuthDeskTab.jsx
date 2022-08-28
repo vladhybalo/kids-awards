@@ -6,6 +6,7 @@ import { MAIN_DARK, AUTH_TEXT_COLOR } from "../../assets/themes/colors"
 const linkActiveColorDesktop = ({ isActive }) => { return { color: isActive ? MAIN_DARK : AUTH_TEXT_COLOR } }
 
 const MenuAuthDeskTab = () => {
+
     return (
         <>
             <NavLink to="auth" style={linkActiveColorDesktop} >
