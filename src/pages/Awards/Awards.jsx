@@ -15,8 +15,6 @@ import withLoader from "../../hocs/withLoader/withLoader";
 import {
     AwardsContainer,
     AwardsCardsContainer,
-    ImproviseCard,
-    Checkbox,
     SubmitButton
 } from "./Awards.style";
 
@@ -51,13 +49,7 @@ const Awards = () => {
             <AwardsTitle />
             <AwardsCardsContainer>
                 {
-                    gifts && gifts.map(award =>
-                        <ImproviseCard key={award.id} onClick={() => modifyBuyList(award.id)}>
-                            <Checkbox>
-                                {award.title}
-                            </Checkbox>
-                        </ImproviseCard>
-                    )
+                    gifts && <TasksList TasksList={gifts} status={CardBtnTypes.TOGGLE} modifyBuyList={modifyBuyList} />
                 }
             </AwardsCardsContainer>
             <SubmitButton onClick={submitSelectedGifts}>

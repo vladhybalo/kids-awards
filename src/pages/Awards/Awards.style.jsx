@@ -14,9 +14,6 @@ export const AwardsCardsContainer = styled.ul`
     margin-bottom: 60px;
 `;
 
-export const ImproviseCard = styled.li`
-`;
-
 export const SubmitButton = styled(Button)`
     width: 220px;
     height: 48px;
@@ -30,9 +27,4 @@ export const SubmitButton = styled(Button)`
             inset 9.2em 0 0 0 ${BUTTON_LIGHT_TEXT_COLOR};
         color: ${MAIN_LIGHT};
     }
-`;
-
-export const Checkbox = styled.a`
-    cursor: pointer;
-    margin: 0;
 `;
