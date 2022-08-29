@@ -4,13 +4,17 @@ import { GREY_TEXT_COLOR_MAIN, ORANGE_COLOR_MAIN } from "../../pages/Main/MainSt
 
 import kidsImg from "./assets/kids.png";
 
-
 export const WeekTabContentWrapper = styled.div`
     padding-top: 32px;
     padding-left: 107px;
     padding-right: 16px;
     width: 100%;
 
+    background-image: ${props => props.isTasksAvailable ? `none` : `url(${kidsImg})`};
+    background-repeat: no-repeat; 
+    background-position: bottom;
+    background-size: contain;
+    
     @media (min-width: 1278px){
         background-size: contain;
     }
@@ -19,7 +23,7 @@ export const WeekTabContentWrapper = styled.div`
         padding-top: 40px;
         padding-left: 32px;
         padding-right: 32px;
-        min-height: 85vh;
+        flex-grow: 1;
     }
 
     @media (max-width: 400px){
@@ -27,14 +31,7 @@ export const WeekTabContentWrapper = styled.div`
         padding-left: 0;
         padding-right: 0;
         background-size: contain;
-        min-height: 70vh;
     }
-
-    background-image: ${props => props.isTasksAvailable ? `none` : `url(${kidsImg})`};
-    background-repeat: no-repeat; 
-    background-position: bottom;
-    background-size: contain;
-
 `
 
 export const WeekInfoHeader = styled.div`

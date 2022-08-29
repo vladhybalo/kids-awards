@@ -1,8 +1,13 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import { TabsBackground, TabsList, TabsListItem, DayTitle, WeekData } from "./WeekTabsStyled";
+import { TabsBackground,
+    TabsList,
+    DaysWrapper,
+    TabsListItem,
+    DayTitle,
+    WeekData } from "./WeekTabsStyled";
+
 import { getDayTitle } from "../../utilities/MainUtils";
 
 const WEEK_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
@@ -44,9 +49,10 @@ export const WeekTabs = ({weekDataString, selectedDay, setSelectedDay, today, se
                 <WeekData>
                     {weekDataString}
                 </WeekData>
+                <DaysWrapper>
                 {
                     WEEK_DAYS.map((day) => 
-                        <Link key = {Math.random()} to = {`?day=${day.toLowerCase()}`}>
+                        <Link key = {day} to = {`?day=${day.toLowerCase()}`}>
                             <TabsListItem isSelected = {day === selectedDay} 
                                 onClick = { () => {
                                     setSelectedDay(day);
@@ -59,6 +65,7 @@ export const WeekTabs = ({weekDataString, selectedDay, setSelectedDay, today, se
                         </Link>
                     )
                 }
+                </DaysWrapper>
             </TabsList>
         </TabsBackground>
     )

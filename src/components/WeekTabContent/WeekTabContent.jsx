@@ -1,21 +1,38 @@
-import React from "react";
-import { useEffect } from "react";
+import { React, useEffect } from "react";
 
-import { WeekTabContentWrapper, WeekData, WeekInfoHeader, CurrentDateData,
-     DayDataSet, MyTasksText, DayData, WeekTasksData, WeekTasksTextElemSet, ElemSetTitle, ElemSetValue,
-     ProgressBarSet, ProgressBarInfo, InfoTasksDone, InfoTasksPlanned, ProgressBarBackground, ProgressBarFiller,
-     CurrentTasksArea, MobileProgressBar, MobileProgressBarTitle, ProgressBarButton,
-     NoTasksScreen, NoTasksScreenText, NoTasksScreenPlanBtn } from "./WeekTabContentStyled";
+import TasksList from "../../components/TasksList/TasksList";
+
+import { CardBtnTypes } from "../../config/enums";
+
+import { 
+    WeekTabContentWrapper,
+    WeekData,
+    WeekInfoHeader,
+    CurrentDateData,
+    DayDataSet,
+    MyTasksText,
+    DayData,
+    WeekTasksData,
+    WeekTasksTextElemSet,
+    ElemSetTitle,
+    ElemSetValue,
+    ProgressBarSet,
+    ProgressBarInfo,
+    InfoTasksDone,
+    InfoTasksPlanned,
+    ProgressBarBackground,
+    ProgressBarFiller,
+    CurrentTasksArea,
+    MobileProgressBar,
+    MobileProgressBarTitle,
+    ProgressBarButton,
+    NoTasksScreen,
+    NoTasksScreenText,
+    NoTasksScreenPlanBtn } from "./WeekTabContentStyled";
 
 import addTaskBtn from "./assets/addTaskBtn.png";
 
 export const WeekTabContent = ({weekDataString, selectedDay, selectedDate, currentWeekTasks}) => {
-
-    useEffect(() => {
-        if(currentWeekTasks) {
-            console.log(currentWeekTasks);
-        }
-    }, [])
 
     const getProgressBarFillPercent = () => {
         if (currentWeekTasks && currentWeekTasks.rewardsGained && currentWeekTasks.rewardsPlanned) {
@@ -26,8 +43,7 @@ export const WeekTabContent = ({weekDataString, selectedDay, selectedDate, curre
     }     
 
     const isTasksAvailable = () => {
-        if (currentWeekTasks) return true;
-        else return false;
+        return !!currentWeekTasks;
     }
 
     return(
@@ -82,7 +98,8 @@ export const WeekTabContent = ({weekDataString, selectedDay, selectedDate, curre
             </WeekInfoHeader>
             <CurrentTasksArea>
                 {
-                    currentWeekTasks && <span>tasks here</span>
+                    currentWeekTasks && currentWeekTasks.tasks &&
+                    <TasksList TasksList = {currentWeekTasks.tasks} status = {CardBtnTypes.TOGGLE}/>
                 }
             </CurrentTasksArea>
             {

@@ -6,15 +6,32 @@ export const TabsBackground = styled.div`
     background-color: ${ORANGE_COLOR_MAIN};
     height: 100vh;
     min-width: 229px;
+    position: sticky;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
 
     @media (max-width: 768px){
         height: 70px;
         width: 100%;
+        position: static;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @media (max-width: 650px) {
+        height: fit-content;
+        padding-bottom: 20px;
     }
 
     @media (max-width: 400px){
         background-color: white;
         height: fit-content;
+        padding-bottom: 0;
     }
 `
 
@@ -22,19 +39,38 @@ export const TabsList = styled.ul`
     display: flex;
     flex-direction: column;
     gap: 8px;
-    align-items: flex-end;
-    padding-top: 140px;
+    //align-items: flex-end;
+    //padding-top: 140px;
+
+    @media (max-width: 768px){
+        flex-direction: row;
+        align-items: center;
+        //padding-top: 20px;
+        justify-content: center;
+    }
+
+    @media (max-width: 650px) {
+        padding-top: 20px;
+        flex-direction: column;
+    }
+
+`
+
+export const DaysWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
 
     @media (max-width: 768px){
         flex-direction: row;
         gap: 16px;
         align-items: center;
-        padding-top: 20px;
         justify-content: center;
     }
 
     @media (max-width: 700px) {
-        gap: 6px;
+        
     }
 
     @media (max-width: 400px){
