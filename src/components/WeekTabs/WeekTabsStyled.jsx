@@ -39,21 +39,20 @@ export const TabsList = styled.ul`
     display: flex;
     flex-direction: column;
     gap: 8px;
-    //align-items: flex-end;
-    //padding-top: 140px;
 
     @media (max-width: 768px){
         flex-direction: row;
         align-items: center;
-        //padding-top: 20px;
         justify-content: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
 
     @media (max-width: 650px) {
         padding-top: 20px;
         flex-direction: column;
+        padding-bottom: 0;
     }
-
 `
 
 export const DaysWrapper = styled.div`
@@ -106,6 +105,21 @@ export const DayTitle = styled.span`
     align-items: center;
     justify-content: center;
 
+`
+
+export const FullDayTitle = styled.span`
+    display: block;
+    @media (max-width: 768px){
+        display: none;
+    }
+    
+`
+
+export const ShortDayTitle = styled.span`
+    display: none;
+    @media (max-width: 768px){
+        display: block;
+    }
 `
 
 export const WeekData = styled.span`

@@ -80,14 +80,6 @@ export const getEdgeWeekDays = (today) => {
     }
 }
 
-export const getDayTitle = (dayName) => {
-    if (Math.abs(document.querySelector("body").getBoundingClientRect().width > 768)) {
-        return dayName;
-    } else {
-        return dayName.slice(0, 2);
-    }
-}
-
 export const getWeekDataString = () => {
     let finalString = "Week: ";
 

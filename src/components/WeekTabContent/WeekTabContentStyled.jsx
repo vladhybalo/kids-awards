@@ -10,7 +10,7 @@ export const WeekTabContentWrapper = styled.div`
     padding-right: 16px;
     width: 100%;
 
-    background-image: ${props => props.isTasksAvailable ? `none` : `url(${kidsImg})`};
+    background-image: ${props => props.isTasksPresent ? `none` : `url(${kidsImg})`};
     background-repeat: no-repeat; 
     background-position: bottom;
     background-size: contain;

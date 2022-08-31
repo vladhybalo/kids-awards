@@ -10,9 +10,8 @@ export const MainWrapper = styled.div`
 
     @media (max-width: 768px){
         flex-direction: column;
-        height: 100vh;
+        height: ${props => props.isContentPresent ? `100vh` : `fit-content`};  
     }
-
 
     @media (max-width: 400px){
         background-color: white;

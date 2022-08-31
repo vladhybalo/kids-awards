@@ -1,5 +1,9 @@
 import { React, useEffect } from "react";
 
+import { useNavigate } from "react-router-dom";
+
+import PropTypes from 'prop-types';
+
 import TasksList from "../../components/TasksList/TasksList";
 
 import { CardBtnTypes } from "../../config/enums";
@@ -34,6 +38,8 @@ import addTaskBtn from "./assets/addTaskBtn.png";
 
 export const WeekTabContent = ({weekDataString, selectedDay, selectedDate, currentWeekTasks}) => {
 
+    const navigate = useNavigate();
+
     const getProgressBarFillPercent = () => {
         if (currentWeekTasks && currentWeekTasks.rewardsGained && currentWeekTasks.rewardsPlanned) {
             return ( currentWeekTasks.rewardsGained / currentWeekTasks.rewardsPlanned  ) * 100;
@@ -48,7 +54,7 @@ export const WeekTabContent = ({weekDataString, selectedDay, selectedDate, curre
 
     return(
         <>
-        <WeekTabContentWrapper isTasksAvailable = {isTasksAvailable()}>
+        <WeekTabContentWrapper isTasksPresent = {isTasksAvailable()}>
             <WeekInfoHeader>
                 <CurrentDateData>
                     <WeekData>
@@ -108,7 +114,7 @@ export const WeekTabContent = ({weekDataString, selectedDay, selectedDate, curre
                     <NoTasksScreenText>
                         No tasks for this day
                     </NoTasksScreenText>
-                    <NoTasksScreenPlanBtn>
+                    <NoTasksScreenPlanBtn onClick ={() => navigate("/planning")}>
                         Plan tasks
                     </NoTasksScreenPlanBtn>
 
@@ -134,12 +140,19 @@ export const WeekTabContent = ({weekDataString, selectedDay, selectedDate, curre
                         </ProgressBarFiller>
                     </ProgressBarBackground>
                 </ProgressBarSet>
-                <ProgressBarButton src = {addTaskBtn} onClick ={() => {}}>
+                <ProgressBarButton src = {addTaskBtn} onClick ={() => navigate("/planning")}>
                 
                 </ProgressBarButton>
-            </MobileProgressBar>
+        </MobileProgressBar>
         </>
     )
 }
 
 export default WeekTabContent;
+
+WeekTabContent.propTypes = {
+    weekDataString: PropTypes.string.isRequired,
+    selectedDate: PropTypes.object.isRequired,
+    selectedDay: PropTypes.string.isRequired,
+    currentWeekTasks: PropTypes.object
+}

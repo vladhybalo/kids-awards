@@ -12,7 +12,7 @@ const TasksList = ({TasksList, status}) => {
         {
             TasksList.map(item => {
                 return <TaskCard
-                    key={Math.random()}
+                    key={item._id}
                     imageUrl={item.imageUrl}
                     title={item.title}
                     points={item.price || item.reward}

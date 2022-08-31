@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import { React, useState, useEffect } from "react";
 
 import { useSelector } from "react-redux";
 
@@ -24,9 +23,9 @@ export const Main = () => {
     }, []);
 
     return (
-        <MainWrapper>
+        <MainWrapper isContentPresent = {currentWeekTasks}>
             <WeekTabs weekDataString = {weekDataString} selectedDay = {selectedDay}
-             setSelectedDay = {setSelectedDay} today = {today} setSelectedDate = {setSelectedDate} />
+             setSelectedDay = {setSelectedDay} today = {today} setSelectedDate = {setSelectedDate}/>
             <WeekTabContent weekDataString = {weekDataString} selectedDay = {selectedDay}
              selectedDate = {selectedDate} currentWeekTasks = {currentWeekTasks} />
         </MainWrapper>

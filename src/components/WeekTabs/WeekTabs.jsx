@@ -1,30 +1,23 @@
 import { React, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+import PropTypes from 'prop-types';
+
 import { TabsBackground,
     TabsList,
     DaysWrapper,
     TabsListItem,
     DayTitle,
+    FullDayTitle,
+    ShortDayTitle,
     WeekData } from "./WeekTabsStyled";
-
-import { getDayTitle } from "../../utilities/MainUtils";
 
 const WEEK_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 const WEEKDAY_VALUES = new Map();
 
 export const WeekTabs = ({weekDataString, selectedDay, setSelectedDay, today, setSelectedDate}) => {
 
-    const [isFullDayNames, setIsFullDayNames] = useState(true);
     const navigate = useNavigate();
-
-    const setDayNamesLength = () => {
-        if(Math.abs(document.querySelector("body").getBoundingClientRect().width > 768)){
-            setIsFullDayNames(false);
-        } else {
-            setIsFullDayNames(true);
-        }
-    }
 
     const getWeekdayDate = (day) => {
         let currentDayVal = WEEKDAY_VALUES.get(today);
@@ -34,7 +27,6 @@ export const WeekTabs = ({weekDataString, selectedDay, setSelectedDay, today, se
     }
 
     useEffect(()=> {
-        window.addEventListener("resize", setDayNamesLength);
         navigate(`?day=${today.toLowerCase()}`);
         
         for (let i = 0; i < 7; i ++) {
@@ -59,7 +51,12 @@ export const WeekTabs = ({weekDataString, selectedDay, setSelectedDay, today, se
                                     setSelectedDate(getWeekdayDate(day));
                                 }}>
                                 <DayTitle>
-                                    {getDayTitle(day)}
+                                    <FullDayTitle>
+                                        {day}
+                                    </FullDayTitle>
+                                    <ShortDayTitle>
+                                        {day.slice(0, 2)}
+                                    </ShortDayTitle>
                                 </DayTitle>
                             </TabsListItem>
                         </Link>
@@ -72,3 +69,11 @@ export const WeekTabs = ({weekDataString, selectedDay, setSelectedDay, today, se
 }
 
 export default WeekTabs;
+
+WeekTabs.propTypes = {
+    weekDataString: PropTypes.string.isRequired,
+    selectedDay: PropTypes.string.isRequired,
+    setSelectedDay: PropTypes.func.isRequired,
+    today: PropTypes.string.isRequired,
+    setSelectedDate: PropTypes.func.isRequired
+}
