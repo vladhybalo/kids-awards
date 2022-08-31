@@ -24,10 +24,17 @@ export const Main = () => {
 
     return (
         <MainWrapper isContentPresent = {currentWeekTasks}>
-            <WeekTabs weekDataString = {weekDataString} selectedDay = {selectedDay}
-             setSelectedDay = {setSelectedDay} today = {today} setSelectedDate = {setSelectedDate}/>
-            <WeekTabContent weekDataString = {weekDataString} selectedDay = {selectedDay}
-             selectedDate = {selectedDate} currentWeekTasks = {currentWeekTasks} />
+            <WeekTabs 
+                weekDataString = {weekDataString}
+                selectedDay = {selectedDay}
+                setSelectedDay = {setSelectedDay}
+                today = {today}
+                setSelectedDate = {setSelectedDate}/>
+            <WeekTabContent 
+                weekDataString = {weekDataString} 
+                selectedDay = {selectedDay}
+                selectedDate = {selectedDate} 
+                currentWeekTasks = {currentWeekTasks} />
         </MainWrapper>
     )
 }

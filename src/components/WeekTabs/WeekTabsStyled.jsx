@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-import { ORANGE_COLOR_MAIN } from "../../pages/Main/MainStyled";
+import { MAIN_LIGHT, MAIN_PAGE_BACKGROUND_MOBILE } from "../../assets/themes/colors"
 
 export const TabsBackground = styled.div`
-    background-color: ${ORANGE_COLOR_MAIN};
+    background-color: ${MAIN_LIGHT};
     height: 100vh;
     min-width: 229px;
     position: sticky;
@@ -29,7 +29,7 @@ export const TabsBackground = styled.div`
     }
 
     @media (max-width: 400px){
-        background-color: white;
+        background-color: ${MAIN_PAGE_BACKGROUND_MOBILE};
         height: fit-content;
         padding-bottom: 0;
     }
@@ -97,14 +97,12 @@ export const TabsListItem = styled.li`
         border-radius: 4px;
         background: rgba(255, 188, 51, ${props => props.isSelected === true ? `1` : `.5`});
     }
-
 `
 export const DayTitle = styled.span`
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-
 `
 
 export const FullDayTitle = styled.span`
@@ -112,7 +110,6 @@ export const FullDayTitle = styled.span`
     @media (max-width: 768px){
         display: none;
     }
-    
 `
 
 export const ShortDayTitle = styled.span`
@@ -139,5 +136,4 @@ export const WeekData = styled.span`
     @media (max-width: 400px){
         display: none;
     }
-    
 `

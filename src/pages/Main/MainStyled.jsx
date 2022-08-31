@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
-export const ORANGE_COLOR_MAIN = "#FFBC33";
-export const GREY_TEXT_COLOR_MAIN = "#A6ABB9";
+import { MAIN_PAGE_BACKGROUND_GENERAL, MAIN_PAGE_BACKGROUND_MOBILE } from "../../assets/themes/colors";
 
 export const MainWrapper = styled.div`
     display: flex;
     font-family: 'Montserrat-300';
-    background-color: #FAFAFA;
+    background-color: ${MAIN_PAGE_BACKGROUND_GENERAL};
 
     @media (max-width: 768px){
         flex-direction: column;
@@ -14,6 +13,6 @@ export const MainWrapper = styled.div`
     }
 
     @media (max-width: 400px){
-        background-color: white;
+        background-color: ${MAIN_PAGE_BACKGROUND_MOBILE};
     }
 `

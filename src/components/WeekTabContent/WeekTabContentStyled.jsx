@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { GREY_TEXT_COLOR_MAIN, ORANGE_COLOR_MAIN } from "../../pages/Main/MainStyled";
+import { MAIN_PAGE_GREY_TEXT, MAIN_LIGHT } from "../../assets/themes/colors"
 
 import kidsImg from "./assets/kids.png";
 
@@ -43,12 +43,10 @@ export const WeekInfoHeader = styled.div`
         gap: 20px;
     }
 
-
     @media (max-width: 768px){
         flex-direction: column-reverse;
         gap: 20px;
     }
-
 `
 
 export const WeekData = styled.span`
@@ -96,7 +94,7 @@ export const DayDataSet = styled.div`
 
 export const MyTasksText = styled.span`
     font-family: 'Montserrat-500';
-    color: ${GREY_TEXT_COLOR_MAIN};
+    color: ${MAIN_PAGE_GREY_TEXT};
     display: block;
     font-size: 12px;
     font-weight: 500;
@@ -125,7 +123,6 @@ export const WeekTasksData = styled.div`
     @media (max-width: 768px){
         align-items: center;
     }
-
 ` 
 
 export const WeekTasksTextElemSet = styled.div`
@@ -138,7 +135,7 @@ export const WeekTasksTextElemSet = styled.div`
 `
 
 export const ElemSetTitle = styled.span`
-    color: ${GREY_TEXT_COLOR_MAIN};
+    color: ${MAIN_PAGE_GREY_TEXT};
     font-family: 'Montserrat-500';
     font-size: 12px;
 `
@@ -155,7 +152,6 @@ export const ProgressBarSet = styled.div`
     @media (max-width: 400px){
         display: ${props => props.isMobile ? "flex" : "none"};
     }
-
 `
 export const ProgressBarInfo = styled.div`
     padding-right: 20px;
@@ -228,7 +224,7 @@ export const MobileProgressBar = styled.div`
 export const MobileProgressBarTitle = styled.span`
     display: block;
     font-family: 'Montserrat-500';
-    color: ${GREY_TEXT_COLOR_MAIN};
+    color: ${MAIN_PAGE_GREY_TEXT};
     display: block;
     font-size: 12px;
     font-weight: 500;
@@ -262,11 +258,10 @@ export const NoTasksScreenText = styled.span`
     @media (max-width: 400px){
         padding-top: 60px;
     }
-
 `
 export const NoTasksScreenPlanBtn = styled.button`
     margin-top: 20px;
-    background-color: ${ORANGE_COLOR_MAIN};
+    background-color: ${MAIN_LIGHT};
     color: white;
     width: 220px;
     height: 48px;
