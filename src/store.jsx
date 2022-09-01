@@ -19,17 +19,17 @@ const getCookie = (cookieName) => {
 
 const getInitialStateUserInfo = () => {
     const userInfo = sessionStorage.getItem('userInfo');
-    let userAccess;
+    let userAuthorized;
 
     if (document.cookie.length !== 0) {
-        userAccess = getCookie('token');
+        userAuthorized = getCookie('token');
     }
 
     if (userInfo) {
         return JSON.parse(userInfo);
     }
     else {
-        return {token: userAccess};
+        return {token: userAuthorized};
     }
 }
 
