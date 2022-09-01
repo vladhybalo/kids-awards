@@ -6,13 +6,23 @@ import reducers from "./ducks";
 
 import localStorageMiddleware from "./middlewares/localStorageMiddleware";
 
+const getCookie = (cookieName) => {
+    let cookie = {};
+
+    document.cookie.split(';').forEach(item => {
+        let [key, value] = item.split('=');
+        cookie[key.trim()] = value;
+    })
+
+    return cookie[cookieName];
+}
+
 const getInitialStateUserInfo = () => {
     const userInfo = sessionStorage.getItem('userInfo');
-    const cookie = document.cookie;
     let userAccess;
 
-    if (cookie.length !== 0) {
-        userAccess = cookie.split('=')[1];
+    if (document.cookie.length !== 0) {
+        userAccess = getCookie('token');
     }
 
     if (userInfo) {
