@@ -23,15 +23,14 @@ const AwardsCustomModal = ({gifts, giftsToBuyList}) => {
             </ModalTitle>
             <ModalAwardsList>
                 {
-                    gifts.map(gift => {
+                    giftsToBuyList.map(gift => {
                         return (
-                            giftsToBuyList.includes(gift.id) &&
-                            <ModalAwardsItem key={gift.id}>
+                            <ModalAwardsItem key={gifts[gift-1].id}>
                                 <ModalAwardImageWrapper>
-                                    <ModalAwardImage src={gift.imageUrl} alt={gift.title} />
+                                    <ModalAwardImage src={gifts[gift-1].imageUrl} alt={gifts[gift-1].title} />
                                 </ModalAwardImageWrapper>
                                 <ModalAwardName>
-                                    {gift.title}
+                                    {gifts[gift-1].title}
                                 </ModalAwardName>
                             </ModalAwardsItem>
                         )
