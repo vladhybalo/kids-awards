@@ -11,7 +11,7 @@ export const ModalContentWrapper = styled.article`
 export const DesignImage = styled.img`
     position: absolute;
     left: 50%;
-    top: -38%;
+    top: -30%;
     transform: translateX(-50%);
 `;
 
@@ -26,6 +26,7 @@ export const ModalTitle = styled.h1`
 
 export const ModalAwardsList = styled.ul`
     display: flex;
+    flex-wrap: wrap;
 `;
 
 export const ModalAwardsItem = styled.li`
