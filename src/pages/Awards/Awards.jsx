@@ -19,8 +19,10 @@ import {
 } from "./Awards.style";
 
 const Awards = () => {
+    const cookie = document.cookie;
+    const userAccess = cookie.split('=')[1];
+
     const dispatch = useDispatch();
-    const userAccess = useSelector(state => state.userInfo.token);
     const gifts = useSelector(state => state.awards.gifts);
 
     const [giftsToBuyList, setGiftsToBuyList] = useState([]);

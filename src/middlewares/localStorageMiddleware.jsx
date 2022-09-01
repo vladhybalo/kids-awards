@@ -5,7 +5,11 @@ export const localStorageMiddleware = (store) => (next) => (action) =>  {
     next(action);
 
     if (action.type === USER_SIGN_IN || action.type === USER_SIGN_UP) {
-        sessionStorage.setItem("userInfo", JSON.stringify(store.getState().userInfo));
+        const token = store.getState().userInfo.token;
+
+        document.cookie = "token" + "=" + encodeURIComponent(token);
+
+        sessionStorage.setItem("userInfo", JSON.stringify(store.getState().userInfo.userEmail));
     }
 };
 
