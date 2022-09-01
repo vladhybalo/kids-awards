@@ -9,7 +9,7 @@ export const localStorageMiddleware = (store) => (next) => (action) =>  {
 
         document.cookie = "token" + "=" + encodeURIComponent(token);
 
-        sessionStorage.setItem("userInfo", JSON.stringify(store.getState().userInfo.userEmail));
+        sessionStorage.setItem("userInfo", JSON.stringify(store.getState().userInfo));
     }
 };
 

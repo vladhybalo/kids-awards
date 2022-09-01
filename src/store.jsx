@@ -8,12 +8,18 @@ import localStorageMiddleware from "./middlewares/localStorageMiddleware";
 
 const getInitialStateUserInfo = () => {
     const userInfo = sessionStorage.getItem('userInfo');
+    const cookie = document.cookie;
+    let userAccess;
+
+    if (cookie.length !== 0) {
+        userAccess = cookie.split('=')[1];
+    }
 
     if (userInfo) {
         return JSON.parse(userInfo);
     }
     else {
-        return {};
+        return {token: userAccess};
     }
 }
 
