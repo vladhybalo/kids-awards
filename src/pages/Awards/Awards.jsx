@@ -20,7 +20,6 @@ import {
 
 const Awards = () => {
     const dispatch = useDispatch();
-    const userAuthorized = useSelector(state => state.userInfo.token);
     const gifts = useSelector(state => state.awards.gifts);
 
     const [giftsToBuyList, setGiftsToBuyList] = useState([]);
@@ -37,11 +36,11 @@ const Awards = () => {
 
     const submitSelectedGifts = () => {
         setModalVisibility(true);
-        dispatch(patchSelectedGifts(userAuthorized, giftsToBuyList));
+        dispatch(patchSelectedGifts(giftsToBuyList));
     }
 
     useEffect(() => {
-        dispatch(getGiftsData(userAuthorized));
+        dispatch(getGiftsData());
     }, []);
 
     return (

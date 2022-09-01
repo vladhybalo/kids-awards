@@ -1,4 +1,5 @@
 import axios from 'axios';
+import store from '../../store';
 
 export const GET_GIFTS = "GET_GIFTS";
 export const BUY_GIFTS = "BUY_GIFTS";
@@ -25,12 +26,12 @@ export const giftsErrorRequest = (data) => {
     }
 }
 
-export const getGiftsData = (token) => {
+export const getGiftsData = () => {
     return dispatch => {
         axios
             .get(`https://kidslike-v1-backend.goit.global/gift`, {
                 headers: {
-                    'Authorization': token,
+                    'Authorization': store.getState().userInfo.token,
                     'Content-Type': 'application/json'
                 }
             })
@@ -44,7 +45,7 @@ export const getGiftsData = (token) => {
     }
 }
 
-export const patchSelectedGifts = (token, data) => {
+export const patchSelectedGifts = (data) => {
     return dispatch => {
         axios
             .patch(`https://kidslike-v1-backend.goit.global/gift`,
@@ -53,7 +54,7 @@ export const patchSelectedGifts = (token, data) => {
                 },
                 {
                 headers: {
-                    'Authorization': token,
+                    'Authorization': store.getState().userInfo.token,
                     'Content-Type': 'application/json'
                 }
             })
