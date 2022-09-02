@@ -8,14 +8,14 @@ export const USER_GOOGLE_SIGN_IN = "USER_GOOGLE_SIGN_IN";
 export const userSignUp = (data) => {
     return {
         type: USER_SIGN_UP,
-        payload: data.data
+        payload: data
     }
 }
 
 export const userSignIn = (data) => {
     return {
         type: USER_SIGN_IN,
-        payload: data.data
+        payload: data
     }
 }
 

@@ -14,6 +14,10 @@ export const CardContainer = styled.article`
     border-radius: 6px;
     background: ${MAIN_BACKGROUND};
     filter: drop-shadow(4px 6px 15px ${DROP_SHADOW});
+
+    @media (max-width: 656px) {
+        width: 366px;
+    }
 `;
 
 export const CardImageWrapper = styled.div`

@@ -2,7 +2,7 @@ import React, {useEffect, useState } from "react";
 
 import { disableBodyScroll, enableBodyScroll} from "body-scroll-lock";
 
-import { ModalBackground, ModalContainer, ModalContainerCloseBtnWrapper, CloseBtnImg } from "./BaseModal.styled";
+import { ModalBackground, ModalContainer, ModalContainerCloseBtnWrapper, CloseBtn } from "./BaseModal.styled";
 
 import closeCross from "./assets/closeCross.svg"
 
@@ -37,8 +37,8 @@ export const BaseModal = ({setModalVisibility, children}) => {
         <ModalBackground top={topOffset}>
             <ModalContainer>
                 <ModalContainerCloseBtnWrapper onClick={() => closeModalHandler()}>
-                    <CloseBtnImg src={closeCross}>
-                    </CloseBtnImg>
+                    <CloseBtn src={closeCross}>
+                    </CloseBtn>
                 </ModalContainerCloseBtnWrapper>
                 {children}
             </ModalContainer>
