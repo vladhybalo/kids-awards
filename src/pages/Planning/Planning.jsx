@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 
 import AddBtn from "../../components/AddBtn/AddBtn";
+import BaseModal from "../../components/BaseModal/BaseModal";
+import PlanningAddTaskModal from "../../components/PlanningAddTaskModal/PlanningAddTaskModal";
 
 import withLoader from "../../hocs/withLoader/withLoader";
 
@@ -17,8 +19,11 @@ import {
 } from "./Planning.style";
 
 const Planning = () => {
+    const [modalVisibility, setModalVisibility] = useState(false);
 
-    const createTask = () => {};
+    const createTask = () => {
+        setModalVisibility(true);
+    };
 
     return <PlanningContainer>
         <TitleBlock>
@@ -42,8 +47,13 @@ const Planning = () => {
                 <CreateNewTaskText>
                     If you want to get more prizes - add tasks :)
                 </CreateNewTaskText>
-                    <AddBtn addNewTaskFlag createTask={createTask} />
+                <AddBtn addNewTaskFlag createTask={createTask} />
             </CreateNewTaskContainer>
+            { modalVisibility &&
+                <BaseModal setModalVisibility={setModalVisibility}>
+                    <PlanningAddTaskModal setModalVisibility={setModalVisibility}/>
+                </BaseModal>
+            }
         </TitleBlock>
         </PlanningContainer>
 }
