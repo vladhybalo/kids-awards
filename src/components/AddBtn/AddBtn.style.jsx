@@ -4,8 +4,8 @@ import { MAIN_BACKGROUND, DROP_SHADOW_ADD_TASK, CHECKED_TOGGLER } from "../../as
 
 export const AddBtnContainer = styled.div`
     position: relative;
-    width: 30px;
-    height: 30px;
+    width: ${props => props.addNewTaskFlag ? '54px' : '30px'};
+    height: ${props => props.addNewTaskFlag ? '54px' : '30px'};
     border-radius: 50%;
     background: ${props => props.addNewTaskFlag ? 'linear-gradient(180deg, #FFB532 0%, #FFD521 100%)' : MAIN_BACKGROUND};
     filter: drop-shadow(0px 1px 2px ${DROP_SHADOW_ADD_TASK});
@@ -24,12 +24,12 @@ const Line = css`
 export const VerticalLine = styled.span`
     transform: rotate(-90deg);
     ${Line};
-    height: 10px;
-    width: 2px;
+    height: ${props => props.addNewTaskFlag ? '18px' : '10px'};
+    width: ${props => props.addNewTaskFlag ? '4px' : '2px'};
 `;
 
 export const HorizontalLine = styled.span`
     ${Line};
-    height: 2px;
-    width: 10px;
+    height: ${props => props.addNewTaskFlag ? '4px' : '2px'};
+    width: ${props => props.addNewTaskFlag ? '18px' : '10px'};
 `;
