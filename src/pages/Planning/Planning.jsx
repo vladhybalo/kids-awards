@@ -1,4 +1,7 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { downloadAllUserInfo } from "../../ducks/userInfo";
 
 import AddBtn from "../../components/AddBtn/AddBtn";
 import BaseModal from "../../components/BaseModal/BaseModal";
@@ -19,11 +22,29 @@ import {
 } from "./Planning.style";
 
 const Planning = () => {
+    const dispatch = useDispatch();
+    const userWeekInfo = useSelector(state => state.userInfo.userWeek);
+
     const [modalVisibility, setModalVisibility] = useState(false);
 
     const createTask = () => {
         setModalVisibility(true);
     };
+
+    const defineWeek = () => {
+        const startWeekDay = userWeekInfo.startWeekDate.split('-');
+        const endWeekDay = userWeekInfo.endWeekDate.split('-');
+
+        if (startWeekDay[1] !== endWeekDay[1]) {
+            return startWeekDay.reverse().join('.') + ' - ' + endWeekDay.reverse().join('.');
+        } else {
+            return startWeekDay[2] + ' - ' + endWeekDay.reverse().join('.');
+        }
+    }
+
+    useEffect(() => {
+        dispatch(downloadAllUserInfo());
+    }, [])
 
     return <PlanningContainer>
         <TitleBlock>
@@ -32,14 +53,13 @@ const Planning = () => {
                     Plan for the week:
                 </CurrentWeekTitle>
                 <CurrentWeekDate>
-                    02.09.2022
+                    { userWeekInfo && defineWeek() }
                 </CurrentWeekDate>
             </CurrentWeek>
             <PlannedPoints>
-                {/* change points */}
                 Defined tasks for
                 <PlannedPointsNumber>
-                    16
+                    { userWeekInfo && userWeekInfo.rewardsPlanned }
                 </PlannedPointsNumber>
                 points
             </PlannedPoints>

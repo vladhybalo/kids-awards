@@ -92,7 +92,7 @@ const PlanningAddTaskModal = ({setModalVisibility}) => {
     </>
 }
 
-AddBtn.propTypes = {
+PlanningAddTaskModal.propTypes = {
     setModalVisibility: PropTypes.func
 }
 
