@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 
 import Toggler from "../Toggler/Toggler"
 import CardStatus from "../CardStatus/CardStatus";
-import AddTask from "../AddTask/AddTask";
+import AddBtn from "../AddBtn/AddBtn";
 
 import { CardBtnTypes } from "../../config/enums";
 
 const CardBtn = ({status, handleToggler, addDayToTask, checkedToggler, isDone}) => {
 
     if (status === CardBtnTypes.ADD) {
-        return <AddTask addDayToTask={addDayToTask} />
+        return <AddBtn addDayToTask={addDayToTask} />
     }
     else if (status === CardBtnTypes.TOGGLE) {
         return <Toggler handleToggler={handleToggler} checkedToggler={checkedToggler} />
