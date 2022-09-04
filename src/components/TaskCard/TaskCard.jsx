@@ -53,7 +53,10 @@ const TaskCard = ({id, imageUrl, title, points, status, modifyBuyList}) => {
 }
 
 TaskCard.propTypes = {
-    id: PropTypes.number.isRequired,
+    id: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+    ]),
     imageUrl: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     points: PropTypes.number.isRequired,

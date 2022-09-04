@@ -12,8 +12,8 @@ const TasksList = ({TasksList, status, modifyBuyList}) => {
         {
             TasksList.map(item => {
                 return <TaskCard
-                    key={item.id}
-                    id={item.id}
+                    key={item.id || item._id}
+                    id={item.id || item._id}
                     imageUrl={item.imageUrl}
                     title={item.title}
                     points={item.price || item.reward}

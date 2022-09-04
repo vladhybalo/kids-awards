@@ -3,9 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { downloadAllUserInfo } from "../../ducks/userInfo";
 
+import { CardBtnTypes } from "../../config/enums";
+
 import AddBtn from "../../components/AddBtn/AddBtn";
 import BaseModal from "../../components/BaseModal/BaseModal";
 import PlanningAddTaskModal from "../../components/PlanningAddTaskModal/PlanningAddTaskModal";
+import TasksList from "../../components/TasksList/TasksList";
 
 import withLoader from "../../hocs/withLoader/withLoader";
 
@@ -75,6 +78,9 @@ const Planning = () => {
                 </BaseModal>
             }
         </TitleBlock>
+        { userWeekInfo &&
+            <TasksList TasksList={userWeekInfo.tasks} status={CardBtnTypes.ADD} />
+        }
         </PlanningContainer>
 }
 
