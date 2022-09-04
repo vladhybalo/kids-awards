@@ -32,6 +32,7 @@ const userInfoReducer = (state = {}, action) => {
             return {errorMessage: action.payload.message};
         case USER_GET_INFO:
             return {
+                ...state,
                 userData: action.payload.user,
                 userWeek: action.payload.week
             };
