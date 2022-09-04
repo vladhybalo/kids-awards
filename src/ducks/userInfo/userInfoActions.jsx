@@ -9,14 +9,14 @@ export const USER_LOGOUT = "USER_LOGOUT"
 export const userSignUp = (data) => {
     return {
         type: USER_SIGN_UP,
-        payload: data.data
+        payload: data
     }
 }
 
 export const userSignIn = (data) => {
     return {
         type: USER_SIGN_IN,
-        payload: data.data
+        payload: data
     }
 }
 

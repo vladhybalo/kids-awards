@@ -19,8 +19,8 @@ import {
     ErrorStar,
     Input,
     ErrorMsg,
-    AuthActionButtons,
-    Button
+    AuthButton,
+    AuthActionButtons
 } from "./AuthForm.style";
 
 const formData = { email: null, password: null };
@@ -103,7 +103,8 @@ const AuthForm = () => {
     useEffect(() => {
         setFetchLoading(false);
         if (userInfo.userData) {
-            navigate('/home');
+            navigate('/awards');
+            // navigate('/home');
         }
     }, [userInfo])
 
@@ -157,12 +158,12 @@ const AuthForm = () => {
                         </ErrorMsg>
                     </AuthMainContainer>
                     <AuthActionButtons>
-                        <Button onClick={() => checkInputData('login')}>
+                        <AuthButton onClick={() => checkInputData('login')}>
                             Sign in
-                        </Button>
-                        <Button onClick={() => checkInputData('register')}>
+                        </AuthButton>
+                        <AuthButton onClick={() => checkInputData('register')}>
                             Sign up
-                        </Button>
+                        </AuthButton>
                     </AuthActionButtons>
                 </>}
         </AuthFormContainer>
