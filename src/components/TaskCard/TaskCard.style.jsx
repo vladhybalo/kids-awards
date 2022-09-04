@@ -22,6 +22,10 @@ export const CardContainer = styled.article`
 
 export const CardImageWrapper = styled.div`
     text-align: center;
+    height: 194px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 
 export const CardBody = styled.section`
