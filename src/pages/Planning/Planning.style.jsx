@@ -4,7 +4,8 @@ import {
     MAIN_DARK,
     MAIN_BACKGROUND,
     TITLES_TEXT_COLOR,
-    CHECKED_TOGGLER
+    CHECKED_TOGGLER,
+    MOBILE_BOTTOM_PANEL_BACKGROUND
 } from "../../assets/themes/colors";
 
 export const PlanningContainer = styled.article`
@@ -22,12 +23,30 @@ export const TitleBlock = styled.article`
     letter-spacing: 0.04em;
     color: ${TITLES_TEXT_COLOR};
     margin-bottom: 40px;
+
+    @media (max-width: 990px) {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    @media (max-width: 420px) {
+        margin-bottom: 32px;
+    }
 `;
 
 export const CurrentWeek = styled.section`
     display: flex;
     align-items: center;
     color: ${MAIN_DARK};
+
+    @media (max-width: 990px) {
+        margin-bottom: 20px;
+    }
+
+    @media (max-width: 420px) {
+        flex-direction: column;
+        margin-bottom: 0;
+    }
 `;
 
 export const CurrentWeekTitle = styled.p`
@@ -35,6 +54,10 @@ export const CurrentWeekTitle = styled.p`
     font-size: 18px;
     line-height: 22px;
     margin-right: 10px;
+
+    @media (max-width: 420px) {
+        margin-bottom: 8px;
+    }
 `;
 
 export const CurrentWeekDate = styled.div`
@@ -45,6 +68,14 @@ export const CurrentWeekDate = styled.div`
 export const PlannedPoints = styled.p`
     display: flex;
     align-items: center;
+
+    @media (max-width: 990px) {
+        margin-bottom: 20px;
+    }
+
+    @media (max-width: 420px) {
+        display: none;
+    }
 `;
 
 export const PlannedPointsNumber = styled.span`
@@ -67,8 +98,49 @@ export const PlannedPointsNumber = styled.span`
 export const CreateNewTaskContainer = styled.div`
     display: flex;
     align-items: center;
+
+    @media (max-width: 420px) {
+        display: none;
+    }
 `;
 
 export const CreateNewTaskText = styled.p`
     margin-right: 20px;
+`;
+
+export const MobileBottomPanel = styled.article`
+    display: none;
+    height: 58px;
+    margin-top: 53px;
+    background-color: ${MOBILE_BOTTOM_PANEL_BACKGROUND};
+    position: relative;
+
+    @media (max-width: 420px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+`;
+
+export const PlannedPointsMobile = styled(PlannedPoints)`
+    display: flex;
+    font-family: 'Montserrat-500';
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: ${TITLES_TEXT_COLOR};
+    margin-bottom: 0;
+`;
+
+export const PlannedPointsNumberMobile = styled(PlannedPointsNumber)`
+    margin-right: 8px;
+    margin-left: 0;
+`;
+
+export const CreateNewTaskContainerMobile = styled.div`
+    position: absolute;
+    top: -13px;
+    right: 20px;
+    bottom: 17px;
 `;

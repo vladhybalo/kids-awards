@@ -36,6 +36,7 @@ export const CardBody = styled.section`
     box-sizing: border-box;
     background-color: ${MAIN_LIGHT};
     border-radius: 0 0 6px 6px;
+    height: 69px;
 `;
 
 export const CardContent = styled.div`

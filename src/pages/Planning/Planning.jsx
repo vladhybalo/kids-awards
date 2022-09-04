@@ -21,7 +21,11 @@ import {
     PlannedPoints,
     PlannedPointsNumber,
     CreateNewTaskContainer,
-    CreateNewTaskText
+    CreateNewTaskText,
+    MobileBottomPanel,
+    PlannedPointsMobile,
+    PlannedPointsNumberMobile,
+    CreateNewTaskContainerMobile
 } from "./Planning.style";
 
 const Planning = () => {
@@ -49,39 +53,52 @@ const Planning = () => {
         dispatch(downloadAllUserInfo());
     }, [])
 
-    return <PlanningContainer>
-        <TitleBlock>
-            <CurrentWeek>
-                <CurrentWeekTitle>
-                    Plan for the week:
-                </CurrentWeekTitle>
-                <CurrentWeekDate>
-                    { userWeekInfo && defineWeek() }
-                </CurrentWeekDate>
-            </CurrentWeek>
-            <PlannedPoints>
-                Defined tasks for
-                <PlannedPointsNumber>
-                    { userWeekInfo && userWeekInfo.rewardsPlanned }
-                </PlannedPointsNumber>
-                points
-            </PlannedPoints>
-            <CreateNewTaskContainer>
-                <CreateNewTaskText>
-                    If you want to get more prizes - add tasks :)
-                </CreateNewTaskText>
-                <AddBtn addNewTaskFlag createTask={createTask} />
-            </CreateNewTaskContainer>
-            { modalVisibility &&
-                <BaseModal setModalVisibility={setModalVisibility}>
-                    <PlanningAddTaskModal setModalVisibility={setModalVisibility}/>
-                </BaseModal>
+    return <>
+        <PlanningContainer>
+            <TitleBlock>
+                <CurrentWeek>
+                    <CurrentWeekTitle>
+                        Plan for the week:
+                    </CurrentWeekTitle>
+                    <CurrentWeekDate>
+                        { userWeekInfo && defineWeek() }
+                    </CurrentWeekDate>
+                </CurrentWeek>
+                <PlannedPoints>
+                    Defined tasks for
+                    <PlannedPointsNumber>
+                        { userWeekInfo && userWeekInfo.rewardsPlanned }
+                    </PlannedPointsNumber>
+                    points
+                </PlannedPoints>
+                <CreateNewTaskContainer>
+                    <CreateNewTaskText>
+                        If you want to get more prizes - add tasks :)
+                    </CreateNewTaskText>
+                    <AddBtn addNewTaskFlag createTask={createTask} />
+                </CreateNewTaskContainer>
+                { modalVisibility &&
+                    <BaseModal setModalVisibility={setModalVisibility}>
+                        <PlanningAddTaskModal setModalVisibility={setModalVisibility}/>
+                    </BaseModal>
+                }
+            </TitleBlock>
+            { userWeekInfo &&
+                <TasksList TasksList={userWeekInfo.tasks} status={CardBtnTypes.ADD} />
             }
-        </TitleBlock>
-        { userWeekInfo &&
-            <TasksList TasksList={userWeekInfo.tasks} status={CardBtnTypes.ADD} />
-        }
         </PlanningContainer>
+        <MobileBottomPanel>
+            <PlannedPointsMobile>
+                <PlannedPointsNumberMobile>
+                    { userWeekInfo && userWeekInfo.rewardsPlanned }
+                </PlannedPointsNumberMobile>
+                points
+            </PlannedPointsMobile>
+            <CreateNewTaskContainerMobile>
+                <AddBtn addNewTaskFlag createTask={createTask} />
+            </CreateNewTaskContainerMobile>
+        </MobileBottomPanel>
+    </>
 }
 
 export default withLoader(Planning);
