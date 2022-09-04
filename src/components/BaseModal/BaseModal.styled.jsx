@@ -27,7 +27,7 @@ export const ModalContainerCloseBtnWrapper = styled.div`
     width: 14px;
     cursor: pointer;
 `
-export const CloseBtnImg = styled.img`
+export const CloseBtn = styled.img`
     display: block;
     height: 100%;
     width: 100%;

@@ -61,7 +61,7 @@ export const WeekTabContent = ({weekDataString, selectedDay, selectedDate, curre
             <CurrentTasksArea>
                 {
                     currentWeekTasks?.tasks &&
-                    <TasksList TasksList = {currentWeekTasks.tasks} status = {CardBtnTypes.TOGGLE}/>
+                    <TasksList TasksList = {currentWeekTasks.tasks} status = {CardBtnTypes.TOGGLE} modifyBuyList = {() => {}}/>
                 }
             </CurrentTasksArea>
             {

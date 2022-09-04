@@ -7,16 +7,18 @@ import { CardBtnTypes } from "../../config/enums";
 
 import { CardsContainer } from "./TasksList.style";
 
-const TasksList = ({TasksList, status}) => {
+const TasksList = ({TasksList, status, modifyBuyList}) => {
     return <CardsContainer>
         {
             TasksList.map(item => {
                 return <TaskCard
                     key={item._id}
+                    id={item._id}
                     imageUrl={item.imageUrl}
                     title={item.title}
                     points={item.price || item.reward}
                     status={status}
+                    modifyBuyList={modifyBuyList}
                 />
             })
         }
@@ -25,7 +27,8 @@ const TasksList = ({TasksList, status}) => {
 
 TaskCard.TasksList = {
     TasksList: PropTypes.array.isRequired,
-    status: PropTypes.oneOf([CardBtnTypes.ADD, CardBtnTypes.TOGGLE, CardBtnTypes.TASK_EXPIRED]).isRequired
+    status: PropTypes.oneOf([CardBtnTypes.ADD, CardBtnTypes.TOGGLE, CardBtnTypes.TASK_EXPIRED]).isRequired,
+    modifyBuyList: PropTypes.func
 }
 
 export default TasksList;

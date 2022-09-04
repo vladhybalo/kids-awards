@@ -6,9 +6,28 @@ import reducers from "./ducks";
 
 import localStorageMiddleware from "./middlewares/localStorageMiddleware";
 
+import getCookie from "./utils/getCookie";
+
+const getInitialStateUserInfo = () => {
+    const userInfo = sessionStorage.getItem('userInfo');
+    let userToken;
+
+    if (document.cookie.length !== 0) {
+        userToken = getCookie('token');
+    }
+
+    if (userInfo) {
+        return JSON.parse(userInfo);
+    }
+    else {
+        return {token: userToken};
+    }
+}
+
 const getInitialStore = () => {
     return {
-        userInfo: {}
+        userInfo: getInitialStateUserInfo(),
+        awards: {}
     }
 }
 
