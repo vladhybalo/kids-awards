@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import PropTypes from 'prop-types';
@@ -12,7 +12,8 @@ import { TabsBackground,
     ShortDayTitle,
     WeekData } from "./WeekTabsStyled";
 
-const WEEK_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+import { WEEK_DAYS } from "../../config/weekDays";
+
 const WEEKDAY_VALUES = new Map();
 
 export const WeekTabs = ({weekDataString, selectedDay, setSelectedDay, today, setSelectedDate}) => {

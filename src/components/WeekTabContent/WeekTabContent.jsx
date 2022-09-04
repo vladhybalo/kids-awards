@@ -1,10 +1,12 @@
-import { React, useEffect } from "react";
+import { useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 
 import PropTypes from 'prop-types';
 
 import TasksList from "../../components/TasksList/TasksList";
+import { ProgressBar } from "../ProgressBar/ProgressBar";
+import { ProgressBarMobile } from "../ProgressBarMobile/ProgressBarMobile";
 
 import { CardBtnTypes } from "../../config/enums";
 
@@ -16,32 +18,17 @@ import {
     DayDataSet,
     MyTasksText,
     DayData,
-    WeekTasksData,
-    WeekTasksTextElemSet,
-    ElemSetTitle,
-    ElemSetValue,
-    ProgressBarSet,
-    ProgressBarInfo,
-    InfoTasksDone,
-    InfoTasksPlanned,
-    ProgressBarBackground,
-    ProgressBarFiller,
     CurrentTasksArea,
-    MobileProgressBar,
-    MobileProgressBarTitle,
-    ProgressBarButton,
     NoTasksScreen,
     NoTasksScreenText,
     NoTasksScreenPlanBtn } from "./WeekTabContentStyled";
-
-import addTaskBtn from "./assets/addTaskBtn.png";
 
 export const WeekTabContent = ({weekDataString, selectedDay, selectedDate, currentWeekTasks}) => {
 
     const navigate = useNavigate();
 
     const getProgressBarFillPercent = () => {
-        if (currentWeekTasks && currentWeekTasks.rewardsGained && currentWeekTasks.rewardsPlanned) {
+        if (currentWeekTasks?.rewardsGained && currentWeekTasks?.rewardsPlanned) {
             return ( currentWeekTasks.rewardsGained / currentWeekTasks.rewardsPlanned  ) * 100;
         } else {
             return 0;
@@ -69,42 +56,11 @@ export const WeekTabContent = ({weekDataString, selectedDay, selectedDate, curre
                         </DayData>
                     </DayDataSet>
                 </CurrentDateData>
-                <WeekTasksData>
-                    <WeekTasksTextElemSet>
-                        <ElemSetTitle>
-                            Points gained this week:
-                        </ElemSetTitle>
-                        <ElemSetValue>
-                            {currentWeekTasks && currentWeekTasks.rewardsGained || 0}
-                        </ElemSetValue>
-                    </WeekTasksTextElemSet>
-                    <WeekTasksTextElemSet>
-                        <ElemSetTitle>
-                            Points planned for this week:
-                        </ElemSetTitle>
-                        <ElemSetValue>
-                            {currentWeekTasks && currentWeekTasks.rewardsPlanned || 0} 
-                        </ElemSetValue>
-                    </WeekTasksTextElemSet>
-                    <ProgressBarSet>
-                        <ProgressBarInfo>
-                            <InfoTasksDone>
-                                {currentWeekTasks && currentWeekTasks.rewardsGained || 0}&nbsp;
-                            </InfoTasksDone>
-                            <InfoTasksPlanned>
-                                / {currentWeekTasks && currentWeekTasks.rewardsPlanned || 0} 
-                            </InfoTasksPlanned>
-                        </ProgressBarInfo>
-                        <ProgressBarBackground>
-                            <ProgressBarFiller width = {getProgressBarFillPercent()}>
-                            </ProgressBarFiller>
-                        </ProgressBarBackground>
-                    </ProgressBarSet>
-                </WeekTasksData>
+                <ProgressBar  currentWeekTasks = {currentWeekTasks} getProgressBarFillPercentFunc = {getProgressBarFillPercent}/>
             </WeekInfoHeader>
             <CurrentTasksArea>
                 {
-                    currentWeekTasks && currentWeekTasks.tasks &&
+                    currentWeekTasks?.tasks &&
                     <TasksList TasksList = {currentWeekTasks.tasks} status = {CardBtnTypes.TOGGLE}/>
                 }
             </CurrentTasksArea>
@@ -122,28 +78,7 @@ export const WeekTabContent = ({weekDataString, selectedDay, selectedDate, curre
             }
 
         </WeekTabContentWrapper>
-        <MobileProgressBar>
-                <MobileProgressBarTitle>
-                        Points made:
-                </MobileProgressBarTitle>
-                <ProgressBarSet isMobile = {true}>
-                    <ProgressBarInfo>
-                        <InfoTasksDone>
-                            {currentWeekTasks && currentWeekTasks.rewardsGained || 0} &nbsp;
-                        </InfoTasksDone>
-                        <InfoTasksPlanned>
-                            / {currentWeekTasks && currentWeekTasks.rewardsPlanned || 0}
-                        </InfoTasksPlanned>
-                    </ProgressBarInfo>
-                    <ProgressBarBackground>
-                        <ProgressBarFiller width={getProgressBarFillPercent()}>
-                        </ProgressBarFiller>
-                    </ProgressBarBackground>
-                </ProgressBarSet>
-                <ProgressBarButton src = {addTaskBtn} onClick ={() => navigate("/planning")}>
-                
-                </ProgressBarButton>
-        </MobileProgressBar>
+        <ProgressBarMobile currentWeekTasks = {currentWeekTasks} getProgressBarFillPercentFunc = {getProgressBarFillPercent}/>
         </>
     )
 }
