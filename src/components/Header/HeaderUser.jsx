@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux"
 import { NavLink, useLocation } from 'react-router-dom'
-import CyrillicToTranslit from 'cyrillic-to-translit-js'
 import useScreenWidth from "./ListenerWidth"
-import { fetchLogOut } from "../../ducks/userInfo"
+import { fetchLogout } from "../../ducks/userInfo"
 import LogoHead from "./LogoHead"
 
 import {
@@ -47,17 +46,15 @@ const HeaderUser = () => {
     let userBalance = 0
 
     const dispatch = useDispatch()
-    const logOut = () => dispatch(fetchLogOut(formData))
+    const logOut = () => dispatch(fetchLogout(formData))
 
-    const stateUsInfouserData = useSelector(state => state.userInfo.userData)
-    if (stateUsInfouserData) {
-        userName = stateUsInfouserData.email
-        userBalance = stateUsInfouserData.balance
+    const userData = useSelector(state => state.userInfo.userData)
+    if (userData) {
+        userName = userData.email
+        userBalance = userData.balance
     }
 
-    const cyrillicToTranslit = new CyrillicToTranslit()
-    const firstLetter = userName && (userName.charAt(0))
-    const nameLetter = cyrillicToTranslit.transform(firstLetter).toUpperCase()
+    const nameLetter = userName && (userName.charAt(0))
 
     const [isOpen, setIsOpen] = useState(false)
     const toggle = () => { setIsOpen(!isOpen) }

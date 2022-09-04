@@ -4,16 +4,10 @@ import HeaderAuth from "./HeaderAuth"
 import HeaderUser from './HeaderUser'
 
 const Header = () => {
-
-    const stateUsInfouserData = useSelector(state => state.userInfo.userData)
+    const userData = useSelector(state => state.userInfo.userData)
     return (
         <>
-            {!stateUsInfouserData && // ----- AUTH -------
-                <HeaderAuth />
-            }
-            {stateUsInfouserData && // ------ USER -------
-                <HeaderUser />
-            }
+            {userData ? <HeaderUser /> : <HeaderAuth />}
         </>
     )
 }

@@ -1,5 +1,8 @@
 import React, { useState } from "react"
 import { NavLink, useLocation } from 'react-router-dom'
+
+import { MAIN_DARK, MAIN_BACKGROUND } from "../../assets/themes/colors"
+
 import useScreenWidth from "./ListenerWidth"
 import LogoHead from "./LogoHead"
 import MenuAuthDeskTab from "./MenuAuthDeskTab"
@@ -18,7 +21,7 @@ import {
     MobileHamburgerSectionMenuUp,
     MobileHamburgerSectionMenu
 } from "./Header.styled"
-import { MAIN_DARK, MAIN_BACKGROUND } from "../../assets/themes/colors"
+
 
 const linkActiveColor = ({ isActive }) => { return { color: isActive ? MAIN_DARK : MAIN_BACKGROUND } }
 

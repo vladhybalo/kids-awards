@@ -1,11 +1,11 @@
 import {
     userSignUp,
     userSignIn,
-    userLogOut,
+    userLogout,
     userGoogleSignIn,
     fetchSignInData,
     fetchSignUpData,
-    fetchLogOut,
+    fetchLogout,
     userRequestError,
     fetchGoogleData
 } from "./userInfoActions"
@@ -15,11 +15,11 @@ import userInfoReducer from "./userInfoReducer"
 export {
     userSignUp,
     userSignIn,
-    userLogOut,
+    userLogout,
     userGoogleSignIn,
     fetchSignInData,
     fetchSignUpData,
-    fetchLogOut,
+    fetchLogout,
     userRequestError,
     fetchGoogleData,
     userInfoReducer

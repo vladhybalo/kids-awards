@@ -171,6 +171,7 @@ export const MenuInitiaLetter = styled.div`
     display: grid;
     align-items: end;
     justify-content: center;
+    text-transform: uppercase;
 `;
 
 export const MenuName = styled.div`

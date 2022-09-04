@@ -1,10 +1,10 @@
 import axios from 'axios'
 
-export const USER_SIGN_UP = "USER_SIGN_UP"
-export const USER_SIGN_IN = "USER_SIGN_IN"
-export const USER_REQUEST_ERROR = "USER_REQUEST_ERROR"
-export const USER_GOOGLE_SIGN_IN = "USER_GOOGLE_SIGN_IN"
-export const USER_LOGOUT = "USER_LOGOUT"
+export const USER_SIGN_UP = "USER_SIGN_UP";
+export const USER_SIGN_IN = "USER_SIGN_IN";
+export const USER_REQUEST_ERROR = "USER_REQUEST_ERROR";
+export const USER_GOOGLE_SIGN_IN = "USER_GOOGLE_SIGN_IN";
+export const USER_LOGOUT = "USER_LOGOUT";
 
 export const userSignUp = (data) => {
     return {
@@ -34,7 +34,7 @@ export const userGoogleSignIn = (data) => {
     }
 }
 
-export const userLogOut = () => {
+export const userLogout = () => {
     return {
         type: USER_LOGOUT,
         payload: data.data
@@ -89,12 +89,12 @@ export const fetchGoogleData = () => {
     }
 }
 
-export const fetchLogOut = () => {
+export const fetchLogout = () => {
     return dispatch => {
         axios
             .post(`https://kidslike-v1-backend.goit.global/auth/logout`)
             .then(res => {
-                dispatch(userLogOut(res));
+                dispatch(userLogout(res));
             })
             .catch(error => {
                 alert(error.response.data.message);
