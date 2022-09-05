@@ -39,6 +39,8 @@ export const ChooseDayItem = styled.input`
     border: 1px solid ${MAIN_BACKGROUND};
     border-radius: 2px;
     margin-right: 10px;
+    content: ${props => (props.isCheckedBox && "url('src/assets/checkbox-check-mark.svg')")};
+    background: ${props => (props.isCheckedBox && MAIN_BACKGROUND)};
 
     :checked {
         content: url('src/assets/checkbox-check-mark.svg');

@@ -3,6 +3,7 @@ import store from '../../store';
 
 export const ADD_CUSTOM_TASK = "ADD_CUSTOM_TASK";
 export const ADD_TASK_ERROR = "ADD_TASK_ERROR";
+export const ADD_DAYS_TO_TASK = "ADD_DAYS_TO_TASK";
 
 export const addCustomTask = (data) => {
     return {
@@ -15,6 +16,13 @@ export const userRequestError = (error) => {
     return {
         type: ADD_TASK_ERROR,
         payload: error.data
+    }
+}
+
+export const addDaysToTask = (payload) => {
+    return {
+        type: ADD_DAYS_TO_TASK,
+        payload
     }
 }
 
@@ -39,6 +47,29 @@ export const postNewTask = (data) => {
             .catch(error => {
                 alert(error.message);
                 dispatch(userRequestError(error.message));
+            });
+    }
+}
+
+export const patchDaysToTask = (data) => {
+    return dispatch => {
+        axios
+            .patch(`https://kidslike-v1-backend.goit.global/#`,
+                {
+                    days: data
+                },
+                {
+                headers: {
+                    'Authorization': store.getState().userInfo.token,
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(res => {
+                dispatch(addDaysToTask(res.data));
+            })
+            .catch(error => {
+                alert(error.message);
+                dispatch(userRequestError(error));
             });
     }
 }

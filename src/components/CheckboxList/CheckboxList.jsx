@@ -1,4 +1,7 @@
 import React from "react";
+import PropTypes from 'prop-types';
+
+import { daysArray } from "../../config/dayNamesForCard";
 
 import {
     ChooseDayList,
@@ -6,67 +9,39 @@ import {
     ChooseDayItem
 } from "./CheckboxList.style";
 
-import CheckedMark from "../../assets/check-mark.svg";
+const CheckboxList = ({setCheckedDays, checkedDays}) => {
 
-const CheckboxList = () => {
+    const changeCheckedDays = (index) => {
+        return setCheckedDays(existingItems =>
+            [
+                ...existingItems.slice(0, index),
+                checkedDays[index] = !checkedDays[index],
+                ...existingItems.slice(index + 1),
+            ]
+        );
+    }
+
     return <ChooseDayList>
-        <ChooseDayItemLabel htmlFor='mon'>
-            <ChooseDayItem
-                type='checkbox'
-                id='mon'
-                value='1'
-                />
-            Mon
-        </ChooseDayItemLabel>
-        <ChooseDayItemLabel htmlFor='tue'>
-            <ChooseDayItem
-                type='checkbox'
-                id='tue'
-                value='2'
-                />
-            Tue
-        </ChooseDayItemLabel>
-        <ChooseDayItemLabel htmlFor='wed'>
-            <ChooseDayItem
-                type='checkbox'
-                id='wed'
-                value='3'
-                />
-            Wed
-        </ChooseDayItemLabel>
-        <ChooseDayItemLabel htmlFor='thu'>
-            <ChooseDayItem
-                type='checkbox'
-                id='thu'
-                value='4'
-                />
-            Thu
-        </ChooseDayItemLabel>
-        <ChooseDayItemLabel htmlFor='fri'>
-            <ChooseDayItem
-                type='checkbox'
-                id='fri'
-                value='5'
-                />
-            Fri
-        </ChooseDayItemLabel>
-        <ChooseDayItemLabel htmlFor='sat'>
-            <ChooseDayItem
-                type='checkbox'
-                id='sat'
-                value='6'
-                />
-            Sat
-        </ChooseDayItemLabel>
-        <ChooseDayItemLabel htmlFor='sun'>
-            <ChooseDayItem
-                type='checkbox'
-                id='sun'
-                value='7'
-                />
-            Sun
-        </ChooseDayItemLabel>
+        {
+            daysArray.map((day, index) =>
+                <ChooseDayItemLabel htmlFor={day} key={day}>
+                    <ChooseDayItem
+                        type='checkbox'
+                        id={index}
+                        value={checkedDays[index]}
+                        onClick={() => changeCheckedDays(index)}
+                        isCheckedBox={checkedDays[index]}
+                    />
+                    {day.charAt(0).toUpperCase() + day.slice(1)}
+                </ChooseDayItemLabel>
+            )
+        }
     </ChooseDayList>
+}
+
+CheckboxList.propTypes = {
+    setCheckedDays: PropTypes.func.isRequired,
+    checkedDays: PropTypes.array.isRequired
 }
 
 export default CheckboxList;

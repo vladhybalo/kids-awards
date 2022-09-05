@@ -1,4 +1,6 @@
 import React, {useState} from "react";
+import { useDispatch } from "react-redux";
+
 import PropTypes from 'prop-types';
 
 import CardBtn from "../CardBtn/CardBtn";
@@ -16,9 +18,20 @@ import {
 } from "./TaskCard.style";
 
 const TaskCard = ({id, imageUrl, title, points, status, modifyBuyList}) => {
+    const dispatch = useDispatch();
+
     const [checkedToggler, setCheckedToggler] = useState(false);
     const [openDaysList, setOpenDaysList] = useState(false);
     const [taskOpenedDaysList, setTaskOpenedDaysList] = useState(false);
+    const [checkedDays, setCheckedDays] = useState([
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+    ]);
     const isDone = false;
 
     const handleToggler = () => {
@@ -29,12 +42,17 @@ const TaskCard = ({id, imageUrl, title, points, status, modifyBuyList}) => {
     const addDayToTask = () => {
         setOpenDaysList(!openDaysList);
         setTaskOpenedDaysList(!taskOpenedDaysList);
+
+        if (!taskOpenedDaysList) {
+            // swagger does not load the url, so request does not load data to the server
+            // dispatch(patchDaysToTask(checkedDays));
+        }
     };
 
     return (
         <CardContainer>
             {
-                openDaysList && <CheckboxList />
+                openDaysList && <CheckboxList setCheckedDays={setCheckedDays} checkedDays={checkedDays} />
             }
             <CardImageWrapper>
                 <img src={imageUrl} />
