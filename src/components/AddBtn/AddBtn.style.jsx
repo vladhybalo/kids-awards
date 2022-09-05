@@ -33,3 +33,18 @@ export const HorizontalLine = styled.span`
     height: ${props => props.addNewTaskFlag ? '4px' : '2px'};
     width: ${props => props.addNewTaskFlag ? '18px' : '10px'};
 `;
+
+export const SubmitDaysBtn = styled.p`
+    display: block;
+    position: absolute;
+    font-family: 'Montserrat-700';
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0.04em;
+    text-align: center;
+    text-transform: uppercase;
+    color: ${CHECKED_TOGGLER};
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+`;

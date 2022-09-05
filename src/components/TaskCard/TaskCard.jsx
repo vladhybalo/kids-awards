@@ -16,9 +16,9 @@ import {
 } from "./TaskCard.style";
 
 const TaskCard = ({id, imageUrl, title, points, status, modifyBuyList}) => {
-    /* rows 17 - 22 for change or remove */
     const [checkedToggler, setCheckedToggler] = useState(false);
     const [openDaysList, setOpenDaysList] = useState(false);
+    const [taskOpenedDaysList, setTaskOpenedDaysList] = useState(false);
     const isDone = false;
 
     const handleToggler = () => {
@@ -28,6 +28,7 @@ const TaskCard = ({id, imageUrl, title, points, status, modifyBuyList}) => {
 
     const addDayToTask = () => {
         setOpenDaysList(!openDaysList);
+        setTaskOpenedDaysList(!taskOpenedDaysList);
     };
 
     return (
@@ -51,6 +52,7 @@ const TaskCard = ({id, imageUrl, title, points, status, modifyBuyList}) => {
                     status={status}
                     handleToggler={handleToggler}
                     addDayToTask={addDayToTask}
+                    taskOpenedDaysList={taskOpenedDaysList}
                     checkedToggler={checkedToggler}
                     isDone={isDone}
                 />
