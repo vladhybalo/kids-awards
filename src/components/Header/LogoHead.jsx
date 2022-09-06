@@ -1,10 +1,10 @@
 import React from "react"
 import { NavLink } from 'react-router-dom'
+
 import { LogoHeader, LogoHeaderSVG } from "./Header.styled"
 import LogoIcon from '../../assets/image/Header-kids-logo.svg'
 
 const LogoHead = () => {
-
     return (
         <NavLink to="/">
             <LogoHeader  >
@@ -14,5 +14,6 @@ const LogoHead = () => {
         </NavLink>
     )
 }
+
 export default LogoHead
 

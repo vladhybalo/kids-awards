@@ -3,14 +3,15 @@ import { NavLink, useLocation } from 'react-router-dom'
 
 import { MAIN_DARK, MAIN_BACKGROUND } from "../../assets/themes/colors"
 
-import useScreenWidth from "./ListenerWidth"
 import LogoHead from "./LogoHead"
+import PointsBal from "./PointsBal"
 import MenuAuthDeskTab from "./MenuAuthDeskTab"
 import {
+    DesktopWidth,
+    TabletWidth,
+    MobileWidth,
     ContainerHeader,
     LeftBlock,
-    PointsBalance,
-    NumberBalance,
     MenuHeaderBlock,
     MobileHamburgerContainer,
     MobileHamburgerLine,
@@ -22,51 +23,44 @@ import {
     MobileHamburgerSectionMenu
 } from "./Header.styled"
 
-
 const linkActiveColor = ({ isActive }) => { return { color: isActive ? MAIN_DARK : MAIN_BACKGROUND } }
 
 const HeaderAuth = () => {
-
     const [isOpen, setIsOpen] = useState(false)
     const toggle = () => { setIsOpen(!isOpen) }
-    const width = (useScreenWidth() - 1)
     const location = useLocation()
-
     return (
         <>
-            {width >= 769 &&                    // --------------- Desktop -------------
+            {/* ====== 870=< Desktop ====== */}
+            <DesktopWidth>
                 <ContainerHeader>
                     <LogoHead />
                     <MenuHeaderBlock>
                         <MenuAuthDeskTab />
                     </MenuHeaderBlock>
                 </ContainerHeader>
-            }
-            {(width >= 481 && width <= 768) &&   // --------------- Tablet -------------
+            </DesktopWidth>
+            {/* ==== 531=< Tablet <=869 ==== */}
+            <TabletWidth>
                 <ContainerHeader>
                     <LeftBlock>
                         <LogoHead />
                         {location.pathname === '/' &&
-                            <PointsBalance>
-                                Points balance:
-                                <NumberBalance>0</NumberBalance>
-                            </PointsBalance>
+                            <PointsBal />
                         }
                     </LeftBlock>
                     <MenuHeaderBlock>
                         <MenuAuthDeskTab />
                     </MenuHeaderBlock>
                 </ContainerHeader>
-            }
-            {width <= 480 && <>                 {/* -------------- Mobile ------------ */}
+            </TabletWidth>
+            {/* // ======= Mobile <=530 ====== */}
+            <MobileWidth>
                 <ContainerHeader>
                     <LeftBlock>
                         <LogoHead />
                         {location.pathname === '/' &&
-                            <PointsBalance>
-                                Points balance:
-                                <NumberBalance>0</NumberBalance>
-                            </PointsBalance>
+                            <PointsBal />
                         }
                     </LeftBlock>
                     <MobileHamburgerContainer onClick={toggle}>
@@ -86,8 +80,7 @@ const HeaderAuth = () => {
                         <MobileHamburgerSectionMenu>Contacts</MobileHamburgerSectionMenu>
                     </NavLink>
                 </MobileHamburgerbackground>
-            </>
-            }
+            </MobileWidth>
         </>
     )
 }

@@ -1,12 +1,12 @@
-import React, {useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { disableBodyScroll, enableBodyScroll} from "body-scroll-lock";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 import { ModalBackground, ModalContainer, ModalContainerCloseBtnWrapper, CloseBtn } from "./BaseModal.styled";
 
 import closeCross from "./assets/closeCross.svg"
 
-export const BaseModal = ({setModalVisibility, children}) => {
+export const BaseModal = ({ setModalVisibility, children }) => {
 
     const [topOffset, setTopOffset] = useState(Math.abs(document.querySelector("body").getBoundingClientRect().top));
 

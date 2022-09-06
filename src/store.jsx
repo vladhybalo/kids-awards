@@ -20,7 +20,7 @@ const getInitialStateUserInfo = () => {
         return JSON.parse(userInfo);
     }
     else {
-        return {token: userToken};
+        return { token: userToken };
     }
 }
 

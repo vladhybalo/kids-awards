@@ -3,7 +3,7 @@ import { combineReducers } from "redux";
 import { userInfoReducer } from "./userInfo";
 import { giftsReducer } from "./gifts";
 
-const reducers = combineReducers ({
+const reducers = combineReducers({
     userInfo: userInfoReducer,
     awards: giftsReducer
 });

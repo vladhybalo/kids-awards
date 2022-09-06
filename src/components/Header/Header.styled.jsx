@@ -27,6 +27,27 @@ export const elementMenu = css`
     ${fontRegular}
 `;
 
+export const DesktopWidth = styled.div`
+    @media only screen and (max-width: 870px){
+        display: none;
+    }
+`;
+
+export const TabletWidth = styled.div`
+    @media only screen and (min-width: 870px){
+        display: none;
+    }
+    @media only screen and (max-width: 531px){
+        display: none;
+    }
+`;
+
+export const MobileWidth = styled.div`
+    @media only screen and (min-width: 531px){
+        display: none;
+    }
+`;
+
 export const LogoHeaderSVG = styled.img` 
     display: grid; 
     align-items: center;
@@ -62,7 +83,7 @@ export const ContainerHeader = styled.div`
         padding: 0 10px;
     }
     @media (min-width: 530px){
-        padding: 0 30px;
+        padding: 0 20px;
     }
 `;
 
