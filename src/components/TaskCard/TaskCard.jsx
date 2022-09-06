@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 
 import PropTypes from 'prop-types';
 
+import { patchDaysToTask } from "../../ducks/task";
+
 import CardBtn from "../CardBtn/CardBtn";
 import CheckboxList from "../CheckboxList/CheckboxList";
 
@@ -43,9 +45,8 @@ const TaskCard = ({id, imageUrl, title, points, status, modifyBuyList}) => {
         setOpenDaysList(!openDaysList);
         setTaskOpenedDaysList(!taskOpenedDaysList);
 
-        if (!taskOpenedDaysList) {
-            // swagger does not load the url, so request does not load data to the server
-            // dispatch(patchDaysToTask(checkedDays));
+        if (taskOpenedDaysList) {
+            dispatch(patchDaysToTask(id, checkedDays));
         }
     };
 

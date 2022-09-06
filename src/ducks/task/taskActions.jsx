@@ -51,10 +51,10 @@ export const postNewTask = (data) => {
     }
 }
 
-export const patchDaysToTask = (data) => {
+export const patchDaysToTask = (id, data) => {
     return dispatch => {
         axios
-            .patch(`https://kidslike-v1-backend.goit.global/#`,
+            .patch(`https://kidslike-v1-backend.goit.global/task/single-active/${id}`,
                 {
                     days: data
                 },
