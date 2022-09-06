@@ -31,9 +31,12 @@ const PlanningAddTaskModal = ({setModalVisibility}) => {
     const [taskName, setTaskName] = useState("");
     const [taskPoints, setTaskPoints] = useState(0);
 
-    const uploadTaskImage = () => {
-        const image = uploadedImgRef.current.value;
-        setUploadedImage(image);
+    const uploadTaskImage = (e) => {
+        let file = e.target.files[0];
+        let reader = new FileReader();
+
+        reader.readAsDataURL(file);
+        reader.onload = () => setUploadedImage(reader.result);
     }
 
     const handleTaskName = () => {
@@ -59,12 +62,7 @@ const PlanningAddTaskModal = ({setModalVisibility}) => {
 
     return <AddCustomTaskModal>
         <AddImageWrapper>
-            <AddImageContainer uploadedImage={uploadedImage}>
-                {/* uploaded image does not display because of
-                'Not allowed to load local resource.'
-                So instead displayed the image path */}
-                {uploadedImage}
-            </AddImageContainer>
+            <AddImageContainer uploadedImage={uploadedImage} />
             <AddImageLabel htmlFor="uploadImg" />
             <input
                 id='uploadImg'
