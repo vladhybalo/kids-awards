@@ -69,7 +69,7 @@ export const patchDaysToTask = (id, data) => {
             })
             .catch(error => {
                 alert(error.message);
-                dispatch(userRequestError(error));
+                dispatch(userRequestError(error.message));
             });
     }
 }

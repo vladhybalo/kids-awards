@@ -34,9 +34,7 @@ const Planning = () => {
 
     const [modalVisibility, setModalVisibility] = useState(false);
 
-    const createTask = () => {
-        setModalVisibility(true);
-    };
+    const createTask = () => setModalVisibility(true);
 
     const defineWeek = () => {
         const startWeekDay = userWeekInfo.startWeekDate.split('-');

@@ -32,22 +32,16 @@ const PlanningAddTaskModal = ({setModalVisibility}) => {
     const [taskPoints, setTaskPoints] = useState(0);
 
     const uploadTaskImage = (e) => {
-        let file = e.target.files[0];
-        let reader = new FileReader();
-
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        
         reader.readAsDataURL(file);
         reader.onload = () => setUploadedImage(reader.result);
     }
 
-    const handleTaskName = () => {
-        const name = customTaskNameRef.current.value;
-        setTaskName(name);
-    }
+    const handleTaskName = () => setTaskName(customTaskNameRef.current.value);
 
-    const handleTaskPoints = () => {
-        const points = customTaskPointsRef.current.value;
-        setTaskPoints(points);
-    }
+    const handleTaskPoints = () => setTaskPoints(customTaskPointsRef.current.value);
 
     const addNewTask = () => {
         if (taskName && taskPoints) {
@@ -55,7 +49,8 @@ const PlanningAddTaskModal = ({setModalVisibility}) => {
                 title: taskName,
                 reward: taskPoints,
                 file: uploadedImage
-            }))
+            }));
+
             setModalVisibility(false);
         }
     }
