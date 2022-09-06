@@ -10,6 +10,7 @@ export const ModalBackground = styled.div`
     width: 100%;
     height: 100vh;
     background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
 `
 export const ModalContainer = styled.div`
     min-height: 299px;
@@ -26,6 +27,7 @@ export const ModalContainerCloseBtnWrapper = styled.div`
     height: 14px;
     width: 14px;
     cursor: pointer;
+    z-index: 2;
 `
 export const CloseBtn = styled.img`
     display: block;

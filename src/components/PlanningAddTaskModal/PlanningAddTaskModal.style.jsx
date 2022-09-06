@@ -6,6 +6,11 @@ import {
     MAIN_BACKGROUND
 } from "../../assets/themes/colors";
 
+export const AddCustomTaskModal = styled.article`
+    position: relative;
+    z-index: 1;
+`;
+
 export const AddImageWrapper = styled.div`
     height: 131px;
     position: relative;

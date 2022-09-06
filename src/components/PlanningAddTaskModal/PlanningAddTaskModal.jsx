@@ -8,6 +8,7 @@ import { postNewTask } from "../../ducks/task";
 import addTaskIcon from "../../assets/addTaskInputIcon.svg";
 
 import {
+    AddCustomTaskModal,
     AddImageWrapper,
     AddImageContainer,
     AddImageLabel,
@@ -56,7 +57,7 @@ const PlanningAddTaskModal = ({setModalVisibility}) => {
         }
     }
 
-    return <>
+    return <AddCustomTaskModal>
         <AddImageWrapper>
             <AddImageContainer uploadedImage={uploadedImage}>
                 {/* uploaded image does not display because of
@@ -99,7 +100,7 @@ const PlanningAddTaskModal = ({setModalVisibility}) => {
                 Ok
             </SubmitBtn>
         </AddInfoContainer>
-    </>
+    </AddCustomTaskModal>
 }
 
 PlanningAddTaskModal.propTypes = {
