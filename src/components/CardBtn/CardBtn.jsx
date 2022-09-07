@@ -1,5 +1,5 @@
 import React from "react";
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import Toggler from "../Toggler/Toggler"
 import CardStatus from "../CardStatus/CardStatus";
@@ -21,11 +21,11 @@ const CardBtn = ({ status, handleToggler, addDayToTask, checkedToggler, isDone }
 }
 
 CardBtn.propTypes = {
-    // status: PropTypes.oneOf([CardBtnTypes.ADD, CardBtnTypes.TOGGLE, CardBtnTypes.TASK_EXPIRED]).isRequired,
-    // handleToggler: PropTypes.func.isRequired,
-    // addDayToTask: PropTypes.func.isRequired,
-    // checkedToggler: PropTypes.bool,
-    // isDone: PropTypes.bool
+    status: PropTypes.oneOf([CardBtnTypes.ADD, CardBtnTypes.TOGGLE, CardBtnTypes.TASK_EXPIRED]).isRequired,
+    handleToggler: PropTypes.func.isRequired,
+    addDayToTask: PropTypes.func.isRequired,
+    checkedToggler: PropTypes.bool,
+    isDone: PropTypes.bool
 }
 
 export default CardBtn;

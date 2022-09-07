@@ -1,5 +1,5 @@
 import React from "react";
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import checkedMark from "../../assets/check-mark.svg";
 import uncheckedMark from "../../assets/uncheck-mark.svg";
@@ -13,7 +13,7 @@ const CardStatus = ({ isDone }) => {
 }
 
 CardStatus.propTypes = {
-    // isDone: PropTypes.bool.isRequired
+    isDone: PropTypes.bool.isRequired
 }
 
 export default CardStatus;

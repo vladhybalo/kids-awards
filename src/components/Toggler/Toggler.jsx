@@ -1,5 +1,5 @@
 import React from "react";
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import checkedMark from "../../assets/check-mark.svg";
 import uncheckedMark from "../../assets/uncheck-mark.svg";
@@ -23,8 +23,8 @@ const Toggler = ({ handleToggler, checkedToggler }) => {
 }
 
 Toggler.propTypes = {
-    // handleToggler: PropTypes.func.isRequired,
-    // checkedToggler: PropTypes.bool.isRequired
+    handleToggler: PropTypes.func.isRequired,
+    checkedToggler: PropTypes.bool.isRequired
 }
 
 export default Toggler;
