@@ -1,9 +1,8 @@
 import React, { useRef, useState } from "react";
-import { useDispatch } from "react-redux";
 
 import PropTypes from 'prop-types';
 
-import { postNewTask } from "../../ducks/task";
+import { postNewTask } from "../../utils/customTaskRequests";
 
 import addTaskIcon from "../../assets/addTaskInputIcon.svg";
 
@@ -21,7 +20,6 @@ import {
 } from "./PlanningAddTaskModal.style";
 
 const PlanningAddTaskModal = ({setModalVisibility}) => {
-    const dispatch = useDispatch();
 
     const uploadedImgRef = useRef();
     const customTaskNameRef = useRef();
@@ -45,11 +43,11 @@ const PlanningAddTaskModal = ({setModalVisibility}) => {
 
     const addNewTask = () => {
         if (taskName && taskPoints) {
-            dispatch(postNewTask({
+            postNewTask({
                 title: taskName,
                 reward: taskPoints,
                 file: uploadedImage
-            }));
+            });
 
             setModalVisibility(false);
         }

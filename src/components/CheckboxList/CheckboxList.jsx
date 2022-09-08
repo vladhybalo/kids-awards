@@ -32,7 +32,7 @@ const CheckboxList = ({setCheckedDays, checkedDays}) => {
                         onClick={() => changeCheckedDays(index)}
                         isCheckedBox={checkedDays[index]}
                     />
-                    {day.charAt(0).toUpperCase() + day.slice(1)}
+                    {day}
                 </ChooseDayItemLabel>
             )
         }

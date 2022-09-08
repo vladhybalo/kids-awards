@@ -19,6 +19,10 @@ export const ModalContainer = styled.div`
     border-radius: 6px;
     position: relative;
     color: black;
+
+    @media (max-width: 610px) {
+        margin: ${props => props.childComponent === "AwardsCustomModal" && 'auto 20px'};
+    }
 `
 export const ModalContainerCloseBtnWrapper = styled.div`
     position: absolute;

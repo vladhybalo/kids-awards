@@ -103,8 +103,7 @@ const AuthForm = () => {
     useEffect(() => {
         setFetchLoading(false);
         if (userInfo.userData) {
-            navigate('/awards');
-            // navigate('/home');
+            navigate('/');
         }
     }, [userInfo])
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 
 import ModalCatDesignSrc from "../../assets/modal-cat-image.svg";
@@ -15,9 +15,18 @@ import {
 } from "./AwardsCustomModal.style";
 
 const AwardsCustomModal = ({gifts, giftsToBuyList}) => {
+    const modalRef = useRef();
+    const [modalHeight, setModalHeight] = useState(false);
+
+    useEffect(() => {
+        if (modalRef) {
+            modalRef.current.offsetHeight > 376 ? setModalHeight(true) : setModalHeight(false);
+        }
+    })
+
     return (
-        <ModalContentWrapper>
-            <DesignImage src={ModalCatDesignSrc} alt="Hooray cat" />
+        <ModalContentWrapper ref={modalRef} modalHeight={modalHeight} >
+            <DesignImage src={ModalCatDesignSrc} alt="Hooray cat" modalHeight={modalHeight}/>
             <ModalTitle>
                 Congratulations! You get:
             </ModalTitle>

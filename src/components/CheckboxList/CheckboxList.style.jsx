@@ -27,6 +27,7 @@ export const ChooseDayList = styled.section`
 export const ChooseDayItemLabel = styled.label`
     display: flex;
     align-items: center;
+    text-transform: capitalize;
 
     :not(:last-child){
         margin-bottom: 12px;

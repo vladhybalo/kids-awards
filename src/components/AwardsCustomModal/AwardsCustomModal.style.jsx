@@ -6,13 +6,28 @@ export const ModalContentWrapper = styled.article`
     padding: 131px 52px 40px;
     box-sizing: border-box;
     max-width: 608px;
+    padding-top: ${props => props.modalHeight ? '59px': '131px' };
+
+    @media (max-width: 610px) {
+        padding-left: 28px;
+        padding-right: 28px;
+        padding-top: 59px;
+    }
 `;
 
 export const DesignImage = styled.img`
     position: absolute;
     left: 50%;
-    top: -30%;
+    top: ${props => props.modalHeight ? '-23%': '-30%'};
     transform: translateX(-50%);
+    width: ${props => props.modalHeight && '132px'};
+    height: ${props => props.modalHeight && '152px'};
+
+    @media (max-width: 610px) {
+        width: 132px;
+        height: 152px;
+    }
+
 `;
 
 export const ModalTitle = styled.h1`
@@ -22,6 +37,16 @@ export const ModalTitle = styled.h1`
     text-align: center;
     color: ${MAIN_DARK};
     margin-bottom: 32px;
+
+    @media (max-width: 610px) {
+        font-size: 18px;
+        margin-bottom: 24px;
+    }
+
+    @media (max-width: 510px) {
+        margin-bottom: 10px;
+        line-height: normal;
+    }
 `;
 
 export const ModalAwardsList = styled.ul`
@@ -30,11 +55,19 @@ export const ModalAwardsList = styled.ul`
 `;
 
 export const ModalAwardsItem = styled.li`
-    width: 100px;
+    max-width: 100px;
     margin: 0 auto;
 
     :not(:last-child){
         margin-right: 24px;
+    }
+
+    @media (max-width: 510px) {
+        margin: 0 auto;
+
+        :not(:last-child){
+            margin-right: auto;
+        }
     }
 `;
 

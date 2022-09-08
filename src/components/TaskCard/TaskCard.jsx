@@ -1,9 +1,8 @@
 import React, {useState} from "react";
-import { useDispatch } from "react-redux";
 
 import PropTypes from 'prop-types';
 
-import { patchDaysToTask } from "../../ducks/task";
+import { patchDaysToTask } from "../../utils/customTaskRequests";
 
 import CardBtn from "../CardBtn/CardBtn";
 import CheckboxList from "../CheckboxList/CheckboxList";
@@ -20,7 +19,6 @@ import {
 } from "./TaskCard.style";
 
 const TaskCard = ({id, imageUrl, title, points, status, modifyBuyList}) => {
-    const dispatch = useDispatch();
 
     const [checkedToggler, setCheckedToggler] = useState(false);
     const [openDaysList, setOpenDaysList] = useState(false);
@@ -46,7 +44,7 @@ const TaskCard = ({id, imageUrl, title, points, status, modifyBuyList}) => {
         setTaskOpenedDaysList(!taskOpenedDaysList);
 
         if (taskOpenedDaysList) {
-            dispatch(patchDaysToTask(id, checkedDays));
+            patchDaysToTask(id, checkedDays);
         }
     };
 
