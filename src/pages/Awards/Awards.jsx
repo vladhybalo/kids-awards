@@ -54,7 +54,7 @@ const Awards = () => {
             <SubmitButton onClick={submitSelectedGifts}>
                 Submit
             </SubmitButton>
-            { modalVisibility &&
+            {modalVisibility &&
                 <BaseModal setModalVisibility={setModalVisibility}>
                     <AwardsCustomModal gifts={gifts} giftsToBuyList={giftsToBuyList} />
                 </BaseModal>

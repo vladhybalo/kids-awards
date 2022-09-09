@@ -14,7 +14,7 @@ import {
     ModalAwardName
 } from "./AwardsCustomModal.style";
 
-const AwardsCustomModal = ({gifts, giftsToBuyList}) => {
+const AwardsCustomModal = ({ gifts, giftsToBuyList }) => {
     return (
         <ModalContentWrapper>
             <DesignImage src={ModalCatDesignSrc} alt="Hooray cat" />
@@ -25,12 +25,12 @@ const AwardsCustomModal = ({gifts, giftsToBuyList}) => {
                 {
                     giftsToBuyList.map(gift => {
                         return (
-                            <ModalAwardsItem key={gifts[gift-1].id}>
+                            <ModalAwardsItem key={gifts[gift - 1].id}>
                                 <ModalAwardImageWrapper>
-                                    <ModalAwardImage src={gifts[gift-1].imageUrl} alt={gifts[gift-1].title} />
+                                    <ModalAwardImage src={gifts[gift - 1].imageUrl} alt={gifts[gift - 1].title} />
                                 </ModalAwardImageWrapper>
                                 <ModalAwardName>
-                                    {gifts[gift-1].title}
+                                    {gifts[gift - 1].title}
                                 </ModalAwardName>
                             </ModalAwardsItem>
                         )

@@ -7,7 +7,7 @@ import AddTask from "../AddTask/AddTask";
 
 import { CardBtnTypes } from "../../config/enums";
 
-const CardBtn = ({status, handleToggler, addDayToTask, checkedToggler, isDone}) => {
+const CardBtn = ({ status, handleToggler, addDayToTask, checkedToggler, isDone }) => {
 
     if (status === CardBtnTypes.ADD) {
         return <AddTask addDayToTask={addDayToTask} />

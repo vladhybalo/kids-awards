@@ -7,7 +7,7 @@ import { CardBtnTypes } from "../../config/enums";
 
 import { CardsContainer } from "./TasksList.style";
 
-const TasksList = ({TasksList, status, modifyBuyList}) => {
+const TasksList = ({ TasksList, status, modifyBuyList }) => {
     return <CardsContainer>
         {
             TasksList.map(item => {

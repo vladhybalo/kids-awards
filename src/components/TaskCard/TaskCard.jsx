@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import PropTypes from 'prop-types';
 
 import CardBtn from "../CardBtn/CardBtn";
@@ -14,7 +14,7 @@ import {
     CardPoints
 } from "./TaskCard.style";
 
-const TaskCard = ({id, imageUrl, title, points, status, modifyBuyList}) => {
+const TaskCard = ({ id, imageUrl, title, points, status, modifyBuyList }) => {
     /* rows 17 - 22 for change or remove */
     const [checkedToggler, setCheckedToggler] = useState(false);
     const isDone = false;
@@ -24,7 +24,7 @@ const TaskCard = ({id, imageUrl, title, points, status, modifyBuyList}) => {
         modifyBuyList(id);
     };
 
-    const addDayToTask = () => {};
+    const addDayToTask = () => { };
 
     return (
         <CardContainer>

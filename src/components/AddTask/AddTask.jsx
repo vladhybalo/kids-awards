@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { AddBtn, VerticalLine, HorizontalLine } from "./AddTask.style";
 
-const AddTask= ({addDayToTask}) => {
+const AddTask = ({ addDayToTask }) => {
     return <AddBtn onClick={addDayToTask}>
         <VerticalLine></VerticalLine>
         <HorizontalLine></HorizontalLine>

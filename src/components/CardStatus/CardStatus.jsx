@@ -6,7 +6,7 @@ import uncheckedMark from "../../assets/uncheck-mark.svg";
 
 import { Status, StatusIcon } from "./CardStatus.style";
 
-const CardStatus = ({isDone}) => {
+const CardStatus = ({ isDone }) => {
     return <Status isDone={isDone}>
         <StatusIcon src={isDone ? checkedMark : uncheckedMark} />
     </Status>

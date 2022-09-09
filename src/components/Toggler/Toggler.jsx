@@ -11,15 +11,15 @@ import {
     TogglerUnheckedIcon
 } from "./Toggler.style";
 
-const Toggler = ({handleToggler, checkedToggler}) => {
+const Toggler = ({ handleToggler, checkedToggler }) => {
     return <TogglerBody onClick={handleToggler} selected={checkedToggler}>
-            <TogglerSwitch selected={checkedToggler} />
-            {
-                checkedToggler
+        <TogglerSwitch selected={checkedToggler} />
+        {
+            checkedToggler
                 ? <TogglerCheckedIcon src={checkedMark} selected={!checkedToggler} />
                 : <TogglerUnheckedIcon src={uncheckedMark} selected={checkedToggler} />
-            }
-        </TogglerBody>
+        }
+    </TogglerBody>
 }
 
 Toggler.propTypes = {

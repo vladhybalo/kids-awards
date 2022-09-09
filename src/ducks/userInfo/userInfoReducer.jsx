@@ -1,6 +1,7 @@
-import { USER_SIGN_UP, USER_SIGN_IN, USER_GOOGLE_SIGN_IN, USER_REQUEST_ERROR } from "./userInfoActions";
+import { USER_SIGN_UP, USER_SIGN_IN, USER_GOOGLE_SIGN_IN, USER_LOGOUT, USER_REQUEST_ERROR } from "./userInfoActions";
 
 const userInfoReducer = (state = {}, action) => {
+
     switch (action.type) {
         case USER_SIGN_UP:
             return {
@@ -22,8 +23,10 @@ const userInfoReducer = (state = {}, action) => {
                 userWeek: action.payload.week,
                 token: action.payload.data.token
             };
+        case USER_LOGOUT:
+            return {};
         case USER_REQUEST_ERROR:
-            return {errorMessage: action.payload.message};
+            return { errorMessage: action.payload.message };
         default:
             return state;
     }

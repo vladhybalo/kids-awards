@@ -23,7 +23,7 @@ import {
     AuthActionButtons
 } from "./AuthForm.style";
 
-const formData = {email: null, password: null};
+const formData = { email: null, password: null };
 
 const AuthForm = () => {
     const dispatch = useDispatch();
@@ -88,7 +88,7 @@ const AuthForm = () => {
     const checkInputData = (authType) => {
         if (formData.email && formData.password) {
             setFetchLoading(true);
-            authType === 'login'? dispatch(fetchSignInData(formData)) : dispatch(fetchSignUpData(formData));
+            authType === 'login' ? dispatch(fetchSignInData(formData)) : dispatch(fetchSignUpData(formData));
         }
         else {
             setValidMail(false);
@@ -110,62 +110,62 @@ const AuthForm = () => {
 
     return (
         <AuthFormContainer>
-            { isLoading ? <Spinner></Spinner> :
-            <>
-                <AuthMainContainer>
-                    <AuthText>
-                        You can sign in with your Google Account:
-                    </AuthText>
-                    <AuthEnterWithGoogle onClick={() => authByGoogle()}>
-                        <GoogleIcon src={GoogleSrc} alt="Google Icon" />
-                        Google
-                    </AuthEnterWithGoogle>
-                    <AuthText>
-                        Or sign in using e-mail and password after registering:
-                    </AuthText>
-                    <InputLabel htmlFor="email">
-                        <ErrorStar valid={validMail}>
-                            {bluredMail && '*'}
-                        </ErrorStar>
-                        E-mail
-                    </InputLabel>
-                    <Input
-                        id="email"
-                        type="email"
-                        placeholder="your@email.com"
-                        ref={emailRef}
-                        onChange={checkEmail}
-                        onBlur={bluredEmailHandler}
-                    />
-                    <ErrorMsg valid={validMail}>
-                        {bluredMail && emailErrorMsg}
-                    </ErrorMsg>
-                    <InputLabel htmlFor="password">
-                        <ErrorStar valid={validPassword}>
-                            {bluredPassword && '*'}
-                        </ErrorStar>
-                        Password
-                    </InputLabel>
-                    <Input
-                        id="password"
-                        type="password"
-                        ref={passwordRef}
-                        onChange={checkPassword}
-                        onBlur={bluredPasswordHandler}
-                    />
-                    <ErrorMsg valid={validPassword}>
-                        {bluredPassword && passwordErrorMsg}
-                    </ErrorMsg>
-                </AuthMainContainer>
-                <AuthActionButtons>
-                    <AuthButton onClick={() => checkInputData('login')}>
-                        Sign in
-                    </AuthButton>
-                    <AuthButton onClick={() => checkInputData('register')}>
-                        Sign up
-                    </AuthButton>
-                </AuthActionButtons>
-            </> }
+            {isLoading ? <Spinner></Spinner> :
+                <>
+                    <AuthMainContainer>
+                        <AuthText>
+                            You can sign in with your Google Account:
+                        </AuthText>
+                        <AuthEnterWithGoogle onClick={() => authByGoogle()}>
+                            <GoogleIcon src={GoogleSrc} alt="Google Icon" />
+                            Google
+                        </AuthEnterWithGoogle>
+                        <AuthText>
+                            Or sign in using e-mail and password after registering:
+                        </AuthText>
+                        <InputLabel htmlFor="email">
+                            <ErrorStar valid={validMail}>
+                                {bluredMail && '*'}
+                            </ErrorStar>
+                            E-mail
+                        </InputLabel>
+                        <Input
+                            id="email"
+                            type="email"
+                            placeholder="your@email.com"
+                            ref={emailRef}
+                            onChange={checkEmail}
+                            onBlur={bluredEmailHandler}
+                        />
+                        <ErrorMsg valid={validMail}>
+                            {bluredMail && emailErrorMsg}
+                        </ErrorMsg>
+                        <InputLabel htmlFor="password">
+                            <ErrorStar valid={validPassword}>
+                                {bluredPassword && '*'}
+                            </ErrorStar>
+                            Password
+                        </InputLabel>
+                        <Input
+                            id="password"
+                            type="password"
+                            ref={passwordRef}
+                            onChange={checkPassword}
+                            onBlur={bluredPasswordHandler}
+                        />
+                        <ErrorMsg valid={validPassword}>
+                            {bluredPassword && passwordErrorMsg}
+                        </ErrorMsg>
+                    </AuthMainContainer>
+                    <AuthActionButtons>
+                        <AuthButton onClick={() => checkInputData('login')}>
+                            Sign in
+                        </AuthButton>
+                        <AuthButton onClick={() => checkInputData('register')}>
+                            Sign up
+                        </AuthButton>
+                    </AuthActionButtons>
+                </>}
         </AuthFormContainer>
     )
 }
