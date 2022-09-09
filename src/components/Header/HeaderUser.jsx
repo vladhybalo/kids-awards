@@ -1,12 +1,14 @@
 import React, { useState } from "react"
+import { useSelector, useDispatch } from "react-redux"
 import { NavLink, useLocation } from 'react-router-dom'
 
 import { MAIN_DARK, AUTH_TEXT_COLOR } from "../../assets/themes/colors"
 
+import { fetchLogout } from "../../ducks/userInfo"
 import LogoHead from "./LogoHead"
 import PointsBal from "./PointsBal"
 import MobileMenu from "./MobileMenu"
-import NameExiticon from "./NameExiticon"
+import Logouticon from "./Logouticon"
 import Navigation from "./Navigation"
 import {
     DesktopWidth,
@@ -20,16 +22,20 @@ import {
     MobileHamburgerContainer,
     MobileHamburgerLine,
     MobileHamburgerDarkened,
-    MobileHamburgerbackground,
+    MobileHamburgerbackground
 } from "./Header.styled"
 
 const linkActiveColorDesktop = ({ isActive }) => { return { color: isActive ? MAIN_DARK : AUTH_TEXT_COLOR } }
 
 const HeaderUser = () => {
-    const [isOpen, setIsOpen] = useState(false)
-    const toggle = () => { setIsOpen(!isOpen) }
+    const dispatch = useDispatch()
+    const logout = () => dispatch(fetchLogout(formData))
+    const userData = useSelector(state => state.userInfo.userData)
+    const userName = userData ? userData.email : null
+    const nameLetter = userName ? userName.charAt(0) : null
+    const [menuOpened, setMenuOpened] = useState(false)
+    const toggleMenu = () => { setMenuOpened(!menuOpened) }
     const location = useLocation()
-    const childToggle = () => { setIsOpen(!isOpen) }
     return (
         <>
             {/* ====== 870=< Desktop ====== */}
@@ -54,7 +60,7 @@ const HeaderUser = () => {
                         <NavLink to="contacts" style={linkActiveColorDesktop} >
                             <MenuContact>Contacts</MenuContact>
                         </NavLink>
-                        <NameExiticon />
+                        <Logouticon nameLetter={nameLetter} userName={userName} logoutProps={logout} />
                     </MenuHeaderBlock>
                 </ContainerHeader>
             </DesktopWidth>
@@ -66,23 +72,23 @@ const HeaderUser = () => {
                         <PointsBal />
                     </LeftBlock>
                     <MenuHeaderBlock>
-                        <MobileHamburgerContainer onClick={toggle} >
+                        <MobileHamburgerContainer onClick={toggleMenu} >
                             <MobileHamburgerLine />
                         </MobileHamburgerContainer>
-                        <NameExiticon />
+                        <Logouticon nameLetter={nameLetter} userName={userName} logoutProps={logout} />
                     </MenuHeaderBlock>
                 </ContainerHeader>
-                {isOpen &&
+                {menuOpened &&
                     <MobileHamburgerDarkened >
                     </MobileHamburgerDarkened>
                 }
-                <MobileHamburgerbackground Active={isOpen}>
-                    <Navigation func={childToggle} />
+                <MobileHamburgerbackground Active={menuOpened}>
+                    <Navigation hideMobileмenu={toggleMenu} />
                 </MobileHamburgerbackground>
             </TabletWidth>
             {/* // ======= Mobile <=530 ====== */}
             <MobileWidth>
-                <MobileMenu />
+                <MobileMenu nameLetter={nameLetter} userName={userName} logoutProps={logout} />
             </MobileWidth>
         </>
     )

@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 
 export const USER_SIGN_UP = "USER_SIGN_UP";
 export const USER_SIGN_IN = "USER_SIGN_IN";

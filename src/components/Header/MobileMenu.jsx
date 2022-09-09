@@ -1,8 +1,7 @@
 import React, { useState } from "react"
-import { useSelector, useDispatch } from "react-redux"
+import { PropTypes } from "prop-types"
 import { NavLink } from 'react-router-dom'
 
-import { fetchLogout } from "../../ducks/userInfo"
 import LogoHead from "./LogoHead"
 import PointsBal from "./PointsBal"
 import Navigation from "./Navigation"
@@ -21,18 +20,10 @@ import {
 } from "./Header.styled"
 import ExitIconMobile from "../../assets/image/Header-exit-icon-mobile.svg"
 
-const MobileMenu = () => {
-    let userName = 'email'
-    const dispatch = useDispatch()
-    const logOut = () => dispatch(fetchLogout(formData))
-    const userData = useSelector(state => state.userInfo.userData)
-    if (userData) {
-        userName = userData.email
-    }
-    const nameLetter = userName && (userName.charAt(0))
-    const [isOpen, setIsOpen] = useState(false)
-    const toggle = () => { setIsOpen(!isOpen) }
-    const childToggle = () => { setIsOpen(!isOpen) }
+const MobileMenu = (props) => {
+    const logoutAction = () => { props.logoutProps() }
+    const [menuOpened, setMenuOpened] = useState(false)
+    const toggleMenu = () => { setMenuOpened(!menuOpened) }
 
     return (
         <>
@@ -41,28 +32,36 @@ const MobileMenu = () => {
                     <LogoHead />
                     <PointsBal />
                 </LeftBlock>
-                <MobileHamburgerContainer onClick={toggle} >
+                <MobileHamburgerContainer onClick={toggleMenu} >
                     <MobileHamburgerLine />
                 </MobileHamburgerContainer>
             </ContainerHeader>
-            <MobileHamburgerbackground Active={isOpen}>
+            <MobileHamburgerbackground Active={menuOpened}>
                 <MobileHamburgerLoginBox>
                     <MenuHeaderBlock>
                         <MenuInitiaLetterCircle>
-                            <MenuInitiaLetter>{nameLetter}</MenuInitiaLetter>
+                            <MenuInitiaLetter>{props.nameLetter}</MenuInitiaLetter>
                         </MenuInitiaLetterCircle>
-                        <MenuName>{userName}</MenuName>
-                        <NavLink to="auth" onClick={logOut}>
+                        <MenuName>{props.userName}</MenuName>
+                        <NavLink to="auth" onClick={logoutAction}>
                             <ExitIconWrapper src={ExitIconMobile} alt="ExitIcon" />
                         </NavLink>
                     </MenuHeaderBlock>
                 </MobileHamburgerLoginBox>
-                <Navigation func={childToggle} />
+                <Navigation hideMobileмenu={toggleMenu} />
             </MobileHamburgerbackground>
         </>
     )
 }
 
+MobileMenu.propTypes = {
+    nameLetter: PropTypes.string,
+    userName: PropTypes.string,
+    logoutAction: PropTypes.func
+}
+
 export default MobileMenu
+
+
 
 

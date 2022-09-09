@@ -15,24 +15,24 @@ import {
 const linkActiveColor = ({ isActive }) => { return { color: isActive ? MAIN_DARK : MAIN_BACKGROUND } }
 
 const Navigation = (props) => {
-    const toggle = () => { props.func() }
+    const toggleMenu = () => { props.hideMobileмenu() }
     return (
         <>
-            <MobileHamburgerCrossBox onClick={toggle}>
+            <MobileHamburgerCrossBox onClick={toggleMenu}>
                 <MobileHamburgerCross>
                     <MobileHamburgerCrossHolder />
                 </MobileHamburgerCross>
             </MobileHamburgerCrossBox>
-            <NavLink to="/" onClick={toggle} style={linkActiveColor} >
+            <NavLink to="/" onClick={toggleMenu} style={linkActiveColor} >
                 <MobileHamburgerSectionMenuUp>Home</MobileHamburgerSectionMenuUp>
             </NavLink>
-            <NavLink to="planning" onClick={toggle} style={linkActiveColor} >
+            <NavLink to="planning" onClick={toggleMenu} style={linkActiveColor} >
                 <MobileHamburgerSectionMenu>Planning</MobileHamburgerSectionMenu>
             </NavLink>
-            <NavLink to="awards" onClick={toggle} style={linkActiveColor} >
+            <NavLink to="awards" onClick={toggleMenu} style={linkActiveColor} >
                 <MobileHamburgerSectionMenu>Awards</MobileHamburgerSectionMenu>
             </NavLink>
-            <NavLink to="contacts" onClick={toggle} style={linkActiveColor} >
+            <NavLink to="contacts" onClick={toggleMenu} style={linkActiveColor} >
                 <MobileHamburgerSectionMenu>Contacts</MobileHamburgerSectionMenu>
             </NavLink>
         </>
@@ -40,7 +40,7 @@ const Navigation = (props) => {
 }
 
 Navigation.propTypes = {
-    func: PropTypes.func
+    hideMobileмenu: PropTypes.func
 }
 
 export default Navigation

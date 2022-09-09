@@ -1,14 +1,12 @@
 import React from "react"
-import { useSelector } from "react-redux"
 
+import store from "../../store"
 import { PointsBalance, NumberBalance } from "./Header.styled"
 
 const PointsBal = () => {
-    let userBalance = 0
-    const userData = useSelector(state => state.userInfo.userData)
-    if (userData) {
-        userBalance = userData.balance
-    }
+    const userAuthorized = store.getState().userInfo.userData
+    const userBalance = userAuthorized ? store.getState().userInfo.userData.balance : 0
+
     return (
         <PointsBalance>
             Points balance:
