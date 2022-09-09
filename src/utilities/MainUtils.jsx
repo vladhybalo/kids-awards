@@ -30,7 +30,7 @@ export const getMonthName = (monthNum) => {
 
 export const getEdgeWeekDays = (today) => {
 
-    let todayDate = new Date(Date.now());
+    const todayDate = new Date(Date.now());
     let mondayDate, sundayDate;
 
     while ((getDayName(todayDate.getDay()) !== "Monday")) {

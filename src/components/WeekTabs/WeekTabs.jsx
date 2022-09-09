@@ -28,11 +28,21 @@ export const WeekTabs = ({weekDataString, selectedDay, setSelectedDay, today, se
     }
 
     useEffect(()=> {
-        navigate(`?day=${today.toLowerCase()}`);
-        
         for (let i = 0; i < 7; i ++) {
             WEEKDAY_VALUES.set(WEEK_DAYS[i], i);
         }
+
+        let isRefreshing = false;
+        WEEK_DAYS.forEach((day) => {
+            if (window.location.href.includes(day.toLowerCase())){
+                isRefreshing = true;
+                setSelectedDay(day);
+                setSelectedDate(getWeekdayDate(day));
+                navigate(`?day=${day.toLowerCase()}`);
+            }
+        });
+        
+        !isRefreshing && navigate(`?day=${today.toLowerCase()}`);
 
     }, []);
 

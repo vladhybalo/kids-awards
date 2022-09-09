@@ -18,10 +18,6 @@ export const Main = () => {
 
     const currentWeekTasks = useSelector(state => state.userInfo.userWeek);
 
-    useEffect(() => {
-        setSelectedDay(today);
-    }, []);
-
     return (
         <MainWrapper isContentPresent = {currentWeekTasks}>
             <WeekTabs 
