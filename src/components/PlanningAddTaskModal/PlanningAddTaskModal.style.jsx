@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import defaultTaskImage from "../../assets/img/auth-robot-image.png";
-import addImageIcon from "../../assets/AddImageIcon.svg";
+import addImageIcon from "../../assets/addImageIcon.svg";
 
 import {
     MAIN_LIGHT,
