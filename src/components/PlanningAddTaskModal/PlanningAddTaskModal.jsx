@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import { postNewTask } from "../../utils/customTaskRequests";
 
+import defaultTaskImage from "../../assets/img/auth-robot-image.png";
+import addImageIcon from "../../assets/addImageIcon.svg";
 import addTaskIcon from "../../assets/addTaskInputIcon.svg";
 
 import {
@@ -55,8 +57,8 @@ const PlanningAddTaskModal = ({setModalVisibility}) => {
 
     return <AddCustomTaskModal>
         <AddImageWrapper>
-            <AddImageContainer uploadedImage={uploadedImage} />
-            <AddImageLabel htmlFor="uploadImg" />
+            <AddImageContainer uploadedImage={uploadedImage || defaultTaskImage} />
+            <AddImageLabel htmlFor="uploadImg" addImgIcon={addImageIcon}/>
             <input
                 id='uploadImg'
                 type='file'
