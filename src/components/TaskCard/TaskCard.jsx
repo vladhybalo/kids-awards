@@ -18,7 +18,7 @@ import {
     CardPoints
 } from "./TaskCard.style";
 
-const TaskCard = ({id, imageUrl, title, points, status, modifyBuyList}) => {
+const TaskCard = ({id, imageUrl, title, points, status, modifyBuyList, userBalance}) => {
 
     const [checkedToggler, setCheckedToggler] = useState(false);
     const [openDaysList, setOpenDaysList] = useState(false);
@@ -35,7 +35,11 @@ const TaskCard = ({id, imageUrl, title, points, status, modifyBuyList}) => {
     const isDone = false;
 
     const handleToggler = () => {
-        setCheckedToggler(!checkedToggler);
+        if (userBalance || userBalance === 0) {
+            points > userBalance ? setCheckedToggler(false) : setCheckedToggler(true);
+        } else {
+            setCheckedToggler(!checkedToggler);
+        }
         modifyBuyList(id);
     };
 
@@ -87,7 +91,8 @@ TaskCard.propTypes = {
     title: PropTypes.string.isRequired,
     points: PropTypes.number.isRequired,
     status: PropTypes.oneOf([CardBtnTypes.ADD, CardBtnTypes.TOGGLE, CardBtnTypes.TASK_EXPIRED]).isRequired,
-    modifyBuyList: PropTypes.func
+    modifyBuyList: PropTypes.func,
+    userBalance: PropTypes.number
 }
 
 export default TaskCard;

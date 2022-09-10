@@ -71,6 +71,14 @@ export const ModalAwardsItem = styled.li`
     }
 `;
 
+export const ModalAwardsMessage = styled.p`
+    font-family: 'Montserrat-600';
+    font-size: 20px;
+    margin: 0 auto;
+    text-align: center;
+    color: ${MAIN_DARK};
+`;
+
 export const ModalAwardImageWrapper = styled.div`
     margin: 0 auto;
     width: 90px;

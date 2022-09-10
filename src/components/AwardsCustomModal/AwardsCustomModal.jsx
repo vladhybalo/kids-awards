@@ -9,6 +9,7 @@ import {
     ModalTitle,
     ModalAwardsList,
     ModalAwardsItem,
+    ModalAwardsMessage,
     ModalAwardImageWrapper,
     ModalAwardImage,
     ModalAwardName
@@ -26,26 +27,33 @@ const AwardsCustomModal = ({gifts, giftsToBuyList}) => {
 
     return (
         <ModalContentWrapper ref={modalRef} modalHeight={modalHeight} >
-            <DesignImage src={ModalCatDesignSrc} alt="Hooray cat" modalHeight={modalHeight}/>
-            <ModalTitle>
-                Congratulations! You get:
-            </ModalTitle>
-            <ModalAwardsList>
-                {
-                    giftsToBuyList.map(gift => {
-                        return (
-                            <ModalAwardsItem key={gifts[gift-1].id}>
-                                <ModalAwardImageWrapper>
-                                    <ModalAwardImage src={gifts[gift-1].imageUrl} alt={gifts[gift-1].title} />
-                                </ModalAwardImageWrapper>
-                                <ModalAwardName>
-                                    {gifts[gift-1].title}
-                                </ModalAwardName>
-                            </ModalAwardsItem>
-                        )
-                    })
-                }
-            </ModalAwardsList>
+            {
+                giftsToBuyList.length !== 0
+                ? <>
+                    <DesignImage src={ModalCatDesignSrc} alt="Hooray cat" modalHeight={modalHeight}/>
+                    <ModalTitle>
+                        Congratulations! You get:
+                    </ModalTitle>
+                    <ModalAwardsList>
+                        { giftsToBuyList.map(gift => {
+                                return (
+                                    <ModalAwardsItem key={gifts[gift-1].id}>
+                                        <ModalAwardImageWrapper>
+                                            <ModalAwardImage src={gifts[gift-1].imageUrl} alt={gifts[gift-1].title} />
+                                        </ModalAwardImageWrapper>
+                                        <ModalAwardName>
+                                            {gifts[gift-1].title}
+                                        </ModalAwardName>
+                                    </ModalAwardsItem>
+                                )
+                            })
+                        }
+                    </ModalAwardsList>
+                </>
+                : <ModalAwardsMessage>
+                    You don't have any awards at that moment
+                </ModalAwardsMessage>
+            }
         </ModalContentWrapper>
     )
 }
