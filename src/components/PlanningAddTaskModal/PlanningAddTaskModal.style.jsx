@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+import defaultTaskImage from "../../assets/img/auth-robot-image.png";
+import addImageIcon from "../../assets/AddImageIcon.svg";
+
 import {
     MAIN_LIGHT,
     MAIN_DARK,
@@ -21,12 +24,12 @@ export const AddImageContainer = styled.div`
     height: 100%;
     background: ${props => props.uploadedImage
         ? `url(${props.uploadedImage}) no-repeat center`
-        : "url(src/assets/img/auth-robot-image.png) no-repeat center"};
+        : `url(${defaultTaskImage}) no-repeat center`};
     background-size: contain;
 `;
 
 export const AddImageLabel = styled.label`
-    background: url('src/assets/AddImageIcon.svg') no-repeat;
+    background: url(${addImageIcon}) no-repeat;
     width: 20px;
     height: 20px;
     position: absolute;

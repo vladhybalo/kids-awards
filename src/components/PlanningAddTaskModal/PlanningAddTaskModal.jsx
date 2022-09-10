@@ -32,7 +32,7 @@ const PlanningAddTaskModal = ({setModalVisibility}) => {
     const uploadTaskImage = (e) => {
         const file = e.target.files[0];
         const reader = new FileReader();
-        
+
         reader.readAsDataURL(file);
         reader.onload = () => setUploadedImage(reader.result);
     }
