@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-import PropTypes from 'prop-types';
+import { enableBodyScroll } from "body-scroll-lock";
 
 import { postNewTask } from "../../utils/customTaskRequests";
 
@@ -52,6 +52,7 @@ const PlanningAddTaskModal = ({setModalVisibility}) => {
             });
 
             setModalVisibility(false);
+            enableBodyScroll(document.querySelector("body"));
         }
     }
 
@@ -94,10 +95,6 @@ const PlanningAddTaskModal = ({setModalVisibility}) => {
             </SubmitBtn>
         </AddInfoContainer>
     </AddCustomTaskModal>
-}
-
-PlanningAddTaskModal.propTypes = {
-    setModalVisibility: PropTypes.func
 }
 
 export default PlanningAddTaskModal;
