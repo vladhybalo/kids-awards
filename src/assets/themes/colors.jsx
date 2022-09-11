@@ -32,6 +32,6 @@ export const AWARD_POINTS_BACKGROUND = accentPoints;
 export const CHECKED_TOGGLER = checkedToggler;
 export const UNCHECKED_TOGGLER = uncheckedToggler;
 
-export const MAIN_PAGE_BACKGROUND_GENERAL = '#FAFAFA';
+export const MAIN_PAGE_BACKGROUND_GENERAL = color5;
 export const MAIN_PAGE_BACKGROUND_MOBILE = light;
 export const MAIN_PAGE_GREY_TEXT = color4;

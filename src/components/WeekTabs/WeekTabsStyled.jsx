@@ -10,7 +10,6 @@ export const TabsBackground = styled.div`
     top: 0;
 
     display: flex;
-    align-items: center;
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
@@ -66,10 +65,6 @@ export const DaysWrapper = styled.div`
         gap: 16px;
         align-items: center;
         justify-content: center;
-    }
-
-    @media (max-width: 700px) {
-        
     }
 
     @media (max-width: 400px){

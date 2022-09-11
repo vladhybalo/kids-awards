@@ -1,4 +1,4 @@
-import { USER_SIGN_UP, USER_SIGN_IN, USER_GOOGLE_SIGN_IN, USER_REQUEST_ERROR } from "./userInfoActions";
+import { USER_SIGN_UP, USER_SIGN_IN, USER_GOOGLE_SIGN_IN, USER_REQUEST_ERROR, USER_TASK_UPDATED } from "./userInfoActions";
 
 const userInfoReducer = (state = {}, action) => {
     switch (action.type) {
@@ -24,6 +24,26 @@ const userInfoReducer = (state = {}, action) => {
             };
         case USER_REQUEST_ERROR:
             return {errorMessage: action.payload.message};
+        case USER_TASK_UPDATED: 
+            
+            const userWeek = {...state.userWeek};
+            const userData = {...state.userData};
+
+            userData.balance = action.payload.updatedBalance;
+            userWeek.rewardsGained = action.payload.updatedBalance;
+            
+            userWeek.tasks.forEach((task) => {
+                if (task._id === action.payload.updatedTask.id) {
+                    userWeek.tasks[userWeek.tasks.indexOf(task)].days = action.payload.updatedTask.days;
+                }
+            })
+
+            return {
+                ...state,
+                userWeek: userWeek,
+                userData: userData
+            }
+
         default:
             return state;
     }

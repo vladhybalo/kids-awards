@@ -118,7 +118,6 @@ export const CurrentTasksArea = styled.div`
     padding-top: 40px;
 
     @media (max-width: 400px){
-        padding-top: 32x;
         padding-left: 20px;
         padding-right: 20px;
         padding-top: 0;

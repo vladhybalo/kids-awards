@@ -5,6 +5,8 @@ export const USER_SIGN_IN = "USER_SIGN_IN";
 export const USER_REQUEST_ERROR = "USER_REQUEST_ERROR";
 export const USER_GOOGLE_SIGN_IN = "USER_GOOGLE_SIGN_IN";
 
+export const USER_TASK_UPDATED = "USER_TASK_UPDATED";
+
 export const userSignUp = (data) => {
     return {
         type: USER_SIGN_UP,
@@ -78,5 +80,15 @@ export const fetchGoogleData = () => {
             .catch(error => {
                 alert(error.message);
             });
+    }
+}
+
+export const updateTaskStatus = (updatedTask, updatedBalance) => {
+    return {
+        type: USER_TASK_UPDATED,
+        payload: {
+            updatedTask: updatedTask,
+            updatedBalance: updatedBalance
+        }
     }
 }
