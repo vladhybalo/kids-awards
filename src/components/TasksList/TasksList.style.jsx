@@ -5,4 +5,5 @@ export const CardsContainer = styled.section`
     justify-content: center;
     flex-wrap: wrap;
     gap: 19px 32px;
+    justify-content: center;
 `;
