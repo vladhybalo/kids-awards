@@ -21,22 +21,34 @@ import {
 const Awards = () => {
     const dispatch = useDispatch();
     const gifts = useSelector(state => state.awards.gifts);
+    const balance = useSelector(state => state.userInfo.userData.balance);
 
     const [giftsToBuyList, setGiftsToBuyList] = useState([]);
+    const [userBalance, setUserBalance] = useState(balance);
     const [modalVisibility, setModalVisibility] = useState(false);
 
     const modifyBuyList = (id) => {
-        if (giftsToBuyList.includes(id)) {
-            const filteredArr = giftsToBuyList.filter(item => item !== id);
-            setGiftsToBuyList(filteredArr);
-        } else {
-            setGiftsToBuyList(oldArr => [...oldArr, id]);
+        let newBalance = null;
+
+        if (gifts[id-1] < userBalance) {
+            if (giftsToBuyList.includes(id)) {
+                const filteredArr = giftsToBuyList.filter(item => item !== id);
+                setGiftsToBuyList(filteredArr);
+                newBalance = userBalance + gifts[id-1];
+            } else {
+                setGiftsToBuyList(oldArr => [...oldArr, id]);
+                newBalance = userBalance - gifts[id-1];
+            }
+            setUserBalance(newBalance);
+        }
+        else {
+            alert('Ooops:( You don`t have enough points to get this award');
         }
     }
 
     const submitSelectedGifts = () => {
         setModalVisibility(true);
-        dispatch(patchSelectedGifts(giftsToBuyList));
+        giftsToBuyList.length !== 0 && dispatch(patchSelectedGifts(giftsToBuyList));
     }
 
     useEffect(() => {
@@ -48,7 +60,13 @@ const Awards = () => {
             <AwardsTitle />
             <AwardsCardsContainer>
                 {
-                    gifts && <TasksList TasksList={gifts} status={CardBtnTypes.TOGGLE} modifyBuyList={modifyBuyList} />
+                    gifts &&
+                    <TasksList
+                        TasksList={gifts}
+                        status={CardBtnTypes.TOGGLE}
+                        modifyBuyList={modifyBuyList}
+                        userBalance={userBalance}
+                    />
                 }
             </AwardsCardsContainer>
             <SubmitButton onClick={submitSelectedGifts}>

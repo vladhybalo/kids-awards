@@ -35,7 +35,7 @@ export const BaseModal = ({setModalVisibility, children}) => {
 
     return (
         <ModalBackground top={topOffset}>
-            <ModalContainer>
+            <ModalContainer childComponent={children.type.name}>
                 <ModalContainerCloseBtnWrapper onClick={() => closeModalHandler()}>
                     <CloseBtn src={closeCross}>
                     </CloseBtn>

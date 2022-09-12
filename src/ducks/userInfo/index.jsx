@@ -5,7 +5,8 @@ import {
     fetchSignInData,
     fetchSignUpData,
     userRequestError,
-    fetchGoogleData
+    fetchGoogleData,
+    downloadAllUserInfo
 } from "./userInfoActions";
 
 import userInfoReducer from "./userInfoReducer";
@@ -18,5 +19,6 @@ export {
     fetchSignUpData,
     userRequestError,
     fetchGoogleData,
+    downloadAllUserInfo,
     userInfoReducer
 };

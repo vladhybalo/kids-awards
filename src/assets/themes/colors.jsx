@@ -10,7 +10,9 @@ const color2 = '#F6F7FB';
 const color3 = '#858598';
 const color4 = '#A6ABB9';
 const color5 = '#FAFAFA';
+const color6 = '#F1F1F1';
 const accentPoints = '#5679D7';
+const checklistBg = '#3E7ADC';
 const checkedToggler = '#8EC63F';
 const uncheckedToggler = '#FF4965';
 
@@ -31,3 +33,5 @@ export const BUTTON_LIGHT_TEXT_COLOR = color5;
 export const AWARD_POINTS_BACKGROUND = accentPoints;
 export const CHECKED_TOGGLER = checkedToggler;
 export const UNCHECKED_TOGGLER = uncheckedToggler;
+export const MOBILE_BOTTOM_PANEL_BACKGROUND = color6;
+export const DAYS_CHECKLIST_BACKGROUND = checklistBg;
