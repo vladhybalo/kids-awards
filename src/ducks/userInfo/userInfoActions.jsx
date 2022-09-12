@@ -1,10 +1,11 @@
 import axios from 'axios';
+import store from '../../store';
 
 export const USER_SIGN_UP = "USER_SIGN_UP";
 export const USER_SIGN_IN = "USER_SIGN_IN";
 export const USER_REQUEST_ERROR = "USER_REQUEST_ERROR";
 export const USER_GOOGLE_SIGN_IN = "USER_GOOGLE_SIGN_IN";
-
+export const USER_GET_INFO = "USER_GET_INFO";
 export const USER_TASK_UPDATED = "USER_TASK_UPDATED";
 
 export const userSignUp = (data) => {
@@ -32,6 +33,13 @@ export const userGoogleSignIn = (data) => {
     return {
         type: USER_GOOGLE_SIGN_IN,
         payload: data.data
+    }
+}
+
+export const getUserInfo = (payload) => {
+    return {
+        type: USER_GET_INFO,
+        payload
     }
 }
 
@@ -76,6 +84,24 @@ export const fetchGoogleData = () => {
             .then(res => {
                 alert('Successful signing in');
                 dispatch(userGoogleSignIn(res.data));
+            })
+            .catch(error => {
+                alert(error.message);
+            });
+    }
+}
+
+export const downloadAllUserInfo = () => {
+    return dispatch => {
+        axios
+            .get(`https://kidslike-v1-backend.goit.global/user/info`, {
+                headers: {
+                    'Authorization': store.getState().userInfo.token,
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(res => {
+                dispatch(getUserInfo(res.data));
             })
             .catch(error => {
                 alert(error.message);

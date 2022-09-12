@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 
 import ModalCatDesignSrc from "../../assets/modal-cat-image.svg";
@@ -9,34 +9,51 @@ import {
     ModalTitle,
     ModalAwardsList,
     ModalAwardsItem,
+    ModalAwardsMessage,
     ModalAwardImageWrapper,
     ModalAwardImage,
     ModalAwardName
 } from "./AwardsCustomModal.style";
 
 const AwardsCustomModal = ({gifts, giftsToBuyList}) => {
+    const modalRef = useRef();
+    const [modalHeight, setModalHeight] = useState(false);
+
+    useEffect(() => {
+        if (modalRef) {
+            modalRef.current.offsetHeight > 376 ? setModalHeight(true) : setModalHeight(false);
+        }
+    })
+
     return (
-        <ModalContentWrapper>
-            <DesignImage src={ModalCatDesignSrc} alt="Hooray cat" />
-            <ModalTitle>
-                Congratulations! You get:
-            </ModalTitle>
-            <ModalAwardsList>
-                {
-                    giftsToBuyList.map(gift => {
-                        return (
-                            <ModalAwardsItem key={gifts[gift-1].id}>
-                                <ModalAwardImageWrapper>
-                                    <ModalAwardImage src={gifts[gift-1].imageUrl} alt={gifts[gift-1].title} />
-                                </ModalAwardImageWrapper>
-                                <ModalAwardName>
-                                    {gifts[gift-1].title}
-                                </ModalAwardName>
-                            </ModalAwardsItem>
-                        )
-                    })
-                }
-            </ModalAwardsList>
+        <ModalContentWrapper ref={modalRef} modalHeight={modalHeight} >
+            {
+                giftsToBuyList.length !== 0
+                ? <>
+                    <DesignImage src={ModalCatDesignSrc} alt="Hooray cat" modalHeight={modalHeight}/>
+                    <ModalTitle>
+                        Congratulations! You get:
+                    </ModalTitle>
+                    <ModalAwardsList>
+                        { giftsToBuyList.map(gift => {
+                                return (
+                                    <ModalAwardsItem key={gifts[gift-1].id}>
+                                        <ModalAwardImageWrapper>
+                                            <ModalAwardImage src={gifts[gift-1].imageUrl} alt={gifts[gift-1].title} />
+                                        </ModalAwardImageWrapper>
+                                        <ModalAwardName>
+                                            {gifts[gift-1].title}
+                                        </ModalAwardName>
+                                    </ModalAwardsItem>
+                                )
+                            })
+                        }
+                    </ModalAwardsList>
+                </>
+                : <ModalAwardsMessage>
+                    You don't have any awards at that moment
+                </ModalAwardsMessage>
+            }
         </ModalContentWrapper>
     )
 }

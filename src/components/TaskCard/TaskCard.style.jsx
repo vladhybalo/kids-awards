@@ -14,6 +14,7 @@ export const CardContainer = styled.article`
     border-radius: 6px;
     background: ${MAIN_BACKGROUND};
     filter: drop-shadow(4px 6px 15px ${DROP_SHADOW});
+    position: relative;
 
     @media (max-width: 656px) {
         width: 366px;
@@ -22,6 +23,10 @@ export const CardContainer = styled.article`
 
 export const CardImageWrapper = styled.div`
     text-align: center;
+    height: 194px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 
 export const CardBody = styled.section`
@@ -32,6 +37,7 @@ export const CardBody = styled.section`
     box-sizing: border-box;
     background-color: ${MAIN_LIGHT};
     border-radius: 0 0 6px 6px;
+    height: 69px;
 `;
 
 export const CardContent = styled.div`
