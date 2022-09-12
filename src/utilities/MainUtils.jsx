@@ -35,8 +35,9 @@ export const getEdgeWeekDays = (today) => {
 
     while ((getDayName(todayDate.getDay()) !== "Monday")) {
         todayDate.setDate(todayDate.getDate() - 1);
-        mondayDate = todayDate;
     }
+
+    mondayDate = todayDate;
 
     sundayDate = new Date(todayDate);
     sundayDate.setDate(todayDate.getDate() + 6);
